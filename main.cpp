@@ -212,12 +212,13 @@ uchar getadr()//адреса  команд
   if (tekfunc==23) {adr=115; }//громкость уменьшить
   return(adr);
 }
-
-
 void pult() 
 {
    tON=1500; zader=1;timerzad=0; source(); p2;   //время включения АС при переключениях
 }
+
+
+
 
 void normal(uchar rez)//-----------------------главная логика --------------------
 {   
@@ -295,7 +296,7 @@ void normal(uchar rez)//-----------------------главная логика ------------------
    
   
  
-  if (aoff==1)  {    WorkT1(); if (T1end) { on=0; onok=0;  aoff=0; p5; zader=0; regaoff=0;}
+  if (aoff==1)  {    WorkT1(); if (T1out) { on=0; onok=0;  aoff=0; p5; zader=0; regaoff=0;}
                 } 
                 
  //--------------- select -------------------

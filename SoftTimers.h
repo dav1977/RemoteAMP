@@ -2,11 +2,11 @@
 //
 //***************************************************************************
 ulong T1,T2,T3;
-bool T1end,T2end,T3end;
+bool T1out,T2out,T3out;
 ulong T1max,T2max,T3max;
 uint T1x,T2x,T3x;
 ulong Calibr=5500;//минимальный тик (около 1сек)
- static bool sost=0;
+ 
   static uchar raz;
  static uchar port=255;
  static uchar razct;
@@ -22,7 +22,7 @@ __interrupt void funTIMER0_OVF_vect(void)
 //**************************************************************
 void ResetT1(void)
 {
-  T1=0;T1x=0;  T1end=0;
+  T1=0;T1x=0;  T1out=0;
 }
   
 
@@ -40,9 +40,9 @@ void iniT1(ulong max)
 
 void WorkT1(void)
 {
-  if (T1end) return;
+  if (T1out) return;
   T1x++; if (T1x>=Calibr) { T1x=0; T1++; }
-  if (T1>=T1max) T1end=1;
+  if (T1>=T1max) T1out=1;
 }
 
 //**************************************************************
@@ -50,7 +50,7 @@ void WorkT1(void)
 
 void ResetT2(void)
 {
-  T2=0;T2x=0;  T2end=0;
+  T2=0;T2x=0;  T2out=0;
 }
   
 
@@ -68,9 +68,9 @@ void iniT2(ulong max)
 
 void WorkT2(void)
 {
-  if (T2end) return;
+  if (T2out) return;
   T2x++; if (T2x>=(Calibr/1000)) { T2x=0; T2++; }
-  if (T2>=T2max) T2end=1;
+  if (T2>=T2max) T2out=1;
 }
 
 void migINI(uchar sel,  uchar razp, bool prton)//мигание sel - кол-во раз
@@ -87,18 +87,19 @@ void migINI(uchar sel,  uchar razp, bool prton)//мигание sel - кол-во раз
   
   raz=razp;  port=sel; razct=0;
   iniT2(5);
-  T2end=1;
+  T2out=1;
   
 }
 
 void migWORK(void)//мигание 
 {
+  static bool sost=0;
   WorkT2();
-  if (T2end==1 && port!=255)  {
+  if (T2out==1 && port!=255)  {
        if (sost!=1)  {sost=1; iniT2(200); SET(PORTB,port); razct++;}
   else if (sost!=0)  {sost=0; iniT2(200); RES(PORTB,port);}
                               }
-  if (razct>=raz) { T2end=1; port=255;}
+  if (razct>=raz) { T2out=1; port=255;}
 }
 //uchar migSEL(void){ return(port);} //возвращает текущий мигающий порт
 //**************************************************************

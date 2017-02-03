@@ -25,6 +25,7 @@ void read(void);
 char du_main(uchar pr);
 bool rw(bool a,char b,uint c); 
 void compr (void);
+ void coding(uint i, uchar pr) ;
 
   extern uchar  perepoln=0;//кол-во переполнений счетчика
   extern uchar t1=0,t2=0;
@@ -36,8 +37,10 @@ void compr (void);
   static bool intok,readint,big;
   static uint last;
   extern char cod_ok=0;
-   static float sst=0;
-  
+   //static float sst=0;
+  uchar c1,c2,c3;
+char ind=1;
+
    void du_init(void)
    {
    ini=1;  intok=0;
@@ -61,14 +64,17 @@ __interrupt void funINT0_vect(void)
 //////////////////////////////////////////////////////////////
   char du_main(uchar pr) 
   {   
-    cod_ok=0;
-    if (ini!=1) du_init();    uchar i;
+    uchar i;
+    static bool state,state2;
+    cod_ok=0;//признак готовности кода
+    
+    if (ini!=1) du_init();    
   
  //////////////////////////////////////////////////////////////  
     if (intok!=0)   //INT событие произошло
         {
         //  if (readint==0 && last!=TCNT1L)  {
-           
+          if (state==1) {RES(PORTB,5); state=0; }   else {SET(PORTB,5); state=1;}
           
       //  t1 = TCNT1L;  t2 = TCNT1H;
          
@@ -88,48 +94,79 @@ __interrupt void funINT0_vect(void)
 if (perepoln!=0 ) {//получили переполнение, значит сигнал закончился
 
   
+         if (state2==1) {RES(PORTB,2); state2=0; }   else {SET(PORTB,2); state2=1;}
        
-       
-cod1=0;cod2=0;cod3=0; 
-uchar c1,c2,c3;
-char ind=1;
-c1=0; c2=0; c3=0;  sst=0;
-  
+      cod1=0;cod2=0;cod3=0; 
+      c1=0; c2=0; c3=0;  //sst=0;
       minimallen=65535;   
-  
+      
       if (ct>(MAX-1)) {  rprintfStr(" error ct big ="); rprintfFloat(6,  ct); }
           
-      if ((ct>5 && big==0)|| big==1) {//от 5 посылок анализируем остальное шум
- 
-      for (i=1; i<ct; i++) //ищем миимальную длину
-      {  
-     
-      len[i]=( dim1[i]+ (256*dim2[i])  );
       
-      if (len[i]>900) { 
+      if ((ct>5 && big==0)|| big==1) 
+      {//от 5 посылок анализируем остальное шум
         
-      if (len[i]<(float)minimallen) minimallen=(uint)len[i];
-      
-                      }
-      
-      }
+          for (i=1; i<ct; i++) //ищем миимальную длину
+          {  
+                len[i]=( dim1[i]+ (256*dim2[i])  );           
+                if (len[i]>900  && len[i]<(float)minimallen)  minimallen=(uint)len[i];
+          }
+     
+           for (i=1; i<ct; i++) 
+           { //for 
+             uint tr;
+             tr=( dim1[i]+ (256*dim2[i]));
+             len[i]=(float)tr/minimallen;       
+             if (len[i]!=0)   coding(i, pr);
+           }//for
      
       
+      }//от 5 посылок анализируем 
       
-     for (i=1; i<ct; i++) { //for 
-       uint tr;
-       tr=( dim1[i]+ (256*dim2[i]));
-       len[i]=(float)tr/minimallen;       
       
+      
+      //очистка
+       for (i=0; i<MAX; i++) {dim1[i]=0;dim2[i]=0;len[i]=0;}
+       perepoln=0;  t1=0; t2=0; ct=0; big=0;
      
-     if (len[i]!=0)   {///------------------
+      
        
-        float v=len[i];
-             
-            //  sst=sst+v;
+   
+     if (pr==1 && cod_ok!=0)     
+     {//diag
+              rprintfStr("  /   cod1= ");
+              rprintfFloat(6,  cod1);
+              rprintfStr("/   cod2= ");
+              rprintfFloat(6,  cod2);
+              rprintfStr("/   cod3= ");
+              rprintfFloat(6,  cod3);
+              ent;
+                                
+     }//diag
+    
+     
+     
+     
+     
+     }//переполнение  ----------------------------------------
+     
+  
+  return(cod_ok);  
+  }
+
+  
+  
+  
 ///////////////////////////////////////////////////////////////////       
 //                             кодировка
 ///////////////////////////////////////////////////////////////////
+  void coding(uint i, uchar pr)  
+  {
+ 
+    
+    float v=len[i];
+             
+            //  sst=sst+v;
        if (i>1) {
           
   //-------------   версия  больше-меньше  ------------------
@@ -231,70 +268,31 @@ c1=0; c2=0; c3=0;  sst=0;
              cod_ok=1;//код готов         
          
          if (pr==0) {
-         rprintfFloat(2, i);
-         rprintfStr("  / abslen= ");
-          rprintfFloat(9, dim1[i]+ (256*dim2[i])  );
-          rprintfStr("  / len= ");
-      rprintfFloat(4,  len[i]);
-       rprintfStr("  ");
-     rprintfStr("  / cod1= ");
-      rprintfFloat(6, cod1);
-       rprintfStr(" / cod2= ");
-      rprintfFloat(6,  cod2);
-       rprintfStr(" / cod3= ");
-      rprintfFloat(6,  cod3);
-       rprintfStr("/ minlen=");
-       rprintfFloat(9,   minimallen);
-    //  rprintfStr("/ sst=");
-  //   rprintfFloat(9, (sst*1000)-80000);
-       ent;
-         }
+                     rprintfFloat(2, i);
+                     rprintfStr("  / abslen= ");
+                      rprintfFloat(9, dim1[i]+ (256*dim2[i])  );
+                      rprintfStr("  / len= ");
+                  rprintfFloat(4,  len[i]);
+                   rprintfStr("  ");
+                 rprintfStr("  / cod1= ");
+                  rprintfFloat(6, cod1);
+                   rprintfStr(" / cod2= ");
+                  rprintfFloat(6,  cod2);
+                   rprintfStr(" / cod3= ");
+                  rprintfFloat(6,  cod3);
+                   rprintfStr("/ minlen=");
+                   rprintfFloat(9,   minimallen);
+                   ent;
+                }
+         
+         
                    }
        
-        perepoln=0;
        
-      
        
-     
-                       }///------------------
-     
-    
-                         }//for
-     
-      
-      }//от 5 посылок анализируем 
-      
-      //очистка
-       for (i=0; i<MAX; i++) {dim1[i]=0;dim2[i]=0;len[i]=0;}
-       perepoln=0;  t1=0; t2=0; ct=0; big=0;
-     
-      
-       
-   
-     if (pr==1 && cod_ok!=0)     {//diag
-     rprintfStr("  /   cod1= ");
-      rprintfFloat(6,  cod1);
-       rprintfStr("/   cod2= ");
-      rprintfFloat(6,  cod2);
-       rprintfStr("/   cod3= ");
-      rprintfFloat(6,  cod3);
-   //    rprintfStr("/ sst=");
-   //  rprintfFloat(9, (sst*1000)-80000);
-       ent;
-                                
-                               }//diag
-    
-     
-     
-     
-     
-     }//переполнение  ----------------------------------------
-     
   
-  return(cod_ok);  
   }
-
-
+  
 
  //переполнился импульс более 130мс  (1/(4000000/8)*65535)
 #pragma vector = TIMER1_OVF_vect
