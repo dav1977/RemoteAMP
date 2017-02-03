@@ -1,1 +1,2 @@
-# test1
+# Remote-control-amplifier
+ИК управление усилителем мощности
