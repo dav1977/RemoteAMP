@@ -1,4 +1,4 @@
-# Remote-control-amplifier
+﻿# Remote-control-amplifier
 ИК управление усилителем мощности
 
 Селектор входов для УМЗЧ версия dav 2014 v1.2
