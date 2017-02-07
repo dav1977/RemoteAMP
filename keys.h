@@ -1,9 +1,4 @@
-#include <stdbool.h>//поддержка bool
-#include "iom8.h"//<ioavr.h>
-#include <inavr.h>
-#include <intrinsics.h>
-#include "init.h"
-#include "usart.h"
+
 
 #define  keyON ( BIT(PIND,5)==0 && BIT(PIND,0)!=0 && BIT(PIND,1)!=0 )
 #define  keyONsm BIT(PIND,5)==0

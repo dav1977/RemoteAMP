@@ -1,6 +1,7 @@
 #include "usart.h"
 //#include <math.h>
 //#include <intrinsics.h>
+
 #include "init.h"
 
 //однобайтный буфер
@@ -8,10 +9,8 @@ volatile unsigned char usartRxBuf = 0;
 volatile static bool usarton;
 
 //инициализация usart`a
-void USART_Init(bool t)
+void USART_Init()
 {
-  usarton=t;
-  if (!usarton) return;
   UBRRH = 0;
   UBRRL = ((F_CPU/9600UL)-1)/16;//    26;//78; //скорость обмена 9600 бод
   UCSRB = (1<<RXCIE)|(1<<RXEN)|(1<<TXEN); //разр. прерыв при приеме, разр приема, разр передачи.

@@ -1,4 +1,4 @@
-
+#include <stdbool.h>//поддержка bool
 
 #define   F_CPU 4000000UL
 

@@ -3,7 +3,7 @@
 
 #include <iom8.h>
 
-void USART_Init(bool usarton); //инициализация usart`a
+void USART_Init(); //инициализация usart`a
 void USART_SendChar(unsigned char sym); //послать символ по usart`у
 unsigned char USART_GetChar(void); //прочитать приемный буфер usart`a 
 

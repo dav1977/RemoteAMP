@@ -1467,7 +1467,7 @@
         </option>
         <option>
           <name>IccLang</name>
-          <state>1</state>
+          <state>0</state>
         </option>
         <option>
           <name>IccCDialect</name>
@@ -2022,6 +2022,9 @@
     <configuration>Release</configuration>
   </mfc>
   <file>
+    <name>$PROJ_DIR$\du.c</name>
+  </file>
+  <file>
     <name>$PROJ_DIR$\du.h</name>
   </file>
   <file>
@@ -2034,7 +2037,13 @@
     <name>$PROJ_DIR$\keys.h</name>
   </file>
   <file>
-    <name>$PROJ_DIR$\main.cpp</name>
+    <name>$PROJ_DIR$\main.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\main.h</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\SoftTimers.c</name>
   </file>
   <file>
     <name>$PROJ_DIR$\SoftTimers.h</name>
