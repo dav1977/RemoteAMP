@@ -21,17 +21,16 @@
 #include "eeprom.h"
 #include "du.h"
 
-  extern uchar  perepoln=0;//кол-во переполнений счетчика
-  extern uchar t1=0,t2=0;
+  static uchar  perepoln=0;//кол-во переполнений счетчика
+  static uchar t1=0,t2=0;
   static bool ini; 
   uint dim1[MAX],dim2[MAX];
   char ct=0;
   uint minimallen;    
   float len[MAX];
-  static bool intok,readint,big;
-  static uint last;
+  static bool intok,big;
+ 
   char cod_ok=0;
-   //static float sst=0;
   uchar c1,c2,c3;
   char ind=1;
 
@@ -64,18 +63,12 @@ __interrupt void funINT0_vect(void)
 void analiz_INT()
 {
    static bool state;
- //  if (readint==0 && last!=TCNT1L)  {
-          if (state==1) {RES(PORTB,5); state=0; }   else {SET(PORTB,5); state=1;}
-          
-      //  t1 = TCNT1L;  t2 = TCNT1H;
-         
+       if (state==1) {RES(PORTB,5); state=0; }   else {SET(PORTB,5); state=1;}
+
         dim1[ct]=t1;  dim2[ct]=t2; ct++;
         if (ct>=MAX-1) ct--;  //слишком длинная посылка переписываем каждый раз последний
+        intok=0;
 
-      //  if (t1!=0) {readint=1;  TCNT1H=0;TCNT1L=0;}
-       intok=0;
-        //readint=1;
-          //                                }
 
 }
 //*****************************************************************
@@ -133,9 +126,8 @@ void PEREP()
 ///////////////////////////////////////////////////////////////
 //  main
 //////////////////////////////////////////////////////////////
-  char du_main(uchar pr) 
+  char remote_main() 
   {   
- 
     cod_ok=0;//признак готовности кода
     
     if (ini!=1) du_init();    

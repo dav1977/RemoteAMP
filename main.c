@@ -17,7 +17,7 @@
 // v1.23 - исправлен при включении включается SOURCE1 
 // v1.24 - исправлен баг AUTOOFF на 30 минут 
 // v1.25 - исправлен баг AUTOOFF при выключениии питания 
-// v1.26 - refactoring 
+// v1.26 - refactoring, проверка на повторное программирование кнопки
 //  Data........: 02 2017
 //
 //   - ВЫКЛЮЧИТЬ ОПЦИЮ clustering of variables В optimization compilator !!!!
@@ -49,6 +49,8 @@ void writeCOD(void);
 uchar analizCOD(void);
 void programming(uchar rez);
 uchar getadr(void);
+
+
 uint tON=acon; 
 uchar pr;
 static bool get=0;
@@ -57,8 +59,8 @@ bool on,mute;
 bool zader,aoff;
 uint timerzad; 
 uchar pultadr; uchar rez;
- bool u=0,til=0,mode_programming=0; 
-extern  uchar mode=0,tekfunc=0; 
+static bool u=0,til=0,mode_programming=0; 
+static  uchar mode=0,tekfunc=0; 
 static uchar lastsel=1,sel=1,gro1=0,gro2=0,regaoff=0;
 
 void led_test()
@@ -78,8 +80,8 @@ int main( void )
    if (keyONsm) {u=1; led_test(); USART_Init();}//включаем UART
 //----------------------------------
   mode=fmode; //смена режима работы
-  if (mode!=1 && mode!=0) { fmode=0; mode=0;   }//ini
-  if (modegro!=1 && modegro!=0) { modegro=0; p1;   }//ini
+  if (mode!=1 && mode!=0) {  led_test(); fmode=0; mode=0;   }//ini
+  if (modegro!=1 && modegro!=0) { led_test(); modegro=0;  }//ini
   
   if (keyMUTE && !keyAOFFsm) {  led_test();
   if (mode==0 && modegro==0)   {  fmode=1; p5;   SET(PORTB,4);  while(1) {}   }
@@ -92,7 +94,7 @@ int main( void )
  // modegro=1; mode=1;
 //-----------------------------------
   
-   if (keySELsm) {mode_programming=1; led_test();}//включаем программирование пульта
+   
    if (keySELsm==1 && keyAOFFsm==1)//очистка
       {
         mode_programming=1; cod1=0;cod2=0;cod3=0;
@@ -100,8 +102,10 @@ int main( void )
         tekfunc=0;
         led_all(1); while(1) {} //зависаем
       }
-
-   if (mode_programming==1) //мигание первого программируемого
+  if (keySELsm) {mode_programming=1; led_test();}//включаем программирование пульта
+  
+  
+   if (mode_programming) //мигание первого программируемого
    {
      for (uchar i=0; i<3; i++) {getadr(); p3;led_all(0); p3;}
     
@@ -112,8 +116,8 @@ int main( void )
     __enable_interrupt();   
   while(1)
   {
-     rez=du_main(pr);//вызов обработчика пульта 
-     if (mode_programming==0)  
+     rez=remote_main();//вызов обработчика пульта 
+     if (!mode_programming)  
      {    
        pultadr=0; 
        if (rez) pultadr=analizCOD();      
@@ -136,7 +140,7 @@ void main_logic()
      
     //выключение
     if (on==0 && onok==0) { on=0; aoff=0; p5; zader=0; regaoff=0; AC_OFF; delay_s(1); tON=acon; 
-    						PORTB=0; RES(PORTD,7);RES(PORTD,4); resOUT(); RES(PORTC,5); RES(PORTC,0);RES(PORTD,3); onok=1;
+    			    PORTB=0; RES(PORTD,7);RES(PORTD,4); resOUT(); RES(PORTC,5); RES(PORTC,0);RES(PORTD,3); onok=1;
                           }
                                   
   
@@ -193,10 +197,12 @@ void pult()
    tON=1500; zader=1;timerzad=0; source(); p2;   //время включения АС при переключениях
 }
 
+
+
+
+
 void normal(uchar rez)//-----------------------главная логика --------------------
 {   
-   pultadr=0; 
-  
    migWORK();
    
   
@@ -237,19 +243,26 @@ void normal(uchar rez)//-----------------------главная логика ------------------
   if (mute==1) AC_OFF; else { if (zader==0) AC_ON; }
   if (zader==1) {timerzad++;  if (timerzad> tON)  {zader=0;timerzad=0; if (mute!=1)AC_ON;} }//задержка включения
   
-   if ((keyMUTE ||pultadr==35 || pultadr==100) && mute==0) { AC_OFF; mute=1; p5; pultadr=0;}
-   if ((keyMUTE ||pultadr==35 || pultadr==100) && mute==1) { AC_ON; mute=0; p5; pultadr=0; }   
+  if (keyMUTE ||pultadr==35 || pultadr==100)  
+  {
+   if ( mute==0) { AC_OFF; mute=1; p5; pultadr=0;}
+   if (mute==1) { AC_ON; mute=0; p5; pultadr=0; }   
+  }
+   
    
    
   //--------------- aoff --------------------
  
-   
-   if ((keyAOFF || pultadr==30 || pultadr==95) && aoff==1 && regaoff>=3)  {  RES(PORTB,5);  p5; aoff=0; regaoff=0; pultadr=0;}//отмена aoff 
-   
-  if ((keyAOFF || pultadr==30 || pultadr==95) && regaoff==0) { aoff=1; regaoff++;  TimerSet(&tm1,60*60*2)/*2 часа*/; pultadr=0;  for (uchar i=0; i<3; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
-  if ((keyAOFF || pultadr==30 || pultadr==95) && regaoff==1) { aoff=1; regaoff++; TimerSet(&tm1,60*60*1)/*1 часа*/; pultadr=0; for (uchar i=0; i<2; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
-  if ((keyAOFF || pultadr==30 || pultadr==95) && regaoff==2) { aoff=1; regaoff++; TimerSet(&tm1,60*60*0.5)/*0.5 часа*/; pultadr=0; for (uchar i=0; i<1; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
+   if (keyAOFF || pultadr==30 || pultadr==95) 
+   {
+     
+  if ( aoff==1 && regaoff>=3)  {  RES(PORTB,5);  p5; aoff=0; regaoff=0; pultadr=0;}//отмена aoff 
+  if ( regaoff==0) { aoff=1; regaoff++;  TimerSet(&tm1,60*60*2)/*2 часа*/; pultadr=0;  for (uchar i=0; i<3; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
+  if (regaoff==1) { aoff=1; regaoff++; TimerSet(&tm1,60*60*1)/*1 часа*/; pultadr=0; for (uchar i=0; i<2; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
+  if (regaoff==2) { aoff=1; regaoff++; TimerSet(&tm1,60*60*0.5)/*0.5 часа*/; pultadr=0; for (uchar i=0; i<1; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
   
+   }
+
    
  //  if ((keyAOFF || pultadr==30 || pultadr==95) && aoff==0) 
  //     {   aoff=1;  iniT1(60*60*2)/*2 часа*/; pultadr=0;
@@ -336,22 +349,36 @@ void source()
 
 
 
+bool proverka(uchar adr)//защита от дублирования функции на кнопке
+{
+   for (uchar i=0; i<adr; i++)
+   {
+     if (k[i]==cod1)
+       if (k[i+1]==cod2)
+         if (k[i+2]==cod3) return 0;
+   }
 
+   return 1;
+}
 
 
 void programming (uchar rez)
 {  
+  uchar adr;
    if (tekfunc==255) return;
-   if (!get)  { getadr(); get=1; }//получаем адрес и зажигаем программируемую функцию
+   if (!get)  { adr=getadr(); get=1; }//получаем адрес и зажигаем программируемую функцию
    if (rez==1)
    {
-     writeCOD();
-     tekfunc++;  get=0;
-    if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
-                           {led_all(1); p4; led_all(0);p4; }
-                      }
-     if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
-
+     if (proverka(adr)) 
+     {
+         writeCOD();
+         tekfunc++;  get=0;
+         if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
+                               {led_all(1); p4; led_all(0);p4; }
+                          }
+         if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
+     
+     }
    }
    
    
