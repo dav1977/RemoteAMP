@@ -1,5 +1,7 @@
 #include <stdbool.h>//поддержка bool
 
+
+
 #define   F_CPU 4000000UL
 
 //DDRB |= (1<<OUT1)|(1<<OUT2)|(1<<OUT3);

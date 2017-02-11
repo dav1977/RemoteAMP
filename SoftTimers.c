@@ -5,23 +5,33 @@
 #include <intrinsics.h>
 #include "init.h"
 #include "SoftTimers.h"
-
+#include "main.h"
 //***************************************************************************
 //
 //***************************************************************************
-timers tm1,tm2;
+timers tm1,tm2,tm3;
 static uchar raz;
 static uchar port;
 static uchar razct;
 
-/*
-#pragma vector = TIMER0_OVF_vect 
-__interrupt void funTIMER0_OVF_vect(void)
+
+#pragma vector = TIMER2_OVF_vect
+__interrupt void TIMER2ovf(void)
 {
-   
+ TimerTick(&tm3); // Work
+ TCNT2 = 0;
  
+ 
+ static bool state;
+ if (tm3.out && on) { 
+ if (state==1) {RES(PORTD,7); state=0; }   else {SET(PORTD,7); state=1;}
+         TimerSet(&tm3,5000);       
+              }
 }
-*/
+
+
+
+
 
 void TimerSet(timers *t, uint tm)
 {
@@ -40,66 +50,6 @@ void TimerTick( timers *t)
 }
 //**************************************************************
 //**************************************************************
-//void ResetT1(void)/
-//{
-//  T1=0;T1x=0;  T1out=0;
-//}
-  
-
-//void iniT1(ulong max)
-//{
- //инициализация таймера Т0 - прерывания каждую ms
- // TIMSK = (1<<OCIE0);
- // TCCR0 = (1<<WGM01)|(0<<WGM00)|(0<<COM01)|(0<<COM00)|(0<<CS02)|(1<<CS01)|(1<<CS00);
- // TCNT0 = 0;
- // OCR0 = 0x7d;
-
-  //T1max=max; ResetT1();
-//}
-
-
-//void WorkT1(void)
-//{
-//  if (T1out) return;
-//  T1x++; if (T1x>=CALIBR) { T1x=0; T1++; }
-//  if (T1>=T1max) T1out=1;
-//}
-
-//**************************************************************
-//**************************************************************
-/*
-//void ResetT2(void)/
-{
-  T2=0;T2x=0;  T2out=0;
-}
-  
-
-void iniT2(ulong max)
-{
- //инициализация таймера Т0 - прерывания каждую ms
- // TIMSK = (1<<OCIE0);
- // TCCR0 = (1<<WGM01)|(0<<WGM00)|(0<<COM01)|(0<<COM00)|(0<<CS02)|(1<<CS01)|(1<<CS00);
- // TCNT0 = 0;
- // OCR0 = 0x7d;
-
-  T2max=max; ResetT2();
-}
-
-
-void WorkT2(void)
-{
-  if (T2out) return;
-  T2x++; if (T2x>=(CALIBR/1000)) { T2x=0; T2++; }
-  if (T2>=T2max) T2out=1;
-}
-
-
-|*/
-
-
-
-
-
 
 
 void migINI(uchar sel,  uchar razp, bool prton)//мигание sel - кол-во раз

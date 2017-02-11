@@ -73,6 +73,9 @@ void led_test()
 //***************************************************************************
 int main( void )
 {//main
+  
+  TimerSet(&tm3,5000);
+  
     iniPORTS();   
   p3;//задержка при включении
  
@@ -519,8 +522,16 @@ SET(MCUCR,0); RES(MCUCR,1);//ПРЕРЫВАНИЕ ПО ИЗМЕНЕНИЮ УРОВНЯ INT0
 SET(GICR,6);//РАЗРЕШАЕМ ПРЕРЫВАНИЕ INT0
 
 
+//timer2
+SET(TCCR2, CS20 );
+RES(TCCR2, CS21 );
+RES(TCCR2, CS22 );//делитель 1/1
+// initialize counter
+    TCNT2 = 0;
+    // enable overflow interrupt
+    TIMSK |= (1 << TOIE2);
 
-
+    
 // Analog Comparator initialization
 // Analog Comparator: Off
 // Analog Comparator Input Capture by Timer/Counter 1: Off
