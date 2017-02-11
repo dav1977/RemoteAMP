@@ -44,7 +44,8 @@ void resled(void);
 void source(void);
 void resOUT(void);  
 void gro(uchar a);
-void normal(uchar rez);
+void main_logic(void);
+void main_power(void);
 void writeCOD(void);
 uchar analizCOD(void);
 void programming(uchar rez);
@@ -52,20 +53,20 @@ uchar getadr(void);
 
 
 uint tON=acon; 
-uchar pr;
+uchar pr=0;
 static bool get=0;
-bool onok;  
-bool on,mute;
-bool zader,aoff;
+bool onok=0;  
+bool on=0,mute=0;
+bool zader=0,aoff=0;
 uint timerzad; 
-uchar pultadr; uchar rez;
+uchar pultadr;
 static bool u=0,til=0,mode_programming=0; 
 static  uchar mode=0,tekfunc=0; 
 static uchar lastsel=1,sel=1,gro1=0,gro2=0,regaoff=0;
 
 void led_test()
 {
-  for (uchar i=0; i<=10; i++){ led_all(1);  p5; led_all(0);}
+  for (uchar i=0; i<=6; i++){ led_all(1);  p9; led_all(0);}
 }
 //***************************************************************************
 //                  M  A  I  N
@@ -74,14 +75,13 @@ int main( void )
 {//main
     iniPORTS();   
   p3;//задержка при включении
-  
-   aoff=0; onok=0; pr=0; on=0; mute=0; zader=0;  til=0;
+ 
  //----------------------------------
    if (keyONsm) {u=1; led_test(); USART_Init();}//включаем UART
 //----------------------------------
   mode=fmode; //смена режима работы
-  if (mode!=1 && mode!=0) {  led_test(); fmode=0; mode=0;   }//ini
-  if (modegro!=1 && modegro!=0) { led_test(); modegro=0;  }//ini
+  if (mode!=1 && mode!=0) {  fmode=0; mode=0;   }//ini eeprom  read
+  if (modegro!=1 && modegro!=0) { modegro=0;  }//ini eeprom read 
   
   if (keyMUTE && !keyAOFFsm) {  led_test();
   if (mode==0 && modegro==0)   {  fmode=1; p5;   SET(PORTB,4);  while(1) {}   }
@@ -97,9 +97,9 @@ int main( void )
    
    if (keySELsm==1 && keyAOFFsm==1)//очистка
       {
+        tekfunc=0;
         mode_programming=1; cod1=0;cod2=0;cod3=0;
         for (uchar i=0; i<=MAXFUNC; i++) {writeCOD();tekfunc++;}
-        tekfunc=0;
         led_all(1); while(1) {} //зависаем
       }
   if (keySELsm) {mode_programming=1; led_test();}//включаем программирование пульта
@@ -107,7 +107,7 @@ int main( void )
   
    if (mode_programming) //мигание первого программируемого
    {
-     for (uchar i=0; i<3; i++) {getadr(); p3;led_all(0); p3;}
+     for (uchar i=0; i<7; i++) {getadr(); p3;led_all(0); p3;}
     
      getadr();
    }
@@ -116,13 +116,16 @@ int main( void )
     __enable_interrupt();   
   while(1)
   {
-     rez=remote_main();//вызов обработчика пульта 
+     bool rez=remote_main();//вызов обработчика пульта 
      if (!mode_programming)  
      {    
        pultadr=0; 
-       if (rez) pultadr=analizCOD();      
+       if (rez) pultadr=analizCOD();  
+       main_power();
+       if (on==1) main_logic();
      }
      else programming(rez);
+     
      if(u) diag();  
   }
 }//main
@@ -130,7 +133,15 @@ int main( void )
 
 
 
-void main_logic()
+
+
+
+
+
+
+
+
+ void main_power()
 {
 
  if ((keyON||pultadr==25 || pultadr==90) && on==1 && zader!=1) { rprintfStr("OFF>adr="); rprintfFloat(9, pultadr ); ent;
@@ -142,22 +153,9 @@ void main_logic()
     if (on==0 && onok==0) { on=0; aoff=0; p5; zader=0; regaoff=0; AC_OFF; delay_s(1); tON=acon; 
     			    PORTB=0; RES(PORTD,7);RES(PORTD,4); resOUT(); RES(PORTC,5); RES(PORTC,0);RES(PORTD,3); onok=1;
                           }
-                                  
-  
-    pultadr=0;  if (on==1) normal(rez);
-   
-                 
-  
-
+                            
 }
 
-
-
-
-
-
-
- 
 
 uchar getadr()//адреса  команд
 {
@@ -201,20 +199,18 @@ void pult()
 
 
 
-void normal(uchar rez)//-----------------------главная логика --------------------
+void main_logic()//-----------------------главная логика --------------------
 {   
+   static uchar last_pultadr;
    migWORK();
    
+   if (pultadr==last_pultadr) {}
   
-   if (rez)
+   if (pultadr!=0)
    {//если есть команда с пульта
      
-     pultadr=analizCOD();
-     
-     if (pultadr==0){  RES(PORTD,7); delay_ms(100); SET(PORTD,7);
-      rprintfStr("normal>no find command ");  ent;}
-     else { rprintfStr("normal>command find  adr= ");
-      rprintfFloat(6, pultadr ); ent;}
+      rprintfStr("normal>command find  adr=");
+      rprintfFloat(6, pultadr ); ent;
      
      if (pultadr==1 || pultadr==60) {if (sel!=1)  { AC_OFF; lastsel=sel; sel=1; pult(); } else   migINI(sel-1, 3 ,0); 
  }
@@ -316,15 +312,12 @@ void normal(uchar rez)//-----------------------главная логика ------------------
  
                           
                           
-   
+   last_pultadr=pultadr;
    
 }
  //------------------------------------------
 void source()
 {  
- 
-  
-   
   if (sel==1){ resOUT(); resled(); SET(PORTC,1);}
   if (sel==2){ resOUT(); resled(); SET(PORTC,2);}
   if (sel==3){ resOUT(); resled(); SET(PORTC,3);}

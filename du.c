@@ -30,7 +30,7 @@
   float len[MAX];
   static bool intok,big;
  
-  char cod_ok=0;
+  bool cod_ok=0;
   uchar c1,c2,c3;
   char ind=1;
 
@@ -126,7 +126,7 @@ void PEREP()
 ///////////////////////////////////////////////////////////////
 //  main
 //////////////////////////////////////////////////////////////
-  char remote_main() 
+  bool remote_main() 
   {   
     cod_ok=0;//признак готовности кода
     
