@@ -62,8 +62,8 @@ __interrupt void funINT0_vect(void)
 //*****************************************************************
 void analiz_INT()
 {
-   static bool state;
-       if (state==1) {RES(PORTB,5); state=0; }   else {SET(PORTB,5); state=1;}
+  // static bool state;
+      // if (state==1) {RES(PORTB,5); state=0; }   else {SET(PORTB,5); state=1;}
 
         dim1[ct]=t1;  dim2[ct]=t2; ct++;
         if (ct>=MAX-1) ct--;  //слишком длинная посылка переписываем каждый раз последний

@@ -56,8 +56,8 @@ uint tON=acon;
 uchar pr=0;
 static bool get=0;
 bool onok=0;  
-bool on=0,mute=0;
-bool zader=0,aoff=0;
+bool on=0;
+volatile bool zader=0,aoff=0;
 uint timerzad; 
 uchar pultadr;
 static bool u=0,til=0,mode_programming=0; 
@@ -124,8 +124,9 @@ int main( void )
      {    
        pultadr=0; 
        if (rez) pultadr=analizCOD();  
-       main_power();
-       if (on==1) main_logic();
+      main_power();
+      if (on==1)
+         main_logic();
      }
      else programming(rez);
      
@@ -144,20 +145,22 @@ int main( void )
 
 
 
- void main_power()
+bool mute(int a)
 {
-
- if ((keyON||pultadr==25 || pultadr==90) && on==1 && zader!=1) { rprintfStr("OFF>adr="); rprintfFloat(9, pultadr ); ent;
-                    on=0;onok=0; p5; zader=0;  til=0; gro1=0; gro2=0; pultadr=0;  }//OFF
-     if ((keyON||pultadr==25 || pultadr==90) && on==0) {rprintfStr("ON>adr="); rprintfFloat(9, pultadr ); ent;
-                    SET(PORTD,4); SET(PORTD,7);p5; on=1; mute=0; zader=1;timerzad=0;source();pultadr=0;  }//ON
-     
-    //выключение
-    if (on==0 && onok==0) { on=0; aoff=0; p5; zader=0; regaoff=0; AC_OFF; delay_s(1); tON=acon; 
-    			    PORTB=0; RES(PORTD,7);RES(PORTD,4); resOUT(); RES(PORTC,5); RES(PORTC,0);RES(PORTD,3); onok=1;
-                          }
-                            
+    static bool state=0;
+    if (a==-1) 
+    {
+    if (state) { state=0; AC_OFF; }
+    else {state=1; AC_ON;}
+    p5;
+    }
+    else
+      if (a==0) { state=0; AC_OFF; }
+      else
+      if (a==1) {state=1; AC_ON;}
+    return state; 
 }
+
 
 
 uchar getadr()//адреса  команд
@@ -171,7 +174,7 @@ uchar getadr()//адреса  команд
   if (tekfunc==5) {adr=55;SET(PORTB,0);SET(PORTB,2);SET(PORTB,4);}//command return
   if (tekfunc==6) {adr=25;SET(PORTD,7);}//on standby
   if (tekfunc==7) {adr=30;SET(PORTB,5);}//aoff
-  if (tekfunc==8) {adr=35;AC_ON;}//mute
+  if (tekfunc==8) {adr=35;mute(1);}//mute
   if (tekfunc==9) {adr=40; }//select
   if (tekfunc==10) {adr=45; }//громкость увеличить
   if (tekfunc==11) {adr=50; }//громкость уменьшить
@@ -185,7 +188,7 @@ uchar getadr()//адреса  команд
   if (tekfunc==17) {adr=85;SET(PORTB,0);SET(PORTB,2);SET(PORTB,4);}//command return
   if (tekfunc==18) {adr=90;SET(PORTD,7);}//on standby
   if (tekfunc==19) {adr=95;SET(PORTB,5);}//aoff
-  if (tekfunc==20) {adr=100;AC_ON;}//mute
+  if (tekfunc==20) {adr=100;mute(1);}//mute
   if (tekfunc==21) {adr=105; }//select
   if (tekfunc==22) {adr=110; }//громкость увеличить
   if (tekfunc==23) {adr=115; }//громкость уменьшить
@@ -200,7 +203,20 @@ void pult()
 
 
 
+ void main_power()
+{
 
+ if ((keyON||pultadr==25 || pultadr==90) && on==1 && zader!=1) { rprintfStr("OFF>adr="); rprintfFloat(9, pultadr ); ent;
+                    on=0;onok=0; p5; zader=0;  til=0; gro1=0; gro2=0; pultadr=0;  }//OFF
+     if ((keyON||pultadr==25 || pultadr==90) && on==0) {rprintfStr("ON>adr="); rprintfFloat(9, pultadr ); ent;
+                    SET(PORTD,4); SET(PORTD,7);p5; on=1; mute(0); zader=1;timerzad=0;source();pultadr=0;  }//ON
+     
+    //выключение
+    if (on==0 && onok==0) { on=0; aoff=0; p5; zader=0; regaoff=0; mute(0); delay_s(1); tON=acon; 
+    			    PORTB=0; RES(PORTD,7);RES(PORTD,4); resOUT(); RES(PORTC,5); RES(PORTC,0);RES(PORTD,3); onok=1;
+                          }
+                            
+}
 
 void main_logic()//-----------------------главная логика --------------------
 {   
@@ -215,15 +231,15 @@ void main_logic()//-----------------------главная логика --------------------
       rprintfStr("normal>command find  adr=");
       rprintfFloat(6, pultadr ); ent;
      
-     if (pultadr==1 || pultadr==60) {if (sel!=1)  { AC_OFF; lastsel=sel; sel=1; pult(); } else   migINI(sel-1, 3 ,0); 
+     if (pultadr==1 || pultadr==60) {if (sel!=1)  { mute(0); lastsel=sel; sel=1; pult(); } else   migINI(sel-1, 3 ,0); 
  }
-     if (pultadr==5 || pultadr==65) {if (sel!=2)  {AC_OFF; lastsel=sel;sel=2; pult(); }  else  migINI(sel-1, 3 ,0); 
+     if (pultadr==5 || pultadr==65) {if (sel!=2)  {  mute(0);lastsel=sel;sel=2; pult(); }  else  migINI(sel-1, 3 ,0); 
 }
-     if (pultadr==10 || pultadr==70) {if (sel!=3) {AC_OFF; lastsel=sel;sel=3; pult(); } else    migINI(sel-1, 3 ,0); 
+     if (pultadr==10 || pultadr==70) {if (sel!=3) { mute(0); lastsel=sel;sel=3; pult(); } else    migINI(sel-1, 3 ,0); 
 }
-     if (pultadr==15 || pultadr==75) {if (sel!=4) {AC_OFF; lastsel=sel;sel=4; pult(); } else   migINI(sel-1, 3 ,0); 
+     if (pultadr==15 || pultadr==75) {if (sel!=4) { mute(0); lastsel=sel;sel=4; pult(); } else   migINI(sel-1, 3 ,0); 
  }
-     if ((pultadr==20  || pultadr==80) && mode!=1) { if (sel!=5) {AC_OFF; lastsel=sel;sel=5; pult();}  else  migINI(sel-1, 3 ,0); 
+     if ((pultadr==20  || pultadr==80) && mode!=1) { if (sel!=5) { mute(0); lastsel=sel;sel=5; pult();}  else  migINI(sel-1, 3 ,0); 
 }
      
      
@@ -239,13 +255,12 @@ void main_logic()//-----------------------главная логика --------------------
    }//если есть команда с пульта
    
   //--------------- mute -------------------
-  if (mute==1) AC_OFF; else { if (zader==0) AC_ON; }
-  if (zader==1) {timerzad++;  if (timerzad> tON)  {zader=0;timerzad=0; if (mute!=1)AC_ON;} }//задержка включения
+  //if (mute==1) AC_OFF; else { if (zader==0) AC_ON; }
+  if (zader==1) {timerzad++;  if (timerzad> tON)  {zader=0;timerzad=0; mute(1);} }//задержка включения
   
   if (keyMUTE ||pultadr==35 || pultadr==100)  
   {
-   if ( mute==0) { AC_OFF; mute=1; p5; pultadr=0;}
-   if (mute==1) { AC_ON; mute=0; p5; pultadr=0; }   
+    mute(-1); 
   }
    
    
@@ -256,9 +271,9 @@ void main_logic()//-----------------------главная логика --------------------
    {
      
   if ( aoff==1 && regaoff>=3)  {  RES(PORTB,5);  p5; aoff=0; regaoff=0; pultadr=0;}//отмена aoff 
-  if ( regaoff==0) { aoff=1; regaoff++;  TimerSet(&tm1,60*60*2)/*2 часа*/; pultadr=0;  for (uchar i=0; i<3; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
-  if (regaoff==1) { aoff=1; regaoff++; TimerSet(&tm1,60*60*1)/*1 часа*/; pultadr=0; for (uchar i=0; i<2; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
-  if (regaoff==2) { aoff=1; regaoff++; TimerSet(&tm1,60*60*0.5)/*0.5 часа*/; pultadr=0; for (uchar i=0; i<1; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
+  if ( regaoff==0) { aoff=1; regaoff++;  TimerSet(&tm1, 120000)/*2 часа*/; pultadr=0;  for (uchar i=0; i<3; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
+  if (regaoff==1) { aoff=1; regaoff++; TimerSet(&tm1, 60000)/*1 часа*/; pultadr=0; for (uchar i=0; i<2; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
+  if (regaoff==2) { aoff=1; regaoff++; TimerSet(&tm1, 30000)/*0.5 часа*/; pultadr=0; for (uchar i=0; i<1; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
   
    }
 
@@ -289,8 +304,8 @@ void main_logic()//-----------------------главная логика --------------------
    uchar kol;  if  (mode==1) kol=4; else kol=5;
    if (keySEL ||pultadr==40 || pultadr==105) 
                 { 
-                        if (sel<=(kol-1)) { AC_OFF; p2; RES(PORTB,(sel-1));lastsel=sel; sel++; pult(); } 
-                       else { AC_OFF;  RES(PORTB,(sel-1)); sel=1; pult(); }
+                        if (sel<=(kol-1)) { mute(0); p2; RES(PORTB,(sel-1));lastsel=sel; sel++; pult(); } 
+                       else {  mute(0);  RES(PORTB,(sel-1)); sel=1; pult(); }
               
                 }
                          
@@ -298,7 +313,7 @@ void main_logic()//-----------------------главная логика --------------------
    if ( pultadr==55 || pultadr==85) {
      
      if (sel!=lastsel) {
-       AC_OFF;  RES(PORTB,(sel-1)); uchar tmp1=sel; sel=lastsel;  lastsel=tmp1; pultadr=0;  pult();
+       mute(0);  RES(PORTB,(sel-1)); uchar tmp1=sel; sel=lastsel;  lastsel=tmp1; pultadr=0;  pult();
      }
                                       }
               
@@ -327,9 +342,11 @@ void source()
   if (sel==4){ resOUT(); resled();SET(PORTC,4);}
   if (sel==5 && mode==0 ){  resOUT(); resled();SET(PORTC,5);}
   
-  if (mute!=1 ) if (zader==0) AC_ON;//вкл АС
- 
+  //if (mute(100)!=1 )
+   //if (mute(100)!=1 ) mute(1);// /*if (zader==0)  */AC_ON;//вкл АС
+
    migINI(sel-1, 5 ,0); 
+   zader==1;
  
 }
 

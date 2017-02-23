@@ -35,13 +35,13 @@ __interrupt void TIMER2ovf(void)
 
 
 
-void TimerSet(timers *t, uint tm)
+void TimerSet(timers *t, long tm)
 {
   t->out=0;
   t->ct=0;
   //F_CPU/4/100; 1-сек
   t->time=F_CPU/4/100000   *tm;
-  t->x=0;
+  //t->x=0;
 }
 
 void TimerTick( timers *t)
