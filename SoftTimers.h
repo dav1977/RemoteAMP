@@ -10,9 +10,9 @@
 
  typedef struct 
    { 
-      uint x;
-      uint ct;
-      uint time;
+      long x;
+      long ct;
+      long time;
       bool out;
    }  timers;
  

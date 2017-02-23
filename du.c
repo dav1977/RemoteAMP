@@ -79,7 +79,7 @@ void PEREP()
  static bool state2;
  uchar i;
  
-  if (state2==1) {RES(PORTB,2); state2=0; }   else {SET(PORTB,2); state2=1;}
+  //if (state2==1) {RES(PORTB,2); state2=0; }   else {SET(PORTB,2); state2=1;}
        
       cod1=0;cod2=0;cod3=0; 
       c1=0; c2=0; c3=0;  //sst=0;

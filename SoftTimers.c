@@ -20,12 +20,14 @@ __interrupt void TIMER2ovf(void)
 {
  TimerTick(&tm3); // Work
  TCNT2 = 0;
+  TimerTick(&tm2);
  
+
+ static bool state=0;
  
- static bool state;
- if (tm3.out && on) { 
- if (state==1) {RES(PORTD,7); state=0; }   else {SET(PORTD,7); state=1;}
-         TimerSet(&tm3,5000);       
+ if (tm3.out ) { 
+ //if (!state) {RES(PORTB,5); state=1; }   else {SET(PORTB,5); state=0;}
+ //       TimerSet(&tm3,3000);       
               }
 }
 
@@ -37,16 +39,18 @@ void TimerSet(timers *t, uint tm)
 {
   t->out=0;
   t->ct=0;
-  t->time=tm;
+  //F_CPU/4/100; 1-сек
+  t->time=F_CPU/4/100000   *tm;
   t->x=0;
 }
 
 void TimerTick( timers *t)
 {
   if (t->out) return;
-  t->x++;
-  if (t->x>=CALIBR) { t->x=0; t->ct++;}
-  if (t->ct >t->time ) t->out=1;
+ // t->x++;
+  //if (t->x>=CALIBR) { t->x=0; t->ct++;}
+  t->ct++;
+  if (t->ct  >  t->time ) t->out=1;
 }
 //**************************************************************
 //**************************************************************
@@ -77,7 +81,7 @@ void migINI(uchar sel,  uchar razp, bool prton)//мигание sel - кол-во раз
 void migWORK(void)//мигание 
 {
   static bool sost=0;
-  TimerTick(&tm2); // WorkT2();
+ // TimerTick(&tm2); // WorkT2();
   if (tm2.out==1 && port!=255)  {
        if (sost!=1)  {sost=1; TimerSet(&tm2,200); SET(PORTB,port); razct++;}
   else if (sost!=0)  {sost=0; TimerSet(&tm2,200); RES(PORTB,port);}
