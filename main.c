@@ -114,16 +114,37 @@ int main( void )
     
      getadr();
    }
-           
+    
+  
+  
+  
 
     __enable_interrupt();   
   while(1)
   {
+    
+    
      bool rez=remote_main();//вызов обработчика пульта 
+     
+     
+      if (keyAOFF) 
+       {
+       rez=1;
+       cod1=1;
+       cod2=2;
+       cod3=3;
+       
+       }
+       
+      
      if (!mode_programming)  
      {    
        pultadr=0; 
        if (rez) pultadr=analizCOD();  
+       
+       
+      
+       
       main_power();
       if (on==1)
          main_logic();
@@ -260,7 +281,7 @@ void main_logic()//-----------------------главная логика --------------------
   
   if (keyMUTE ||pultadr==35 || pultadr==100)  
   {
-    mute(-1); 
+    mute(-1); //инверсия состояния
   }
    
    
@@ -363,7 +384,7 @@ void source()
 
 
 bool proverka(uchar adr)//защита от дублирования функции на кнопке
-{
+{ 
    for (uchar i=0; i<adr; i++)
    {
      if (k[i]==cod1)
@@ -385,6 +406,8 @@ void programming (uchar rez)
      if (proverka(adr)) 
      {
          writeCOD();
+         led_all(1); delay_s(1); led_all(0); 
+                
          tekfunc++;  get=0;
          if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
                                {led_all(1); p4; led_all(0);p4; }
@@ -394,7 +417,7 @@ void programming (uchar rez)
      }
    }
    
-   
+  /* 
    if (keyONsm) { 
                 led_all(1); delay_s(1); 
                 led_all(0); 
@@ -405,7 +428,7 @@ void programming (uchar rez)
                 if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
                
                  }
-     
+    */ 
 }
 //--------------------------------------------------------------------
 
@@ -414,13 +437,13 @@ void writeCOD()
   rprintfStr("write ..");
   led_all(1);delay_s(3);
   uchar adr=getadr();
-  led_all(0);
+ 
   
        
        k[adr]=cod1; delay_ms(30);
        k[adr+1]=cod2; delay_ms(30);
        k[adr+2]=cod3; delay_ms(30);
-       
+    led_all(0);
        rprintfStr("OK !   "); ent;
    
 }
@@ -430,6 +453,7 @@ void writeCOD()
  
 uchar analizCOD ()
 {
+ 
  uint i;
   for (i=0; i<MAXEEP-4; i++) 
   {

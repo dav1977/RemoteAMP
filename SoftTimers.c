@@ -18,17 +18,17 @@ static uchar razct;
 #pragma vector = TIMER2_OVF_vect
 __interrupt void TIMER2ovf(void)
 {
- TimerTick(&tm3); // Work
- TCNT2 = 0;
+  
+   TCNT2 = 0;
+   
+  TimerTick(&tm3); // Work
   TimerTick(&tm2);
  
-
- static bool state=0;
  
- if (tm3.out ) { 
+// if (tm3.out ) { 
  //if (!state) {RES(PORTB,5); state=1; }   else {SET(PORTB,5); state=0;}
  //       TimerSet(&tm3,3000);       
-              }
+ //             }
 }
 
 

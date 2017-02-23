@@ -76,7 +76,7 @@ void analiz_INT()
 //*****************************************************************
 void PEREP()
 {
- static bool state2;
+ //static bool state2;
  uchar i;
  
   //if (state2==1) {RES(PORTB,2); state2=0; }   else {SET(PORTB,2); state2=1;}
