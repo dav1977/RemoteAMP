@@ -9,7 +9,7 @@
 //***************************************************************************
 //
 //***************************************************************************
-timers tm1,tm2,tm3;
+timers tm1,tm2,tm3, tm4,tm5;
 static uchar raz;
 static uchar port;
 static uchar razct;
@@ -22,9 +22,12 @@ __interrupt void TIMER2ovf(void)
    TCNT2 = 0;
    
   TimerTick(&tm3); // Work
-  TimerTick(&tm2);
+  TimerTick(&tm2); //мигание
  
  
+    TimerTick(&tm4);
+    TimerTick(&tm5);
+  
 // if (tm3.out ) { 
  //if (!state) {RES(PORTB,5); state=1; }   else {SET(PORTB,5); state=0;}
  //       TimerSet(&tm3,3000);       
@@ -83,8 +86,8 @@ void migWORK(void)//мигание
   static bool sost=0;
  // TimerTick(&tm2); // WorkT2();
   if (tm2.out==1 && port!=255)  {
-       if (sost!=1)  {sost=1; TimerSet(&tm2,200); SET(PORTB,port); razct++;}
-  else if (sost!=0)  {sost=0; TimerSet(&tm2,200); RES(PORTB,port);}
+       if (sost!=1)  {sost=1; TimerSet(&tm2,400); SET(PORTB,port); razct++;}
+  else if (sost!=0)  {sost=0; TimerSet(&tm2,400); RES(PORTB,port);}
                               }
   if (razct>=raz) {  tm2.out=1; port=255;}
 }

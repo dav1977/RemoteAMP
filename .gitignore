@@ -21,6 +21,8 @@
 *.dylib
 
 # Executables
+/Release/*
+Release/List/*.lst
 *.exe
 *.out
 *.app

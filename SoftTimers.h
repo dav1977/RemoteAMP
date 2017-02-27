@@ -16,7 +16,7 @@
       bool out;
    }  timers;
  
- extern timers tm1,tm2,tm3;
+ extern timers tm1,tm2,tm3, tm4,tm5;
  
 void TimerSet(timers *t, long tm);
 void TimerTick( timers *t);
