@@ -2,11 +2,10 @@
 //#include <math.h>
 //#include <intrinsics.h>
 
-#include "init.h"
 
 //однобайтный буфер
 volatile unsigned char usartRxBuf = 0;
-volatile static bool usarton;
+bool usarton=false;
 
 //инициализация usart`a
 void USART_Init()

@@ -60,13 +60,19 @@ bool on=0;
 volatile bool zader=0,aoff=0;
 uint timerzad; 
 uchar pultadr;
-static bool u=0,til=0,mode_programming=0; 
+static bool til=0,mode_programming=0; 
 static  uchar mode=0,tekfunc=0; 
 static uchar lastsel=1,sel=1,gro1=0,gro2=0,regaoff=0;
 
+
+void zavis()
+{
+  while(1==1) {}
+}
+
 void led_test()
 {
-  for (uchar i=0; i<=30; i++){ led_all(1); delay_ms(50); led_all(0); delay_ms(50);}
+  for (uchar i=0; i<=60; i++){ led_all(1); delay_ms(50); led_all(0); delay_ms(50);}
 }
 //***************************************************************************
 //                  M  A  I  N
@@ -83,63 +89,62 @@ int main( void )
     iniPORTS();  
     
   p3;//задержка при включении
-  //delay_s(2);
+  delay_s(2);
  
  //----------------------------------
-   if (keyONsm) {u=1; led_test(); USART_Init();}//включаем UART
+   if (keyONsm) { usarton=true; led_test(); USART_Init();}//включаем UART
 //----------------------------------
   mode=fmode; //смена режима работы
   if (mode!=1 && mode!=0) {  fmode=0; mode=0;   }//ini eeprom  read
   if (modegro!=1 && modegro!=0) { modegro=0;  }//ini eeprom read 
   
-  if (keyMUTE && !keyAOFFsm) {  led_test();
-  if (mode==0 && modegro==0)   {  fmode=1; p5;   SET(PORTB,4);  while(1) {}   }
-  if (mode==1 && modegro==0)   {  modegro=1; p5; SET(PORTB,2);  SET(PORTB,3);  SET(PORTB,4);  while(1) {}  }
-  if (mode==1 && modegro==1)   {  fmode=0; p5; SET(PORTB,2);  SET(PORTB,3);    while(1) {}  } 
-  if (mode==0 && modegro==1)   {  modegro=0; p5;  led_all(1);    while(1) {}   }
+  if (keyMUTE && !keyAOFFsm) 
+  {  
+    led_test();
+    
+  if (mode==0 && modegro==0)   {  fmode=1; p5;   SET(PORTB,4);  zavis();   }
+  if (mode==1 && modegro==0)   {  modegro=1; p5; SET(PORTB,2);  SET(PORTB,3);  SET(PORTB,4);  zavis();   }
+  if (mode==1 && modegro==1)   {  fmode=0; p5; SET(PORTB,2);  SET(PORTB,3);    zavis();  } 
+  if (mode==0 && modegro==1)   {  modegro=0; p5;  led_all(1);    zavis();    }
   
-                              }
+  }
   
- // modegro=1; mode=1;
 //-----------------------------------
-  
-   
-   if (keySELsm==1 && keyAOFFsm==1)//очистка
+    
+  //*******************************************************************
+  //                           ОЧИСТКА
+  //******************************************************************
+   if (keySELsm==1 && keyAOFFsm==1)
       {
         tekfunc=0;
-        mode_programming=1; cod1=0;cod2=0;cod3=0;
-        for (uchar i=0; i<=MAXFUNC; i++) {writeCOD();tekfunc++;}
-        led_all(1); while(1) {} //зависаем
+        mode_programming=1; 
+        cod1=0;cod2=0;cod3=0;
+        for (uchar i=0; i<=MAXFUNC; i++) 
+        {      
+          writeCOD();tekfunc++; 
+        }
+               
+        led_all(1); 
+        zavis();  //зависаем
       }
-  if (keySELsm) {mode_programming=1; led_test();}//включаем программирование пульта
-  
-  
-   if (mode_programming) //мигание первого программируемого
-   {
-    // for (uchar i=0; i<7; i++) {getadr(); p3;led_all(0); p3;}
-    
-     getadr();
-   }
-    
-  
-  
-  
-
+ 
+  if (keySELsm) {mode_programming=1;  getadr(); led_test();}//включаем программирование пульта 
+  //*******************************************************************
+  //                           main
+  //******************************************************************
     __enable_interrupt();   
   while(1)
   {
     
-    
-
-     bool rez=remote_main();//вызов обработчика пульта 
+     bool rez=remote_main(usarton);//вызов обработчика пульта 
      
      
        if (keyAOFF) //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& TEST
        {
-   //    rez=1;
-   //    cod1=1;
-   //    cod2=2;
-   //    cod3=3;
+     //  rez=1;
+     //  cod1=1;
+     // cod2=2;
+      //cod3=3;
        
     }
 
@@ -150,7 +155,7 @@ int main( void )
        pultadr=0; 
        if (rez) pultadr=analizCOD();  
        
-    // if (keyAOFF)   pultadr=45;//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& TEST
+     //if ( keyMUTE  )   pultadr=45;//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& TEST
       
        
       main_power();
@@ -159,7 +164,7 @@ int main( void )
      }
      else programming(rez);
      
-     if(u) diag();  
+     if(usarton) diag();  
   }
 }//main
 //***************************************************************************
@@ -173,10 +178,14 @@ int main( void )
 
 
 
-
+  //*******************************************************************
+  //                           mute
+  //******************************************************************
 bool mute(int a)
 {
     static bool state=0;
+    if (mode_programming) return 0;
+    
     if (a==-1) 
     {
     if (state) { state=0; AC_OFF; }
@@ -192,6 +201,9 @@ bool mute(int a)
 
 
 
+  //*******************************************************************
+  //                           Get Adress
+  //******************************************************************
 uchar getadr()//адреса  команд
 {
   uchar adr=0;
@@ -231,7 +243,9 @@ void pult()
 }
 
 
-
+  //*******************************************************************
+  //                           Power
+  //******************************************************************
  void main_power()
 {
 
@@ -247,6 +261,9 @@ void pult()
                             
 }
 
+  //*******************************************************************
+  //                           Select
+  //******************************************************************
 void select(char ch)
 {
   if (sel!=ch)  { mute(0); lastsel=sel; sel=ch; pult(); } else   migINI(sel-1, 3 ,0); 
@@ -312,23 +329,33 @@ void main_logic()//-----------------------главная логика --------------------
      
   if ( aoff==1 && regaoff>=3)  {  RES(PORTB,5);  p5; aoff=0; regaoff=0; pultadr=0;   }//отмена aoff 
   else
-  if ( regaoff==0) { aoff=1; regaoff++; 
-                 TimerSet(&tm1, 120000)/*2 часа*/; 
-
-              pultadr=0; 
-                  
-                 for (uchar i=0; i<3; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); 
-                  }
+  if ( regaoff==0) 
+    { 
+      aoff=1; regaoff++; 
+      TimerSet(&tm1, 120000)/*2 часа*/; 
+      pultadr=0; 
+      for (uchar i=0; i<3; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  
+      SET(PORTB,5);             
+    }
   else
-  if (regaoff==1) { aoff=1; regaoff++; 
-  TimerSet(&tm1, 60000)/*1 часа*/; 
-  pultadr=0; for (uchar i=0; i<2; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
+  if (regaoff==1) 
+    { 
+      aoff=1; regaoff++; 
+      TimerSet(&tm1, 60000)/*1 часа*/; 
+      pultadr=0; 
+      for (uchar i=0; i<2; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  
+      SET(PORTB,5); 
+    }
   else
-  if (regaoff==2) { aoff=1; regaoff++;
-  TimerSet(&tm1, 30000)/*0.5 часа*/; 
-  pultadr=0; for (uchar i=0; i<1; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
+  if (regaoff==2) 
+    { 
+      aoff=1; regaoff++;
+      TimerSet(&tm1, 30000)/*0.5 часа*/; 
+      pultadr=0; for (uchar i=0; i<1; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  
+      SET(PORTB,5); 
+    }
   
-   }
+  }
 
    
  //  if ((keyAOFF || pultadr==30 || pultadr==95) && aoff==0) 
@@ -353,7 +380,7 @@ void main_logic()//-----------------------главная логика --------------------
                 } 
                 
  //--------------- select -------------------
-                if ( u!=1) {//что бы во время работы UART не срабатывал
+                if ( !usarton) {//что бы во время работы UART не срабатывал
    uchar kol;  if  (mode==1) kol=4; else kol=5;
    if (keySEL ||pultadr==40 || pultadr==105) 
                 { 
@@ -381,6 +408,12 @@ void main_logic()//-----------------------главная логика --------------------
 }
  //------------------------------------------
 
+
+
+
+  //*******************************************************************
+  //                           Source
+  //******************************************************************
 void source2(char p)
 {
     resOUT(); resled(); SET(PORTC,p);
@@ -415,7 +448,9 @@ void source()
 
 
 
-
+  //*******************************************************************
+  //                           PROGRAMMING
+  //******************************************************************
 bool proverka(uchar adr)//защита от дублирования функции на кнопке
 { 
    for (uchar i=0; i<adr; i++)
@@ -431,13 +466,13 @@ bool proverka(uchar adr)//защита от дублирования функции на кнопке
 
 void programming (uchar rez)
 {  
-  uchar adr;
+   //uchar adr;
    if (tekfunc==255) return;
-   if (!get)  { adr=getadr(); get=1; }//получаем адрес и зажигаем программируемую функцию
+   if (!get)  { uchar adr=getadr(); get=1; }//получаем адрес и зажигаем программируемую функцию
    if (rez==1)
    {
-     if (true/*proverka(adr)*/) 
-     {
+     //if (true/*proverka(adr)*/) 
+    // {
          writeCOD();
          led_all(1); delay_s(1); led_all(0); 
                 
@@ -447,7 +482,7 @@ void programming (uchar rez)
                           }
          if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
      
-     }
+    // }
    }
    
   /* 
@@ -468,15 +503,17 @@ void programming (uchar rez)
 void writeCOD()
 {
   rprintfStr("write ..");
-  led_all(1);delay_s(3);
+  led_all(1);
+  delay_ms(500);
   uchar adr=getadr();
- 
+
   
        
        k[adr]=cod1; delay_ms(30);
        k[adr+1]=cod2; delay_ms(30);
        k[adr+2]=cod3; delay_ms(30);
     led_all(0);
+    delay_ms(500);
        rprintfStr("OK !   "); ent;
    
 }
@@ -528,6 +565,11 @@ void led_all(bool a)
 }
 
 
+
+  //*******************************************************************
+  //                           Volume
+  //******************************************************************
+
 void gro(uchar a)
 {
   if (modegro!=1) {
@@ -543,7 +585,9 @@ void gro(uchar a)
 
 
 
-
+  //*******************************************************************
+  //                           System init
+  //******************************************************************
 
 //инициализация портов
 void iniPORTS()
@@ -616,9 +660,13 @@ ACSR=0x80;
 //************************************************************************
  
 
+  //*******************************************************************
+  //                           UART diag
+  //******************************************************************
+
 void diag()
 {
-  
+  if (!usarton) return;
   uchar sym = USART_GetChar(); //читаем буфер
   if (sym=='0') { pr=1;  rprintfStr("- vkluchen kratkiy viviod -");  ent;   }
 

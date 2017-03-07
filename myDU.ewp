@@ -2022,9 +2022,6 @@
     <configuration>Release</configuration>
   </mfc>
   <file>
-    <name>$PROJ_DIR$\du.c</name>
-  </file>
-  <file>
     <name>$PROJ_DIR$\du.h</name>
   </file>
   <file>
