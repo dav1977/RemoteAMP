@@ -55,31 +55,31 @@ uchar getadr(void);
 uint tON=acon; 
 uchar pr=0;
 static bool get=0;
-bool onok=0;  
-bool on=0;
+volatile static bool onok=0;  
+volatile static bool on=0;
 volatile bool zader=0,aoff=0;
 uint timerzad; 
-uchar pultadr;
+volatile static uchar pultadr;
 static bool til=0,mode_programming=0; 
-static  uchar mode=0,tekfunc=0; 
+static uchar mode=0,tekfunc=0; 
 static uchar lastsel=1,sel=1,gro1=0,gro2=0,regaoff=0;
 
 
 void zavis()
 {
-  while(1==1) {}
+  while(1) {}
 }
 
 void led_test()
 {
-  for (uchar i=0; i<=60; i++){ led_all(1); delay_ms(50); led_all(0); delay_ms(50);}
+  for (uchar i=0; i<=40; i++){ led_all(1); delay_ms(50); led_all(0); delay_ms(50);}
 }
 //***************************************************************************
 //                  M  A  I  N
 //***************************************************************************
 int main( void )
 {//main
-   TimerSet(&tm3,100);
+    TimerSet(&tm3,100);
    
     TimerSet(&tm4,100);//громкость +
     TimerSet(&tm5,100);//громкость -
@@ -89,13 +89,19 @@ int main( void )
     iniPORTS();  
     
   p3;//задержка при включении
-  delay_s(2);
+  //delay_s(2);
  
  //----------------------------------
    if (keyONsm) { usarton=true; led_test(); USART_Init();}//включаем UART
 //----------------------------------
+   
+   
+   
+   usarton=false;//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   
+   
   mode=fmode; //смена режима работы
-  if (mode!=1 && mode!=0) {  fmode=0; mode=0;   }//ini eeprom  read
+  if (mode!=1 && mode!=0) { p3; fmode=0; mode=0;   }//ini eeprom  read
   if (modegro!=1 && modegro!=0) { modegro=0;  }//ini eeprom read 
   
   if (keyMUTE && !keyAOFFsm) 
@@ -146,7 +152,7 @@ int main( void )
      // cod2=2;
       //cod3=3;
        
-    }
+      }
 
 
       
@@ -159,8 +165,9 @@ int main( void )
       
        
       main_power();
-      if (on==1)
-         main_logic();
+      
+      if (on==1) main_logic();
+      
      }
      else programming(rez);
      
@@ -248,15 +255,21 @@ void pult()
   //******************************************************************
  void main_power()
 {
-
+  
+   //выключение
  if ((keyON||pultadr==25 || pultadr==90) && on==1 && zader!=1) { rprintfStr("OFF>adr="); rprintfFloat(9, pultadr ); ent;
                     on=0;onok=0; p5; zader=0;  til=0; gro1=0; gro2=0; pultadr=0;  }//OFF
-     if ((keyON||pultadr==25 || pultadr==90) && on==0) {rprintfStr("ON>adr="); rprintfFloat(9, pultadr ); ent;
-                    SET(PORTD,4); SET(PORTD,7);p5; on=1; mute(0); zader=1;timerzad=0;source();pultadr=0;  }//ON
+ 
+   //включение
+   if ((keyON || pultadr==25 || pultadr==90) && on==0) { 
+                   SET(PORTD,4); SET(PORTD,7);
+                   rprintfStr("ON>adr="); rprintfFloat(9, pultadr ); ent;
+                   p5; on=1; mute(0); zader=1;timerzad=0;source();pultadr=0; }//ON
      
-    //выключение
+ 
     if (on==0 && onok==0) { on=0; aoff=0; p5; zader=0; regaoff=0; mute(0); delay_s(1); tON=acon; 
-    			    PORTB=0; RES(PORTD,7);RES(PORTD,4); resOUT(); RES(PORTC,5); RES(PORTC,0);RES(PORTD,3); onok=1;
+    			    PORTB=0; RES(PORTD,7);RES(PORTD,4); resOUT(); RES(PORTC,5); RES(PORTC,0);RES(PORTD,3); 
+                            onok=1;
                           }
                             
 }
@@ -268,8 +281,10 @@ void select(char ch)
 {
   if (sel!=ch)  { mute(0); lastsel=sel; sel=ch; pult(); } else   migINI(sel-1, 3 ,0); 
 }
-
-void main_logic()//-----------------------главная логика --------------------
+  //*******************************************************************
+  //                          главная логика
+  //******************************************************************
+void main_logic()//
 {   
  //  static uchar last_pultadr;
    migWORK();
@@ -300,6 +315,13 @@ void main_logic()//-----------------------главная логика --------------------
      
      }
    }//если есть команда с пульта
+   else 
+   {
+       RES(PORTD,7); delay_ms(100); SET(PORTD,7);
+      rprintfStr("normal>no find command ");  ent;
+     
+   }
+   
    
   //--------------- mute -------------------
   //if (mute==1) AC_OFF; else { if (zader==0) AC_ON; }
@@ -457,32 +479,33 @@ bool proverka(uchar adr)//защита от дублирования функции на кнопке
    {
      if (k[i]==cod1)
        if (k[i+1]==cod2)
-         if (k[i+2]==cod3) return 0;
+         if (k[i+2]==cod3) return false;//уже есть такая
    }
 
-   return 1;
+   return true;
 }
 
 
 void programming (uchar rez)
 {  
-   //uchar adr;
+   uchar nadr;
    if (tekfunc==255) return;
-   if (!get)  { uchar adr=getadr(); get=1; }//получаем адрес и зажигаем программируемую функцию
+   if (!get)  {  nadr=getadr(); get=1; }//получаем адрес и зажигаем программируемую функцию
    if (rez==1)
    {
-     //if (true/*proverka(adr)*/) 
-    // {
-         writeCOD();
-         led_all(1); delay_s(1); led_all(0); 
-                
+     if (proverka(nadr)) 
+     {
+         writeCOD();      
          tekfunc++;  get=0;
+         
+         
          if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
                                {led_all(1); p4; led_all(0);p4; }
                           }
          if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
      
-    // }
+     }
+     else {led_test(); get=0;}
    }
    
   /* 

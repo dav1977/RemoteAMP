@@ -36,7 +36,7 @@ void compr (void);
   static bool intok,readint,big;
   static uint last;
   extern char cod_ok=0;
-   static float sst=0;
+  static float sst=0;
   
    void du_init(void)
    {
