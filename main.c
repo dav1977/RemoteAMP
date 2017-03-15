@@ -3,7 +3,7 @@
 //  Author(s)...: dav COBRA 
 //  Target(s)...: ATMega8
 //  Compiler....: 6 40
-//  ТЕСТ1
+//  
 //  Description.: Система  управления  для  Усилителя  Мощности   V-ниже
 //  v1.1 - добавлена поддержка включения усилителя тыловых колонок вместо Source5
 //       - изменена установка auto off
@@ -18,7 +18,8 @@
 // v1.24 - исправлен баг AUTOOFF на 30 минут 
 // v1.25 - исправлен баг AUTOOFF при выключениии питания 
 // v1.26 - refactoring, проверка на повторное программирование кнопки
-//  Data........: 02 2017
+// v1.3 -  
+//  Data........: 03 2017
 //
 //   - ВЫКЛЮЧИТЬ ОПЦИЮ clustering of variables В optimization compilator !!!!
 //***************************************************************************
@@ -36,34 +37,18 @@
 #include "eeprom.h"
 //#include <stdarg.h>
 //************************************************************************* 
-#define AC_ON    SET(PORTD,6)
-#define AC_OFF   RES(PORTD,6)
-void diag(void);
-void led_all(bool a);
-void resled(void);
-void source(void);
-void resOUT(void);  
-void gro(uchar a);
-void main_logic(void);
-void main_power(void);
-void writeCOD(void);
-uchar analizCOD(void);
-void programming(uchar rez);
-uchar getadr(void);
-
-
 uint tON=acon; 
 uchar pr=0;
 static bool get=0;
 volatile static bool onok=0;  
-volatile static bool on=0;
+bool on=0;
 volatile bool zader=0,aoff=0;
 uint timerzad; 
 volatile static uchar pultadr;
 static bool til=0,mode_programming=0; 
 static uchar mode=0,tekfunc=0; 
 static uchar lastsel=1,sel=1,gro1=0,gro2=0,regaoff=0;
-
+bool rez;
 
 void zavis()
 {
@@ -86,6 +71,8 @@ int main( void )
     tm4.out=1;
     tm5.out=1;
     
+    TimerSet(&tm6,100);//мигание питания
+    
     iniPORTS();  
     
   p3;//задержка при включении
@@ -94,9 +81,7 @@ int main( void )
  //----------------------------------
    if (keyONsm) { usarton=true; led_test(); USART_Init();}//включаем UART
 //----------------------------------
-   
-   
-   
+
    usarton=false;//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    
    
@@ -142,7 +127,7 @@ int main( void )
   while(1)
   {
     
-     bool rez=remote_main(usarton);//вызов обработчика пульта 
+     rez=remote_main(usarton);//вызов обработчика пульта 
      
      
        if (keyAOFF) //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& TEST
@@ -164,7 +149,7 @@ int main( void )
      //if ( keyMUTE  )   pultadr=45;//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& TEST
       
        
-      main_power();
+      main_power(pultadr);
       
       if (on==1) main_logic();
       
@@ -253,18 +238,18 @@ void pult()
   //*******************************************************************
   //                           Power
   //******************************************************************
- void main_power()
+ void main_power(uchar pult)
 {
   
    //выключение
- if ((keyON||pultadr==25 || pultadr==90) && on==1 && zader!=1) { rprintfStr("OFF>adr="); rprintfFloat(9, pultadr ); ent;
-                    on=0;onok=0; p5; zader=0;  til=0; gro1=0; gro2=0; pultadr=0;  }//OFF
+ if ((keyON||pult==25 || pult==90) && on==1 && zader!=1) { rprintfStr("OFF>adr="); rprintfFloat(9, pult ); ent;
+                    on=0;onok=0; p5; zader=0;  til=0; gro1=0; gro2=0;   }//OFF
  
    //включение
-   if ((keyON || pultadr==25 || pultadr==90) && on==0) { 
+   if ((keyON || pult==25 || pult==90) && on==0) { 
                    SET(PORTD,4); SET(PORTD,7);
-                   rprintfStr("ON>adr="); rprintfFloat(9, pultadr ); ent;
-                   p5; on=1; mute(0); zader=1;timerzad=0;source();pultadr=0; }//ON
+                   rprintfStr("ON>adr="); rprintfFloat(9, pult ); ent;
+                   p5; on=1; mute(0); zader=1;timerzad=0;source(); }//ON
      
  
     if (on==0 && onok==0) { on=0; aoff=0; p5; zader=0; regaoff=0; mute(0); delay_s(1); tON=acon; 
@@ -291,8 +276,10 @@ void main_logic()//
    
    //if (pultadr==last_pultadr) {}
   
+  if (rez) 
+  {
    if (pultadr!=0)
-   {//если есть команда с пульта
+   {//если есть запрограмиированные комманды
      
       rprintfStr("normal>command find  adr=");
       rprintfFloat(6, pultadr ); ent;
@@ -314,14 +301,16 @@ void main_logic()//
        if (til==1) {   RES(PORTC,5); RES(PORTB,4); til=0; pultadr=0; p1; }
      
      }
-   }//если есть команда с пульта
+   }//если есть запрограмиированные комманды
    else 
-   {
-       RES(PORTD,7); delay_ms(100); SET(PORTD,7);
-      rprintfStr("normal>no find command ");  ent;
+   {  //если код не распознан
+       TimerReset(&tm6);
+       RES(PORTD,7); 
+       //delay_ms(100); SET(PORTD,7);
+       rprintfStr("normal>no find command ");  ent;
      
    }
-   
+  } 
    
   //--------------- mute -------------------
   //if (mute==1) AC_OFF; else { if (zader==0) AC_ON; }

@@ -7,9 +7,9 @@
 #include "SoftTimers.h"
 #include "main.h"
 //***************************************************************************
-//
+//  soft timers
 //***************************************************************************
-timers tm1,tm2,tm3, tm4,tm5;
+timers tm1,tm2,tm3, tm4,tm5,tm6;
 static uchar raz;
 static uchar port;
 static uchar razct;
@@ -27,7 +27,14 @@ __interrupt void TIMER2ovf(void)
  
     TimerTick(&tm4);
     TimerTick(&tm5);
-  
+    
+    TimerTick(&tm6);//мигание питания при неразпознанном коде
+     if (tm6.out) 
+             { 
+                if (on==1)  SET(PORTD,7);
+                TimerReset(&tm6);
+             }
+    
 // if (tm3.out ) { 
  //if (!state) {RES(PORTB,5); state=1; }   else {SET(PORTB,5); state=0;}
  //       TimerSet(&tm3,3000);       
@@ -36,7 +43,11 @@ __interrupt void TIMER2ovf(void)
 
 
 
-
+void TimerReset(timers *t)
+{
+  t->out=0;
+  t->ct=0;
+}
 
 void TimerSet(timers *t, long tm)
 {
