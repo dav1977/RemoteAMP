@@ -17,6 +17,7 @@
 // v1.23 - исправлен при включении включаетс€ SOURCE1 
 // v1.24 - исправлен баг AUTOOFF на 30 минут 
 // v1.25 - исправлен баг AUTOOFF при выключениии питани€ 
+// v1.26 - выход на громкость пока держим кнопку
 //
 //  Data........: 04 2016
 //
@@ -59,10 +60,15 @@ bool onok;
 bool on,mute;
 bool zader,aoff;
 uint timerzad; 
-uchar pultadr; uchar rez;
-extern   bool u=0,til=0; 
+uchar pultadr; uchar rez; 
 extern  uchar mode=0,tekfunc=0; 
 static uchar lastsel=1,sel=1,gro1=0,gro2=0,regaoff=0;
+bool u=false,til=false;
+
+__no_init __eeprom uint k[MAXEEP];
+__no_init __eeprom uchar fmode;//если ==1 то вместо source5 выход реле включени€ усилител€ тыловых колонок
+__no_init __eeprom uchar modegro;
+uint cod1,cod2,cod3,cod4; 
 //***************************************************************************
 //                  M  A  I  N
 //***************************************************************************
@@ -72,9 +78,9 @@ int main( void )
    aoff=0; onok=0; pr=0; on=0; mute=0; zader=0;  til=0;
   iniPORTS();    
  //----------------------------------
-   if (keyONsm) u=1;//включаем UART
+   if (keyONsm) u=true;//включаем UART
  // u=1; 
-  USART_Init(u);
+  if (u) USART_Init();
 //----------------------------------
   mode=fmode; //смена режима работы
   if (mode!=1 && mode!=0) { fmode=0; mode=0;   }//ini
@@ -153,12 +159,11 @@ int main( void )
     						PORTB=0; RES(PORTD,7);RES(PORTD,4); resOUT(); RES(PORTC,5); RES(PORTC,0);RES(PORTD,3); onok=1;
                           }
                                   
-  
-    pultadr=0;  if (on==1) normal(rez);
+   
+    if (on==1) normal(rez);
    
                   }//------------------------------------- 
-  
-   if (write==1) programming(rez);
+   else programming(rez);
    
    diag();  
      
@@ -222,7 +227,7 @@ void pult()
 void normal(uchar rez)//-----------------------главна€ логика --------------------
 {   
    pultadr=0; 
-  
+   static bool inv;
    migWORK();
    
   
@@ -231,10 +236,26 @@ void normal(uchar rez)//-----------------------главна€ логика ------------------
      
      pultadr=analizCOD();
      
-     if (pultadr==0){  RES(PORTD,7); delay_ms(100); SET(PORTD,7);
+     //
+     if (pultadr==0){  
+      //RES(PORTD,7); delay_ms(100); SET(PORTD,7);
       rprintfStr("normal>no find command ");  ent;}
-     else { rprintfStr("normal>command find  adr= ");
-      rprintfFloat(6, pultadr ); ent;}
+     
+     else 
+     { 
+       if (inv){SET(PORTD,7); inv=false;}
+       else {RES(PORTD,7); inv=true;}
+       
+      rprintfStr("normal>command find  adr= ");
+      rprintfFloat(6, pultadr ); ent;
+     }
+     //
+     
+     
+     
+     
+     
+     
      
      if (pultadr==1 || pultadr==60) {if (sel!=1)  { AC_OFF; lastsel=sel; sel=1; pult(); } else   migINI(sel-1, 3 ,0); 
  }
@@ -273,7 +294,7 @@ void normal(uchar rez)//-----------------------главна€ логика ------------------
    if ((keyAOFF || pultadr==30 || pultadr==95) && aoff==1 && regaoff>=3)  {  RES(PORTB,5);  p5; aoff=0; regaoff=0; pultadr=0;}//отмена aoff 
    
   if ((keyAOFF || pultadr==30 || pultadr==95) && regaoff==0) { aoff=1; regaoff++; iniT1(60*60*2)/*2 часа*/; pultadr=0;  for (uchar i=0; i<3; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
-  if ((keyAOFF || pultadr==30 || pultadr==95) && regaoff==1) { aoff=1; regaoff++; iniT1(60*60*1)/*1 часа*/; pultadr=0; for (uchar i=0; i<2; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
+  if ((keyAOFF || pultadr==30 || pultadr==95) && regaoff==1) { aoff=1; regaoff++; iniT1(60*60*1)/*1 час*/; pultadr=0; for (uchar i=0; i<2; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
   if ((keyAOFF || pultadr==30 || pultadr==95) && regaoff==2) { aoff=1; regaoff++; iniT1(60*60*0.5)/*0.5 часа*/; pultadr=0; for (uchar i=0; i<1; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
   
    
@@ -299,7 +320,7 @@ void normal(uchar rez)//-----------------------главна€ логика ------------------
                 } 
                 
  //--------------- select -------------------
-                if ( u!=1) {//что бы во врем€ работы UART не срабатывал
+                if ( !u ) {//что бы во врем€ работы UART не срабатывал
    uchar kol;  if  (mode==1) kol=4; else kol=5;
    if (keySEL ||pultadr==40 || pultadr==105) 
                 { 
@@ -321,10 +342,22 @@ void normal(uchar rez)//-----------------------главна€ логика ------------------
                           
                  
  //--------------- √–ќћ ќ—“№ -------------------
-   if (pultadr==45 || pultadr==110) { gro(1); p5;  pultadr=0; }  
-   if (pultadr==50 || pultadr==115) { gro(2); p5;  pultadr=0; }  
-   
-   
+                       static bool vol;
+                       static uint ctvol=0;
+                       if (pultadr==45 || pultadr==110) {SET(PORTB,2); vol=true; ctvol=0;}
+                       else // { gro(1); p5;  pultadr=0; }
+                       {
+                         if (pultadr==50 || pultadr==115) {SET(PORTB,3);vol=true;ctvol=0;}//{ gro(2); p5;  pultadr=0; }  
+                        else 
+                        {
+                         
+                         if (vol)
+                         {
+                          ctvol++;
+                          if (ctvol>300){ vol=false; RES(PORTB,2); RES(PORTB,3); }
+                         }
+                        }
+                        }
                 
  
                           
@@ -539,7 +572,7 @@ ACSR=0x80;
 
 void diag()
 {
-  
+  if (!u) return;
   uchar sym = USART_GetChar(); //читаем буфер
   if (sym=='0') { pr=1;  rprintfStr("-------------- vkluchen kratkiy viviod -------------");  ent;   }
 

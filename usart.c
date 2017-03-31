@@ -1,17 +1,12 @@
-#include "usart.h"
-//#include <math.h>
-//#include <intrinsics.h>
-#include "init.h"
+#include "main.h"
 
 //однобайтный буфер
 volatile unsigned char usartRxBuf = 0;
-volatile static bool usarton;
+
 
 //инициализация usart`a
-void USART_Init(bool t)
+void USART_Init()
 {
-  usarton=t;
-  if (!usarton) return;
   UBRRH = 0;
   UBRRL = ((F_CPU/9600UL)-1)/16;//    26;//78; //скорость обмена 9600 бод
   UCSRB = (1<<RXCIE)|(1<<RXEN)|(1<<TXEN); //разр. прерыв при приеме, разр приема, разр передачи.
@@ -21,7 +16,7 @@ void USART_Init(bool t)
 //отправка символа по usart`у
 void USART_SendChar(unsigned char sym)
 {
-  if (!usarton) return;
+  if (!u) return;
   while(!(UCSRA & (1<<UDRE)));
   UDR = sym;
 }
@@ -29,6 +24,7 @@ void USART_SendChar(unsigned char sym)
 //чтение буфера
 __monitor unsigned char USART_GetChar(void)
 {
+  if (!u) return 0;
   unsigned char tmp = usartRxBuf;
   usartRxBuf = 0;
   return tmp;  
@@ -45,7 +41,7 @@ __interrupt void usart_rxc_my(void)
 // prints a null-terminated string stored in RAM
 void rprintfStr(char str[])
 {        
-    if (!usarton) return;
+    if (!u) return;
 	// send a string stored in RAM
 	// check to make sure we have a good pointer
 	if (!str) return;
@@ -59,7 +55,7 @@ void rprintfStr(char str[])
 // floating-point print
 void rprintfFloat(char numDigits, double x)
 {
-    if (!usarton) return;
+    if (!u) return;
 	unsigned char firstplace = 0;
 	unsigned char negative;
 	unsigned char i, digit;

@@ -2037,6 +2037,9 @@
     <name>$PROJ_DIR$\main.cpp</name>
   </file>
   <file>
+    <name>$PROJ_DIR$\main.h</name>
+  </file>
+  <file>
     <name>$PROJ_DIR$\SoftTimers.h</name>
   </file>
   <file>

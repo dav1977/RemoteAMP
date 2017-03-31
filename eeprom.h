@@ -1,9 +1,5 @@
 
-#define MAXEEP 120
-__no_init __eeprom uint k[MAXEEP];
-__no_init __eeprom uchar fmode;//если ==1 то вместо source5 выход реле включения усилителя тыловых колонок
-__no_init __eeprom uchar modegro;
-uint cod1,cod2,cod3,cod4;  
+
 /*
 //-----------------EEPROM-----------------------
 unsigned char EEPROM_READ(unsigned int uiAddress);

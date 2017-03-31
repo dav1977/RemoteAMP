@@ -11,13 +11,7 @@
 //  Data........: 2014
 //
 //***************************************************************************
-#include <stdbool.h>//поддержка bool
-#include "iom8.h"//<ioavr.h>
-#include <inavr.h>
-#include <intrinsics.h> 
-#include "init.h"
-#include "usart.h"
-#include "eeprom.h"
+#include "main.h"
 #define  MAX 50 //кол-во интервалов макс  –≈јЋ№Ќќ на 2 меньше!!!
 void du_init();
 uint du(void);
