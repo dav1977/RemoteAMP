@@ -47,7 +47,7 @@ void gro(uchar a);
 void normal(uchar rez);
 void writeCOD(void);
 uchar analizCOD(void);
-void programming(uchar rez);
+void programming();
 uchar getadr(void);
 #define acon 20000;//время включения АС при подаче питания
 uint tON=acon; 
@@ -55,12 +55,11 @@ uint tON=acon;
 //uint kbuf[MAXEEP];
 uchar write;
 uchar pr;
-static bool get=0;
 bool onok;  
 bool on,mute;
 bool zader,aoff;
 uint timerzad; 
-uchar pultadr; uchar rez; 
+uchar pultadr;
 extern  uchar mode=0,tekfunc=0; 
 static uchar lastsel=1,sel=1,gro1=0,gro2=0,regaoff=0;
 bool u=false,til=false;
@@ -142,12 +141,13 @@ int main( void )
   
   while(1){//-----------------------------------бесконечный цикл
 
-   rez=du_main(pr);//вызов обработчика пульта
+      pultadr=0;
+      if (du_main(pr)) {  pultadr=analizCOD(); } ;//вызов обработчика пульта
+   
+ 
    
    if (write==0)  {//------------------------------------- 
     
-     pultadr=0; 
-     if (rez) pultadr=analizCOD();  
      
      if ((keyON||pultadr==25 || pultadr==90) && on==1 && zader!=1) { rprintfStr("OFF>adr="); rprintfFloat(9, pultadr ); ent;
                     on=0;onok=0; p5; zader=0;  til=0; gro1=0; gro2=0; pultadr=0;  }//OFF
@@ -160,10 +160,10 @@ int main( void )
                           }
                                   
    
-    if (on==1) normal(rez);
+    if (on==1) normal( pultadr );
    
                   }//------------------------------------- 
-   else programming(rez);
+   else programming();
    
    diag();  
      
@@ -218,45 +218,16 @@ uchar getadr()//адреса  команд
   return(adr);
 }
 
-
 void pult() 
 {
    tON=1500; zader=1;timerzad=0; source(); p2;   //время включения АС при переключениях
 }
 
-void normal(uchar rez)//-----------------------главная логика --------------------
-{   
-   pultadr=0; 
-   static bool inv;
-   migWORK();
-   
-  
-   if (rez)
-   {//если есть команда с пульта
-     
-     pultadr=analizCOD();
-     
-     //
-     if (pultadr==0){  
-      //RES(PORTD,7); delay_ms(100); SET(PORTD,7);
-      rprintfStr("normal>no find command ");  ent;}
-     
-     else 
-     { 
-       if (inv){SET(PORTD,7); inv=false;}
-       else {RES(PORTD,7); inv=true;}
+
+void tilf()
+{
+
        
-      rprintfStr("normal>command find  adr= ");
-      rprintfFloat(6, pultadr ); ent;
-     }
-     //
-     
-     
-     
-     
-     
-     
-     
      if (pultadr==1 || pultadr==60) {if (sel!=1)  { AC_OFF; lastsel=sel; sel=1; pult(); } else   migINI(sel-1, 3 ,0); 
  }
      if (pultadr==5 || pultadr==65) {if (sel!=2)  {AC_OFF; lastsel=sel;sel=2; pult(); }  else  migINI(sel-1, 3 ,0); 
@@ -278,8 +249,11 @@ void normal(uchar rez)//-----------------------главная логика ------------------
        if (til==1) {   RES(PORTC,5); RES(PORTB,4); til=0; pultadr=0; p1; }
      
                                                      }
-   }//если есть команда с пульта
-   
+
+}
+
+void mutef()
+{
   //--------------- mute -------------------
   if (mute==1) AC_OFF; else { if (zader==0) AC_ON; }
   if (zader==1) {timerzad++;  if (timerzad> tON)  {zader=0;timerzad=0; if (mute!=1)AC_ON;} }//задержка включения
@@ -287,7 +261,41 @@ void normal(uchar rez)//-----------------------главная логика ------------------
    if ((keyMUTE ||pultadr==35 || pultadr==100) && mute==0) { AC_OFF; mute=1; p5; pultadr=0;}
    if ((keyMUTE ||pultadr==35 || pultadr==100) && mute==1) { AC_ON; mute=0; p5; pultadr=0; }   
    
-   
+
+}
+
+void select()
+{
+ //--------------- select -------------------
+                if ( !u ) {//что бы во время работы UART не срабатывал
+   static uchar kol;  
+   if  (mode==1) kol=4; else kol=5;
+   if (keySEL ||pultadr==40 || pultadr==105) 
+                { 
+                        if (sel<=(kol-1)) { AC_OFF; p2; RES(PORTB,(sel-1));lastsel=sel; sel++; pult(); } 
+                       else { AC_OFF;  RES(PORTB,(sel-1)); sel=1; pult(); }
+              
+                }
+                         
+  //--------------- return sel -------------------  возврат в предыдущий source                 
+   if ( pultadr==55 || pultadr==85) 
+   {
+     
+     if (sel!=lastsel) 
+     {
+       AC_OFF;  RES(PORTB,(sel-1)); uchar tmp1=sel; sel=lastsel;  lastsel=tmp1; pultadr=0;  pult();
+     }
+                                    
+   }
+              
+                          }//что бы во время работы UART не срабатывал
+                           
+                          
+}
+
+
+void autoOFF()
+{
   //--------------- aoff --------------------
  
    
@@ -314,54 +322,70 @@ void normal(uchar rez)//-----------------------главная логика ------------------
    //   }
                                                         
    
-  
- 
-  if (aoff==1)  {    WorkT1(); if (T1end) { on=0; onok=0;  aoff=0; p5; zader=0; regaoff=0;}
-                } 
-                
- //--------------- select -------------------
-                if ( !u ) {//что бы во время работы UART не срабатывал
-   uchar kol;  if  (mode==1) kol=4; else kol=5;
-   if (keySEL ||pultadr==40 || pultadr==105) 
-                { 
-                        if (sel<=(kol-1)) { AC_OFF; p2; RES(PORTB,(sel-1));lastsel=sel; sel++; pult(); } 
-                       else { AC_OFF;  RES(PORTB,(sel-1)); sel=1; pult(); }
-              
-                }
-                         
-  //--------------- return sel -------------------  возврат в предыдущий source                 
-   if ( pultadr==55 || pultadr==85) {
-     
-     if (sel!=lastsel) {
-       AC_OFF;  RES(PORTB,(sel-1)); uchar tmp1=sel; sel=lastsel;  lastsel=tmp1; pultadr=0;  pult();
-     }
-                                      }
-              
-                          }//что бы во время работы UART не срабатывал
-                           
-                          
-                 
+}
+
+static bool vol;
+static uint ctvol=0;
+void volume()
+{
  //--------------- ГРОМКОСТЬ -------------------
-                       static bool vol;
-                       static uint ctvol=0;
+                       
+                       
                        if (pultadr==45 || pultadr==110) {SET(PORTB,2); vol=true; ctvol=0;}
                        else // { gro(1); p5;  pultadr=0; }
                        {
                          if (pultadr==50 || pultadr==115) {SET(PORTB,3);vol=true;ctvol=0;}//{ gro(2); p5;  pultadr=0; }  
-                        else 
-                        {
-                         
-                         if (vol)
+                     
+                        
+                       }
+                        p2; 
+}
+
+
+void normal(uchar adr)//-----------------------главная логика --------------------
+{   
+   pultadr=adr;
+  
+   static bool inv;
+   migWORK();
+   
+ 
+     //
+     if (pultadr==0)
+     {  
+      //RES(PORTD,7); delay_ms(100); SET(PORTD,7);
+      rprintfStr("normal>no find command ");  ent;
+     }
+     else 
+     { 
+       if (inv){SET(PORTD,7); inv=false;}
+       else {RES(PORTD,7); inv=true;}
+       
+      rprintfStr("normal>command find  adr= ");
+      rprintfFloat(6, pultadr ); ent;
+     }
+     //
+     
+     
+     
+   tilf();   
+   mutef();   
+   autoOFF();
+   select();
+   if (pultadr!=0) volume(); 
+   
+
+ //tasks
+  if (aoff==1)  {    WorkT1(); if (T1end) { on=0; onok=0;  aoff=0; p5; zader=0; regaoff=0;}
+                } 
+                
+ if (vol)
                          {
                           ctvol++;
-                          if (ctvol>300){ vol=false; RES(PORTB,2); RES(PORTB,3); }
+                          if (ctvol>5000){ vol=false; RES(PORTB,2); RES(PORTB,3); }
                          }
-                        }
-                        }
-                
- 
-                          
-                          
+   
+  
    
    
 }
@@ -398,12 +422,14 @@ void source()
 
 
 
-void programming (uchar rez)
+void programming ()
 {  
-   if (tekfunc==255) return;
+  static bool get=0;
+  
+    if (pultadr==0 || tekfunc==255) return;
    if (!get)  { getadr(); get=1; }//получаем адрес и зажигаем программируемую функцию
-   if (rez==1)
-   {
+  
+ 
      writeCOD();
      tekfunc++;  get=0;
     if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
@@ -411,7 +437,7 @@ void programming (uchar rez)
                       }
      if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
 
-   }
+  
    
    
    if (keyONsm) { 
