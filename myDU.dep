@@ -216,10 +216,6 @@
           <name>BICOMP</name>
           <file> 41</file>
         </tool>
-        <tool>
-          <name>ICCAVR</name>
-          <file> 33</file>
-        </tool>
       </outputs>
       <inputs>
         <tool>

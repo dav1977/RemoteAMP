@@ -47,7 +47,7 @@ void gro(uchar a);
 void normal(uchar rez);
 void writeCOD(void);
 uchar analizCOD(void);
-void programming();
+void programming(bool rez);
 uchar getadr(void);
 #define acon 20000;//время включения АС при подаче питания
 uint tON=acon; 
@@ -166,7 +166,7 @@ int main( void )
                   }//------------------------------------- 
    else 
    {
-    if (rez) programming();
+    if (rez) programming(rez);
    }
    if (u) diag();  
      
@@ -425,21 +425,23 @@ void source()
 
 
 
-void programming ()
+void programming (bool rez)
 {  
    static bool get=0;
    if (tekfunc==255) return;
    if (!get)  { getadr(); get=1; }//получаем адрес и зажигаем программируемую функцию
   
- 
+   if (rez)
+   {
      writeCOD();
      tekfunc++;  get=0;
-    if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
+   
+     if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
                            {led_all(1); p4; led_all(0);p4; }
                       }
      if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
 
-  
+   }
    
    
    if (keyONsm) { 

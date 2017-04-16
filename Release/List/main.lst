@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR C/C++ Compiler V6.40.1.741 for Atmel AVR            16/Apr/2017  08:31:50
+# IAR C/C++ Compiler V6.40.1.741 for Atmel AVR            16/Apr/2017  08:35:21
 # Copyright 1996-2014 IAR Systems AB.
 #
 #    Source file  =  F:\Dulov\RemoteAMP\main.cpp
@@ -1704,7 +1704,7 @@ F:\Dulov\RemoteAMP\main.cpp
      47          void normal(uchar rez);
      48          void writeCOD(void);
      49          uchar analizCOD(void);
-     50          void programming();
+     50          void programming(bool rez);
      51          uchar getadr(void);
      52          #define acon 20000;//время включения АС при подаче питания
 
@@ -2040,7 +2040,7 @@ F:\Dulov\RemoteAMP\main.cpp
     117             if (write==1) //мигание первого программируемого
    \   000000CE   9100....           LDS     R16, `write`
    \   000000D2   3001               CPI     R16, 1
-   \   000000D4   F479               BRNE    ??main_14
+   \   000000D4   F481               BRNE    ??main_14
     118             {
     119               for (uchar i=0; i<3; i++) {getadr(); p3;led_all(0); p3;}
    \   000000D6   E083               LDI     R24, 3
@@ -2057,7 +2057,7 @@ F:\Dulov\RemoteAMP\main.cpp
     120              
     121               getadr();
    \   000000E4   ....               RCALL   ??getadr
-   \   000000E6   C006               RJMP    ??main_14
+   \   000000E6   C007               RJMP    ??main_14
     122             }
     123                 
     124            
@@ -2105,150 +2105,151 @@ F:\Dulov\RemoteAMP\main.cpp
     166                            }//------------------------------------- 
     167             else 
     168             {
-    169              if (rez) programming();
+    169              if (rez) programming(rez);
    \                     ??main_16:
    \   000000E8   2388               TST     R24
-   \   000000EA   F009               BREQ    ??main_17
-   \   000000EC   ....               RCALL   ??programming
+   \   000000EA   F011               BREQ    ??main_17
+   \   000000EC   2F08               MOV     R16, R24
+   \   000000EE   ....               RCALL   ??programming
     170             }
     171             if (u) diag();  
    \                     ??main_17:
-   \   000000EE   ....               RCALL   ?Subroutine104
+   \   000000F0   ....               RCALL   ?Subroutine104
    \                     ??CrossCallReturnLabel_309:
-   \   000000F0   F009               BREQ    ??main_14
-   \   000000F2   ....               RCALL   ??diag
+   \   000000F2   F009               BREQ    ??main_14
+   \   000000F4   ....               RCALL   ??diag
    \                     ??main_14:
-   \   000000F4   9100....           LDS     R16, pr
-   \   000000F8   ....               RCALL   ??du_main
-   \   000000FA   2300               TST     R16
-   \   000000FC   F011               BREQ    ??main_18
-   \   000000FE   E081               LDI     R24, 1
-   \   00000100   C001               RJMP    ??main_19
+   \   000000F6   9100....           LDS     R16, pr
+   \   000000FA   ....               RCALL   ??du_main
+   \   000000FC   2300               TST     R16
+   \   000000FE   F011               BREQ    ??main_18
+   \   00000100   E081               LDI     R24, 1
+   \   00000102   C001               RJMP    ??main_19
    \                     ??main_18:
-   \   00000102   E080               LDI     R24, 0
+   \   00000104   E080               LDI     R24, 0
    \                     ??main_19:
-   \   00000104   ....               RCALL   ??Subroutine142_0
+   \   00000106   ....               RCALL   ??Subroutine142_0
    \                     ??CrossCallReturnLabel_384:
-   \   00000106   2388               TST     R24
-   \   00000108   F011               BREQ    ??CrossCallReturnLabel_379
-   \   0000010A   ....               RCALL   ??analizCOD
-   \   0000010C   ....               RCALL   ?Subroutine128
+   \   00000108   2388               TST     R24
+   \   0000010A   F011               BREQ    ??CrossCallReturnLabel_379
+   \   0000010C   ....               RCALL   ??analizCOD
+   \   0000010E   ....               RCALL   ?Subroutine128
    \                     ??CrossCallReturnLabel_379:
-   \   0000010E   9100....           LDS     R16, `write`
-   \   00000112   2300               TST     R16
-   \   00000114   F749               BRNE    ??main_16
-   \   00000116   9985               SBIC    0x10, 0x05
-   \   00000118   C004               RJMP    ??main_20
-   \   0000011A   9B80               SBIS    0x10, 0x00
-   \   0000011C   C002               RJMP    ??main_20
-   \   0000011E   9981               SBIC    0x10, 0x01
-   \   00000120   C005               RJMP    ??main_21
+   \   00000110   9100....           LDS     R16, `write`
+   \   00000114   2300               TST     R16
+   \   00000116   F741               BRNE    ??main_16
+   \   00000118   9985               SBIC    0x10, 0x05
+   \   0000011A   C004               RJMP    ??main_20
+   \   0000011C   9B80               SBIS    0x10, 0x00
+   \   0000011E   C002               RJMP    ??main_20
+   \   00000120   9981               SBIC    0x10, 0x01
+   \   00000122   C005               RJMP    ??main_21
    \                     ??main_20:
-   \   00000122   ....               RCALL   ?Subroutine80
+   \   00000124   ....               RCALL   ?Subroutine80
    \                     ??CrossCallReturnLabel_134:
-   \   00000124   3109               CPI     R16, 25
-   \   00000126   F011               BREQ    ??main_21
-   \   00000128   350A               CPI     R16, 90
-   \   0000012A   F499               BRNE    ??CrossCallReturnLabel_380
+   \   00000126   3109               CPI     R16, 25
+   \   00000128   F011               BREQ    ??main_21
+   \   0000012A   350A               CPI     R16, 90
+   \   0000012C   F499               BRNE    ??CrossCallReturnLabel_380
    \                     ??main_21:
-   \   0000012C   9110....           LDS     R17, on
-   \   00000130   9120....           LDS     R18, zader
-   \   00000134   E001               LDI     R16, 1
-   \   00000136   2720               EOR     R18, R16
-   \   00000138   2312               AND     R17, R18
-   \   0000013A   F059               BREQ    ??CrossCallReturnLabel_380
-   \   0000013C   ....               LDI     R16, LOW(`?<Constant "OFF>adr=">`)
-   \   0000013E   ....               LDI     R17, (`?<Constant "OFF>adr=">`) >> 8
-   \   00000140   ....               RCALL   ?Subroutine17
+   \   0000012E   9110....           LDS     R17, on
+   \   00000132   9120....           LDS     R18, zader
+   \   00000136   E001               LDI     R16, 1
+   \   00000138   2720               EOR     R18, R16
+   \   0000013A   2312               AND     R17, R18
+   \   0000013C   F059               BREQ    ??CrossCallReturnLabel_380
+   \   0000013E   ....               LDI     R16, LOW(`?<Constant "OFF>adr=">`)
+   \   00000140   ....               LDI     R17, (`?<Constant "OFF>adr=">`) >> 8
+   \   00000142   ....               RCALL   ?Subroutine17
    \                     ??CrossCallReturnLabel_19:
-   \   00000142   ....               RCALL   ?Subroutine14
+   \   00000144   ....               RCALL   ?Subroutine14
    \                     ??CrossCallReturnLabel_14:
-   \   00000144   ....               RCALL   ?Subroutine115
+   \   00000146   ....               RCALL   ?Subroutine115
    \                     ??CrossCallReturnLabel_247:
-   \   00000146   ....               RCALL   ?Subroutine70
+   \   00000148   ....               RCALL   ?Subroutine70
    \                     ??CrossCallReturnLabel_120:
-   \   00000148   9300....           STS     ??gro1, R16
-   \   0000014C   9300....           STS     ??gro2, R16
-   \   00000150   ....               RCALL   ?Subroutine128
+   \   0000014A   9300....           STS     ??gro1, R16
+   \   0000014E   9300....           STS     ??gro2, R16
+   \   00000152   ....               RCALL   ?Subroutine128
    \                     ??CrossCallReturnLabel_380:
-   \   00000152   9985               SBIC    0x10, 0x05
-   \   00000154   C004               RJMP    ??main_22
-   \   00000156   9B80               SBIS    0x10, 0x00
-   \   00000158   C002               RJMP    ??main_22
-   \   0000015A   9981               SBIC    0x10, 0x01
-   \   0000015C   C005               RJMP    ??main_23
+   \   00000154   9985               SBIC    0x10, 0x05
+   \   00000156   C004               RJMP    ??main_22
+   \   00000158   9B80               SBIS    0x10, 0x00
+   \   0000015A   C002               RJMP    ??main_22
+   \   0000015C   9981               SBIC    0x10, 0x01
+   \   0000015E   C005               RJMP    ??main_23
    \                     ??main_22:
-   \   0000015E   ....               RCALL   ?Subroutine80
+   \   00000160   ....               RCALL   ?Subroutine80
    \                     ??CrossCallReturnLabel_135:
-   \   00000160   3109               CPI     R16, 25
-   \   00000162   F011               BREQ    ??main_23
-   \   00000164   350A               CPI     R16, 90
-   \   00000166   F489               BRNE    ??CrossCallReturnLabel_385
+   \   00000162   3109               CPI     R16, 25
+   \   00000164   F011               BREQ    ??main_23
+   \   00000166   350A               CPI     R16, 90
+   \   00000168   F489               BRNE    ??CrossCallReturnLabel_385
    \                     ??main_23:
-   \   00000168   9100....           LDS     R16, on
-   \   0000016C   2300               TST     R16
-   \   0000016E   F469               BRNE    ??CrossCallReturnLabel_385
-   \   00000170   ....               LDI     R16, LOW(`?<Constant "ON>adr=">`)
-   \   00000172   ....               LDI     R17, (`?<Constant "ON>adr=">`) >> 8
-   \   00000174   ....               RCALL   ?Subroutine17
+   \   0000016A   9100....           LDS     R16, on
+   \   0000016E   2300               TST     R16
+   \   00000170   F469               BRNE    ??CrossCallReturnLabel_385
+   \   00000172   ....               LDI     R16, LOW(`?<Constant "ON>adr=">`)
+   \   00000174   ....               LDI     R17, (`?<Constant "ON>adr=">`) >> 8
+   \   00000176   ....               RCALL   ?Subroutine17
    \                     ??CrossCallReturnLabel_20:
-   \   00000176   9A94               SBI     0x12, 0x04
-   \   00000178   9A97               SBI     0x12, 0x07
-   \   0000017A   ....               RCALL   ?Subroutine123
+   \   00000178   9A94               SBI     0x12, 0x04
+   \   0000017A   9A97               SBI     0x12, 0x07
+   \   0000017C   ....               RCALL   ?Subroutine123
    \                     ??CrossCallReturnLabel_266:
-   \   0000017C   E001               LDI     R16, 1
-   \   0000017E   ....               RCALL   ??Subroutine143_0
+   \   0000017E   E001               LDI     R16, 1
+   \   00000180   ....               RCALL   ??Subroutine143_0
    \                     ??CrossCallReturnLabel_392:
-   \   00000180   E000               LDI     R16, 0
-   \   00000182   9300....           STS     mute, R16
-   \   00000186   ....               RCALL   ?Subroutine3
+   \   00000182   E000               LDI     R16, 0
+   \   00000184   9300....           STS     mute, R16
+   \   00000188   ....               RCALL   ?Subroutine3
    \                     ??CrossCallReturnLabel_5:
-   \   00000188   ....               RCALL   ??Subroutine142_0
+   \   0000018A   ....               RCALL   ??Subroutine142_0
    \                     ??CrossCallReturnLabel_385:
-   \   0000018A   9100....           LDS     R16, on
-   \   0000018E   9110....           LDS     R17, onok
-   \   00000192   2B01               OR      R16, R17
-   \   00000194   F4A1               BRNE    ??main_24
-   \   00000196   ....               RCALL   ?Subroutine113
+   \   0000018C   9100....           LDS     R16, on
+   \   00000190   9110....           LDS     R17, onok
+   \   00000194   2B01               OR      R16, R17
+   \   00000196   F4A1               BRNE    ??main_24
+   \   00000198   ....               RCALL   ?Subroutine113
    \                     ??CrossCallReturnLabel_393:
-   \   00000198   ....               RCALL   ?Subroutine15
+   \   0000019A   ....               RCALL   ?Subroutine15
    \                     ??CrossCallReturnLabel_291:
-   \   0000019A   9896               CBI     0x12, 0x06
-   \   0000019C   ....               RCALL   ?Subroutine78
+   \   0000019C   9896               CBI     0x12, 0x06
+   \   0000019E   ....               RCALL   ?Subroutine78
    \                     ??CrossCallReturnLabel_128:
-   \   0000019E   E200               LDI     R16, 32
-   \   000001A0   E41E               LDI     R17, 78
-   \   000001A2   ....               LDI     R30, LOW(tON)
-   \   000001A4   ....               LDI     R31, (tON) >> 8
-   \   000001A6   ....               RCALL   ??Subroutine141_0
+   \   000001A0   E200               LDI     R16, 32
+   \   000001A2   E41E               LDI     R17, 78
+   \   000001A4   ....               LDI     R30, LOW(tON)
+   \   000001A6   ....               LDI     R31, (tON) >> 8
+   \   000001A8   ....               RCALL   ??Subroutine141_0
    \                     ??CrossCallReturnLabel_370:
-   \   000001A8   E000               LDI     R16, 0
-   \   000001AA   BB08               OUT     0x18, R16
-   \   000001AC   9897               CBI     0x12, 0x07
-   \   000001AE   9894               CBI     0x12, 0x04
-   \   000001B0   ....               RCALL   ??resOUT
-   \   000001B2   98AD               CBI     0x15, 0x05
-   \   000001B4   98A8               CBI     0x15, 0x00
-   \   000001B6   9893               CBI     0x12, 0x03
-   \   000001B8   E001               LDI     R16, 1
-   \   000001BA   9300....           STS     onok, R16
+   \   000001AA   E000               LDI     R16, 0
+   \   000001AC   BB08               OUT     0x18, R16
+   \   000001AE   9897               CBI     0x12, 0x07
+   \   000001B0   9894               CBI     0x12, 0x04
+   \   000001B2   ....               RCALL   ??resOUT
+   \   000001B4   98AD               CBI     0x15, 0x05
+   \   000001B6   98A8               CBI     0x15, 0x00
+   \   000001B8   9893               CBI     0x12, 0x03
+   \   000001BA   E001               LDI     R16, 1
+   \   000001BC   9300....           STS     onok, R16
    \                     ??main_24:
-   \   000001BE   9100....           LDS     R16, on
-   \   000001C2   2300               TST     R16
-   \   000001C4   F409               BRNE    $+2+2
-   \   000001C6   CF93               RJMP    ??main_17
-   \   000001C8   ....               RCALL   ?Subroutine80
+   \   000001C0   9100....           LDS     R16, on
+   \   000001C4   2300               TST     R16
+   \   000001C6   F409               BRNE    $+2+2
+   \   000001C8   CF93               RJMP    ??main_17
+   \   000001CA   ....               RCALL   ?Subroutine80
     172               
     173              
     174             
     175            }//-------------------------------------------бесконечный цикл
    \                     ??CrossCallReturnLabel_136:
-   \   000001CA   ....               RCALL   ??normal
-   \   000001CC   CF90               RJMP    ??main_17
-   \   000001CE                      REQUIRE _A_PIND
-   \   000001CE                      REQUIRE _A_PORTB
-   \   000001CE                      REQUIRE _A_PORTD
-   \   000001CE                      REQUIRE _A_PORTC
+   \   000001CC   ....               RCALL   ??normal
+   \   000001CE   CF90               RJMP    ??main_17
+   \   000001D0                      REQUIRE _A_PIND
+   \   000001D0                      REQUIRE _A_PORTB
+   \   000001D0                      REQUIRE _A_PORTD
+   \   000001D0                      REQUIRE _A_PORTC
     176            
     177          }//main
 
@@ -3645,89 +3646,94 @@ F:\Dulov\RemoteAMP\main.cpp
     427          
 
    \                                 In  segment CODE, align 2, keep-with-next
-    428          void programming ()
+    428          void programming (bool rez)
    \                     ??programming:
     429          {  
    \   00000000   938A               ST      -Y, R24
+   \   00000002   2F80               MOV     R24, R16
     430             static bool get=0;
     431             if (tekfunc==255) return;
-   \   00000002   ....               RCALL   ?Subroutine120
+   \   00000004   ....               RCALL   ?Subroutine120
    \                     ??CrossCallReturnLabel_260:
-   \   00000004   3F0F               CPI     R16, 255
-   \   00000006   F101               BREQ    ??CrossCallReturnLabel_399
+   \   00000006   3F0F               CPI     R16, 255
+   \   00000008   F111               BREQ    ??CrossCallReturnLabel_399
     432             if (!get)  { getadr(); get=1; }//получаем адрес и зажигаем программируемую функцию
-   \   00000008   9100....           LDS     R16, ??get
-   \   0000000C   2300               TST     R16
-   \   0000000E   F421               BRNE    ??programming_1
-   \   00000010   ....               RCALL   ??getadr
-   \   00000012   E001               LDI     R16, 1
-   \   00000014   9300....           STS     ??get, R16
+   \   0000000A   9100....           LDS     R16, ??get
+   \   0000000E   2300               TST     R16
+   \   00000010   F421               BRNE    ??programming_1
+   \   00000012   ....               RCALL   ??getadr
+   \   00000014   E001               LDI     R16, 1
+   \   00000016   9300....           STS     ??get, R16
     433            
-    434           
-    435               writeCOD();
+    434             if (rez)
    \                     ??programming_1:
-   \   00000018   ....               RCALL   ??writeCOD
-    436               tekfunc++;  get=0;
-   \   0000001A   ....               RCALL   ?Subroutine11
-    437              if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
+   \   0000001A   2388               TST     R24
+   \   0000001C   F051               BREQ    ??CrossCallReturnLabel_400
+    435             {
+    436               writeCOD();
+   \   0000001E   ....               RCALL   ??writeCOD
+    437               tekfunc++;  get=0;
+   \   00000020   ....               RCALL   ?Subroutine11
+    438             
+    439               if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
    \                     ??CrossCallReturnLabel_8:
-   \   0000001C   F419               BRNE    ??programming_2
-   \   0000001E   E08A               LDI     R24, 10
-    438                                     {led_all(1); p4; led_all(0);p4; }
+   \   00000022   F419               BRNE    ??programming_2
+   \   00000024   E08A               LDI     R24, 10
+    440                                     {led_all(1); p4; led_all(0);p4; }
    \                     ??programming_3:
-   \   00000020   ....               RCALL   ?Subroutine0
+   \   00000026   ....               RCALL   ?Subroutine0
    \                     ??CrossCallReturnLabel_0:
-   \   00000022   F7F1               BRNE    ??programming_3
-    439                                }
-    440               if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
+   \   00000028   F7F1               BRNE    ??programming_3
+    441                                }
+    442               if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
    \                     ??programming_2:
-   \   00000024   ....               RCALL   ?Subroutine120
+   \   0000002A   ....               RCALL   ?Subroutine120
    \                     ??CrossCallReturnLabel_261:
-   \   00000026   3108               CPI     R16, 24
-   \   00000028   F008               BRCS    ??CrossCallReturnLabel_400
-   \   0000002A   ....               RCALL   ?Subroutine6
-    441          
-    442            
-    443             
-    444             
-    445             if (keyONsm) { 
+   \   0000002C   3108               CPI     R16, 24
+   \   0000002E   F008               BRCS    ??CrossCallReturnLabel_400
+   \   00000030   ....               RCALL   ?Subroutine6
+    443          
+    444             }
+    445             
+    446             
+    447             if (keyONsm) { 
    \                     ??CrossCallReturnLabel_400:
-   \   0000002C   9985               SBIC    0x10, 0x05
-   \   0000002E   C00C               RJMP    ??CrossCallReturnLabel_399
-    446                          led_all(1); delay_s(1); 
-   \   00000030   ....               RCALL   ??Subroutine144_0
+   \   00000032   9985               SBIC    0x10, 0x05
+   \   00000034   C00C               RJMP    ??CrossCallReturnLabel_399
+    448                          led_all(1); delay_s(1); 
+   \   00000036   ....               RCALL   ??Subroutine144_0
    \                     ??CrossCallReturnLabel_396:
-   \   00000032   ....               RCALL   ?Subroutine78
-    447                          led_all(0); 
+   \   00000038   ....               RCALL   ?Subroutine78
+    449                          led_all(0); 
    \                     ??CrossCallReturnLabel_129:
-   \   00000034   ....               RCALL   ?Subroutine16
-    448                          tekfunc++;  get=0;
+   \   0000003A   ....               RCALL   ?Subroutine16
+    450                          tekfunc++;  get=0;
    \                     ??CrossCallReturnLabel_17:
-   \   00000036   ....               RCALL   ?Subroutine11
-    449                             if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
+   \   0000003C   ....               RCALL   ?Subroutine11
+    451                             if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
    \                     ??CrossCallReturnLabel_9:
-   \   00000038   F419               BRNE    ??programming_4
-   \   0000003A   E08A               LDI     R24, 10
-    450                                     {led_all(1); p4; led_all(0);p4; }
+   \   0000003E   F419               BRNE    ??programming_4
+   \   00000040   E08A               LDI     R24, 10
+    452                                     {led_all(1); p4; led_all(0);p4; }
    \                     ??programming_5:
-   \   0000003C   ....               RCALL   ?Subroutine0
+   \   00000042   ....               RCALL   ?Subroutine0
    \                     ??CrossCallReturnLabel_1:
-   \   0000003E   F7F1               BRNE    ??programming_5
-    451                                }
-    452                          if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
+   \   00000044   F7F1               BRNE    ??programming_5
+    453                                }
+    454                          if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
    \                     ??programming_4:
-   \   00000040   ....               RCALL   ?Subroutine120
+   \   00000046   ....               RCALL   ?Subroutine120
    \                     ??CrossCallReturnLabel_262:
-   \   00000042   3108               CPI     R16, 24
-   \   00000044   F008               BRCS    ??CrossCallReturnLabel_399
-   \   00000046   ....               RCALL   ?Subroutine6
-    453                         
-    454                           }
-    455               
-    456          }
+   \   00000048   3108               CPI     R16, 24
+   \   0000004A   F008               BRCS    ??CrossCallReturnLabel_399
+   \   0000004C   ....               RCALL   ?Subroutine6
+    455                         
+    456                           }
+    457               
+    458          }
    \                     ??CrossCallReturnLabel_399:
-   \   00000048   ....               RJMP    ?Subroutine130
-   \   0000004A                      REQUIRE _A_PIND
+   \   0000004E   ....               RJMP    ?Subroutine130
+   \   00000050                      REQUIRE _A_PIND
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine11:
@@ -3784,19 +3790,19 @@ F:\Dulov\RemoteAMP\main.cpp
    \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
    \                     ??get:
    \   00000000                      DS8 1
-    457          //--------------------------------------------------------------------
-    458          
+    459          //--------------------------------------------------------------------
+    460          
 
    \                                 In  segment CODE, align 2, keep-with-next
-    459          void writeCOD()
+    461          void writeCOD()
    \                     ??writeCOD:
-    460          {
+    462          {
    \   00000000   938A               ST      -Y, R24
-    461            rprintfStr("write ..");
+    463            rprintfStr("write ..");
    \   00000002   ....               LDI     R16, LOW(`?<Constant "write ..">`)
    \   00000004   ....               LDI     R17, (`?<Constant "write ..">`) >> 8
    \   00000006   ....               RCALL   ??rprintfStr
-    462            led_all(1);delay_s(3);
+    464            led_all(1);delay_s(3);
    \   00000008   ....               RCALL   ??Subroutine144_0
    \                     ??CrossCallReturnLabel_395:
    \   0000000A   EF0F               LDI     R16, 255
@@ -3808,14 +3814,14 @@ F:\Dulov\RemoteAMP\main.cpp
    \   00000016   F7E1               BRNE    $-6
    \   00000018   C000               RJMP    $+2
    \   0000001A   0000               NOP
-    463            uchar adr=getadr();
+    465            uchar adr=getadr();
    \   0000001C   ....               RCALL   ??getadr
    \   0000001E   2F80               MOV     R24, R16
-    464            led_all(0);
+    466            led_all(0);
    \   00000020   ....               RCALL   ?Subroutine16
-    465            
-    466                 
-    467                 k[adr]=cod1; delay_ms(30);
+    467            
+    468                 
+    469                 k[adr]=cod1; delay_ms(30);
    \                     ??CrossCallReturnLabel_16:
    \   00000022   ....               RCALL   ?Subroutine46
    \                     ??CrossCallReturnLabel_72:
@@ -3828,7 +3834,7 @@ F:\Dulov\RemoteAMP\main.cpp
    \   0000002E   ....               RCALL   ?Subroutine122
    \                     ??CrossCallReturnLabel_329:
    \   00000030   ....               RCALL   ?Subroutine90
-    468                 k[adr+1]=cod2; delay_ms(30);
+    470                 k[adr+1]=cod2; delay_ms(30);
    \                     ??CrossCallReturnLabel_401:
    \   00000032   ....               RCALL   ??Subroutine146_0
    \                     ??CrossCallReturnLabel_409:
@@ -3838,22 +3844,22 @@ F:\Dulov\RemoteAMP\main.cpp
    \   00000038   5F4E               SUBI    R20, 254
    \   0000003A   4F5F               SBCI    R21, 255
    \   0000003C   ....               RCALL   ??Subroutine145_0
-    469                 k[adr+2]=cod3; delay_ms(30);
+    471                 k[adr+2]=cod3; delay_ms(30);
    \                     ??CrossCallReturnLabel_403:
    \   0000003E   ....               RCALL   ?Subroutine35
    \                     ??CrossCallReturnLabel_335:
    \   00000040   5F2C               SUBI    R18, 252
    \   00000042   4F3F               SBCI    R19, 255
    \   00000044   ....               RCALL   ?Subroutine90
-    470                 
-    471                 rprintfStr("OK !   "); ent;
+    472                 
+    473                 rprintfStr("OK !   "); ent;
    \                     ??CrossCallReturnLabel_402:
    \   00000046   ....               LDI     R16, LOW(`?<Constant "OK !   ">`)
    \   00000048   ....               LDI     R17, (`?<Constant "OK !   ">`) >> 8
    \   0000004A   ....               RCALL   ??rprintfStr
    \   0000004C   ....               RCALL   ??Subroutine17_2
-    472             
-    473          }
+    474             
+    475          }
    \                     ??CrossCallReturnLabel_24:
    \   0000004E   ....               RJMP    ?Subroutine130
 
@@ -3874,23 +3880,23 @@ F:\Dulov\RemoteAMP\main.cpp
    \   0000000C   C000               RJMP    $+2
    \   0000000E   0000               NOP
    \   00000010   9508               RET
-    474          
-    475          
     476          
-    477           
+    477          
+    478          
+    479           
 
    \                                 In  segment CODE, align 2, keep-with-next
-    478          uchar analizCOD ()
+    480          uchar analizCOD ()
    \                     ??analizCOD:
-    479          {
+    481          {
    \   00000000   ....               RCALL   ?PROLOGUE2_L09
-    480           uint i;
-    481            for (i=0; i<MAXEEP-4; i++) 
+    482           uint i;
+    483            for (i=0; i<MAXEEP-4; i++) 
    \   00000002   E080               LDI     R24, 0
    \   00000004   E090               LDI     R25, 0
-    482            {
-    483             // if ((kbuf[i])==cod1)  if ((kbuf[i+1])==cod2) if ((kbuf[i+2])==cod3) return(i);
-    484              if ((k[i])==cod1)  if ((k[i+1])==cod2) if ((k[i+2])==cod3) return(i);   
+    484            {
+    485             // if ((kbuf[i])==cod1)  if ((kbuf[i+1])==cod2) if ((kbuf[i+2])==cod3) return(i);
+    486              if ((k[i])==cod1)  if ((k[i+1])==cod2) if ((k[i+2])==cod3) return(i);   
    \                     ??analizCOD_1:
    \   00000006   018C               MOVW    R17:R16, R25:R24
    \   00000008   0F00               LSL     R16
@@ -3926,19 +3932,19 @@ F:\Dulov\RemoteAMP\main.cpp
    \   0000003A   F411               BRNE    ??analizCOD_2
    \   0000003C   2F08               MOV     R16, R24
    \   0000003E   C005               RJMP    ??analizCOD_3
-    485            }
+    487            }
    \                     ??analizCOD_2:
    \   00000040   9601               ADIW    R25:R24, 1
    \   00000042   3784               CPI     R24, 116
    \   00000044   E000               LDI     R16, 0
    \   00000046   0790               CPC     R25, R16
    \   00000048   F2F0               BRCS    ??analizCOD_1
-    486          
-    487          return(0);
+    488          
+    489          return(0);
    \                     ??analizCOD_3:
    \   0000004A                      REQUIRE ?Subroutine137
    \   0000004A                      ;               // Fall through to label ?Subroutine137
-    488          }
+    490          }
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine137:
@@ -3952,22 +3958,22 @@ F:\Dulov\RemoteAMP\main.cpp
    \   00000004   1704               CP      R16, R20
    \   00000006   0715               CPC     R17, R21
    \   00000008   9508               RET
-    489          
-    490          
     491          
+    492          
+    493          
 
    \                                 In  segment CODE, align 2, keep-with-next
-    492          void resled(void)
+    494          void resled(void)
    \                     ??resled:
-    493          {
-    494            RES(PORTB,0);RES(PORTB,1);RES(PORTB,2);RES(PORTB,3); if (mode==0)RES(PORTB,4);
+    495          {
+    496            RES(PORTB,0);RES(PORTB,1);RES(PORTB,2);RES(PORTB,3); if (mode==0)RES(PORTB,4);
    \   00000000   ....               RCALL   ?Subroutine91
    \                     ??CrossCallReturnLabel_172:
    \   00000002   ....               RCALL   ?Subroutine74
    \                     ??CrossCallReturnLabel_302:
    \   00000004   F409               BRNE    ??resled_1
    \   00000006   98C4               CBI     0x18, 0x04
-    495          }
+    497          }
    \                     ??resled_1:
    \   00000008   9508               RET
    \   0000000A                      REQUIRE _A_PORTB
@@ -3979,14 +3985,14 @@ F:\Dulov\RemoteAMP\main.cpp
    \   00000004   98C2               CBI     0x18, 0x02
    \   00000006   98C3               CBI     0x18, 0x03
    \   00000008   9508               RET
-    496          
-    497          
+    498          
+    499          
 
    \                                 In  segment CODE, align 2, keep-with-next
-    498          void resOUT(void)
+    500          void resOUT(void)
    \                     ??resOUT:
-    499          {
-    500            RES(PORTC,1);RES(PORTC,2);RES(PORTC,3);RES(PORTC,4); if (mode==0)RES(PORTC,5);
+    501          {
+    502            RES(PORTC,1);RES(PORTC,2);RES(PORTC,3);RES(PORTC,4); if (mode==0)RES(PORTC,5);
    \   00000000   98A9               CBI     0x15, 0x01
    \   00000002   98AA               CBI     0x15, 0x02
    \   00000004   98AB               CBI     0x15, 0x03
@@ -3995,69 +4001,69 @@ F:\Dulov\RemoteAMP\main.cpp
    \                     ??CrossCallReturnLabel_303:
    \   0000000A   F409               BRNE    ??resOUT_1
    \   0000000C   98AD               CBI     0x15, 0x05
-    501            p2;//что бы не было перекрытия источников
+    503            p2;//что бы не было перекрытия источников
    \                     ??resOUT_1:
    \   0000000E   ....               RJMP    ?Subroutine83
    \   00000010                      REQUIRE _A_PORTC
-    502          }
-    503          
-    504          
-    505           
+    504          }
+    505          
+    506          
+    507           
 
    \                                 In  segment CODE, align 2, keep-with-next
-    506          void led_all(bool a)
+    508          void led_all(bool a)
    \                     ??led_all:
-    507          {
-    508           if (a)
+    509          {
+    510           if (a)
    \   00000000   2300               TST     R16
    \   00000002   F039               BREQ    ??led_all_1
-    509           {
-    510             SET(PORTB,0);SET(PORTB,1);SET(PORTB,2);SET(PORTB,3);SET(PORTB,4);SET(PORTB,5);
+    511           {
+    512             SET(PORTB,0);SET(PORTB,1);SET(PORTB,2);SET(PORTB,3);SET(PORTB,4);SET(PORTB,5);
    \   00000004   9AC0               SBI     0x18, 0x00
    \   00000006   9AC1               SBI     0x18, 0x01
    \   00000008   9AC2               SBI     0x18, 0x02
    \   0000000A   9AC3               SBI     0x18, 0x03
    \   0000000C   9AC4               SBI     0x18, 0x04
    \   0000000E   9AC5               SBI     0x18, 0x05
-    511             /*AC_ON; */SET(PORTD,7);
+    513             /*AC_ON; */SET(PORTD,7);
    \   00000010   ....               RJMP    ?Subroutine132
-    512           }
-    513           else
-    514            {
-    515             RES(PORTB,0);RES(PORTB,1);RES(PORTB,2);RES(PORTB,3);RES(PORTB,4);RES(PORTB,5);
+    514           }
+    515           else
+    516            {
+    517             RES(PORTB,0);RES(PORTB,1);RES(PORTB,2);RES(PORTB,3);RES(PORTB,4);RES(PORTB,5);
    \                     ??led_all_1:
    \   00000012   ....               RCALL   ?Subroutine91
    \                     ??CrossCallReturnLabel_173:
    \   00000014   98C4               CBI     0x18, 0x04
    \   00000016   98C5               CBI     0x18, 0x05
-    516             AC_OFF; RES(PORTD,7);
+    518             AC_OFF; RES(PORTD,7);
    \   00000018   9896               CBI     0x12, 0x06
    \   0000001A   9897               CBI     0x12, 0x07
-    517           } 
-    518          }
+    519           } 
+    520          }
    \   0000001C   9508               RET
    \   0000001E                      REQUIRE _A_PORTB
    \   0000001E                      REQUIRE _A_PORTD
-    519          
-    520          
+    521          
+    522          
 
    \                                 In  segment CODE, align 2, keep-with-next
-    521          void gro(uchar a)
+    523          void gro(uchar a)
    \                     ??gro:
-    522          {
+    524          {
    \   00000000   2F10               MOV     R17, R16
-    523            if (modegro!=1) {
+    525            if (modegro!=1) {
    \   00000002   ....               RCALL   ?Subroutine68
    \                     ??CrossCallReturnLabel_319:
    \   00000004   F051               BREQ    ??gro_1
-    524            if (a==1) {SET(PORTC,0); delay_us(100);RES(PORTC,0);}
+    526            if (a==1) {SET(PORTC,0); delay_us(100);RES(PORTC,0);}
    \   00000006   3011               CPI     R17, 1
    \   00000008   F419               BRNE    ??gro_2
    \   0000000A   9AA8               SBI     0x15, 0x00
    \   0000000C   ....               RCALL   ?Subroutine92
    \                     ??CrossCallReturnLabel_174:
    \   0000000E   C00E               RJMP    ??gro_3
-    525            if (a==2) {SET(PORTD,3); delay_us(100);RES(PORTD,3);}  
+    527            if (a==2) {SET(PORTD,3); delay_us(100);RES(PORTD,3);}  
    \                     ??gro_2:
    \   00000010   3012               CPI     R17, 2
    \   00000012   F511               BRNE    ??gro_4
@@ -4065,9 +4071,9 @@ F:\Dulov\RemoteAMP\main.cpp
    \   00000016   ....               RCALL   ?Subroutine92
    \                     ??CrossCallReturnLabel_175:
    \   00000018   C019               RJMP    ??gro_5
-    526                            }
-    527            else  { 
-    528              if (a==1) { if (gro1)  { gro1=0; RES(PORTC,0);  } else { gro1=1; SET(PORTC,0);  } }
+    528                            }
+    529            else  { 
+    530              if (a==1) { if (gro1)  { gro1=0; RES(PORTC,0);  } else { gro1=1; SET(PORTC,0);  } }
    \                     ??gro_1:
    \   0000001A   3011               CPI     R17, 1
    \   0000001C   F471               BRNE    ??gro_6
@@ -4084,7 +4090,7 @@ F:\Dulov\RemoteAMP\main.cpp
    \   00000032   9300....           STS     ??gro1, R16
    \   00000036   9AA8               SBI     0x15, 0x00
    \   00000038   9508               RET
-    529              if (a==2) { if (gro2)  { gro2=0; RES(PORTD,3);  } else { gro2=1; SET(PORTD,3);  } }
+    531              if (a==2) { if (gro2)  { gro2=0; RES(PORTD,3);  } else { gro2=1; SET(PORTD,3);  } }
    \                     ??gro_6:
    \   0000003A   3012               CPI     R17, 2
    \   0000003C   F469               BRNE    ??gro_4
@@ -4100,8 +4106,8 @@ F:\Dulov\RemoteAMP\main.cpp
    \   00000050   E001               LDI     R16, 1
    \   00000052   9300....           STS     ??gro2, R16
    \   00000056   9A93               SBI     0x12, 0x03
-    530                  }
-    531          }
+    532                  }
+    533          }
    \                     ??gro_4:
    \   00000058   9508               RET
    \   0000005A                      REQUIRE _A_PORTC
@@ -4114,120 +4120,120 @@ F:\Dulov\RemoteAMP\main.cpp
    \   00000004   F7F1               BRNE    $-2
    \   00000006   0000               NOP
    \   00000008   9508               RET
-    532          
-    533          
     534          
     535          
     536          
     537          
-    538          //инициализация портов
+    538          
+    539          
+    540          //инициализация портов
 
    \                                 In  segment CODE, align 2, keep-with-next
-    539          void iniPORTS()
+    541          void iniPORTS()
    \                     ??iniPORTS:
-    540          {
-    541            
-    542           
-    543            //DDRx=0 - ВХОДЫ   PORTx = 0xFF; //подключаем нагрузочные резисторы
-    544           //---------------------------------------------------------------
-    545           //DDRx=0xFF - ВЫХОДЫ    PORTx = 0; //устанавливаем 0 на выходе
-    546           
-    547            
-    548           DDRD = b(11011000);// 0xD8;  //PD3 4 6 7 ВЫХОДЫ  b11011000
+    542          {
+    543            
+    544           
+    545            //DDRx=0 - ВХОДЫ   PORTx = 0xFF; //подключаем нагрузочные резисторы
+    546           //---------------------------------------------------------------
+    547           //DDRx=0xFF - ВЫХОДЫ    PORTx = 0; //устанавливаем 0 на выходе
+    548           
+    549            
+    550           DDRD = b(11011000);// 0xD8;  //PD3 4 6 7 ВЫХОДЫ  b11011000
    \   00000000   ED08               LDI     R16, 216
    \   00000002   BB01               OUT     0x11, R16
-    549           PORTD = (uchar)~(b(11011000)); 
+    551           PORTD = (uchar)~(b(11011000)); 
    \   00000004   E207               LDI     R16, 39
    \   00000006   BB02               OUT     0x12, R16
-    550          
-    551           
-    552           DDRB = 0x3F; //порт B - выход    6,7-кварц
+    552          
+    553           
+    554           DDRB = 0x3F; //порт B - выход    6,7-кварц
    \   00000008   E30F               LDI     R16, 63
    \   0000000A   BB07               OUT     0x17, R16
-    553           PORTB = 0x00; 
+    555           PORTB = 0x00; 
    \   0000000C   E000               LDI     R16, 0
    \   0000000E   BB08               OUT     0x18, R16
-    554            
-    555            
-    556            DDRC =0xFF; 
+    556            
+    557            
+    558            DDRC =0xFF; 
    \   00000010   EF0F               LDI     R16, 255
    \   00000012   BB04               OUT     0x14, R16
-    557            PORTC = 0x00; //устанавливаем 0 на выходе
+    559            PORTC = 0x00; //устанавливаем 0 на выходе
    \   00000014   E000               LDI     R16, 0
    \   00000016   BB05               OUT     0x15, R16
-    558            
-    559           
-    560          // Timer(s)/Counter(s) Interrupt(s) initialization
-    561          TIMSK=0x00;  
+    560            
+    561           
+    562          // Timer(s)/Counter(s) Interrupt(s) initialization
+    563          TIMSK=0x00;  
    \   00000018   BF09               OUT     0x39, R16
-    562          TCNT0=0x00;
+    564          TCNT0=0x00;
    \   0000001A   BF02               OUT     0x32, R16
-    563          OCR1A=0x00;
+    565          OCR1A=0x00;
    \   0000001C   E010               LDI     R17, 0
    \   0000001E   BD0B               OUT     0x2B, R16
    \   00000020   BD0A               OUT     0x2A, R16
-    564          OCR1B=0x00;
+    566          OCR1B=0x00;
    \   00000022   BD09               OUT     0x29, R16
    \   00000024   BD08               OUT     0x28, R16
-    565          TCCR1A=0x00;
+    567          TCCR1A=0x00;
    \   00000026   BD0F               OUT     0x2F, R16
-    566            SET(TIMSK,TOIE1);//разреш прерывание при переполнении
+    568            SET(TIMSK,TOIE1);//разреш прерывание при переполнении
    \   00000028   B709               IN      R16, 0x39
    \   0000002A   6004               ORI     R16, 0x04
    \   0000002C   BF09               OUT     0x39, R16
-    567             TCCR1B=0; TIFR = 0xFF;  
+    569             TCCR1B=0; TIFR = 0xFF;  
    \   0000002E   BD1E               OUT     0x2E, R17
    \   00000030   EF0F               LDI     R16, 255
    \   00000032   BF08               OUT     0x38, R16
-    568          TCNT1H=0x00;
+    570          TCNT1H=0x00;
    \   00000034   BD1D               OUT     0x2D, R17
-    569          TCNT1L=0x00;
+    571          TCNT1L=0x00;
    \   00000036   BD1C               OUT     0x2C, R17
-    570          ICR1H=0x00;
+    572          ICR1H=0x00;
    \   00000038   BD17               OUT     0x27, R17
-    571          ICR1L=0x00;
+    573          ICR1L=0x00;
    \   0000003A   BD16               OUT     0x26, R17
-    572          OCR1AH=0;
+    574          OCR1AH=0;
    \   0000003C   BD1B               OUT     0x2B, R17
-    573          OCR1AL=0x00;
+    575          OCR1AL=0x00;
    \   0000003E   BD1A               OUT     0x2A, R17
-    574          OCR1BH=0x00;
+    576          OCR1BH=0x00;
    \   00000040   BD19               OUT     0x29, R17
-    575          OCR1BL=0x00;
+    577          OCR1BL=0x00;
    \   00000042   BD18               OUT     0x28, R17
-    576          
-    577          
-    578          // External Interrupt(s) initialization
-    579          // INT0: Off
-    580          // INT1: Off
-    581          // Interrupt on any change on pins PCINT0-7: Off
-    582          //GIMSK=0x00;
-    583          //MCUCR=0x00;
-    584          
-    585          SET(MCUCR,0); RES(MCUCR,1);//ПРЕРЫВАНИЕ ПО ИЗМЕНЕНИЮ УРОВНЯ INT0
+    578          
+    579          
+    580          // External Interrupt(s) initialization
+    581          // INT0: Off
+    582          // INT1: Off
+    583          // Interrupt on any change on pins PCINT0-7: Off
+    584          //GIMSK=0x00;
+    585          //MCUCR=0x00;
+    586          
+    587          SET(MCUCR,0); RES(MCUCR,1);//ПРЕРЫВАНИЕ ПО ИЗМЕНЕНИЮ УРОВНЯ INT0
    \   00000044   B705               IN      R16, 0x35
    \   00000046   6001               ORI     R16, 0x01
    \   00000048   BF05               OUT     0x35, R16
    \   0000004A   B705               IN      R16, 0x35
    \   0000004C   7F0D               ANDI    R16, 0xFD
    \   0000004E   BF05               OUT     0x35, R16
-    586          SET(GICR,6);//РАЗРЕШАЕМ ПРЕРЫВАНИЕ INT0
+    588          SET(GICR,6);//РАЗРЕШАЕМ ПРЕРЫВАНИЕ INT0
    \   00000050   B70B               IN      R16, 0x3B
    \   00000052   6400               ORI     R16, 0x40
    \   00000054   BF0B               OUT     0x3B, R16
-    587          
-    588          
     589          
     590          
-    591          // Analog Comparator initialization
-    592          // Analog Comparator: Off
-    593          // Analog Comparator Input Capture by Timer/Counter 1: Off
-    594          ACSR=0x80;
+    591          
+    592          
+    593          // Analog Comparator initialization
+    594          // Analog Comparator: Off
+    595          // Analog Comparator Input Capture by Timer/Counter 1: Off
+    596          ACSR=0x80;
    \   00000056   E800               LDI     R16, 128
    \   00000058   B908               OUT     0x08, R16
-    595          //DIDR=0x00;
-    596          
-    597          } 
+    597          //DIDR=0x00;
+    598          
+    599          } 
    \   0000005A   9508               RET
    \   0000005C                      REQUIRE _A_DDRD
    \   0000005C                      REQUIRE _A_PORTD
@@ -4247,20 +4253,20 @@ F:\Dulov\RemoteAMP\main.cpp
    \   0000005C                      REQUIRE _A_MCUCR
    \   0000005C                      REQUIRE _A_GICR
    \   0000005C                      REQUIRE _A_ACSR
-    598          //************************************************************************
-    599           
-    600          
+    600          //************************************************************************
+    601           
+    602          
 
    \                                 In  segment CODE, align 2, keep-with-next
-    601          void diag()
+    603          void diag()
    \                     ??diag:
-    602          {
+    604          {
    \   00000000   ....               RCALL   ?PROLOGUE2_L09
-    603           
-    604            uchar sym = USART_GetChar(); //читаем буфер
+    605           
+    606            uchar sym = USART_GetChar(); //читаем буфер
    \   00000002   ....               RCALL   ??USART_GetChar
    \   00000004   2F90               MOV     R25, R16
-    605            if (sym=='0') { pr=1;  rprintfStr("-------------- vkluchen kratkiy viviod -------------");  ent;   }
+    607            if (sym=='0') { pr=1;  rprintfStr("-------------- vkluchen kratkiy viviod -------------");  ent;   }
    \   00000006   3300               CPI     R16, 48
    \   00000008   F449               BRNE    ??diag_1
    \   0000000A   E001               LDI     R16, 1
@@ -4273,22 +4279,22 @@ F:\Dulov\RemoteAMP\main.cpp
    \   00000018   ....               RCALL   ?Subroutine109
    \                     ??CrossCallReturnLabel_231:
    \   0000001A   C01B               RJMP    ??diag_2
-    606          
-    607            if (sym=='e') {
+    608          
+    609            if (sym=='e') {
    \                     ??diag_1:
    \   0000001C   3605               CPI     R16, 101
    \   0000001E   F4B9               BRNE    ??diag_3
-    608              ent;rprintfStr(" ==  EEPROM read == ");ent;
+    610              ent;rprintfStr(" ==  EEPROM read == ");ent;
    \   00000020   ....               RCALL   ??Subroutine17_2
    \                     ??CrossCallReturnLabel_25:
    \   00000022   ....               LDI     R16, LOW(`?<Constant " ==  EEPROM read == ">`)
    \   00000024   ....               LDI     R17, (`?<Constant " ==  EEPROM read == ">`) >> 8
    \   00000026   ....               RCALL   ??rprintfStr
    \   00000028   ....               RCALL   ??Subroutine17_2
-    609              for (uchar i=0; i<MAXEEP-1; i++) { 
+    611              for (uchar i=0; i<MAXEEP-1; i++) { 
    \                     ??CrossCallReturnLabel_26:
    \   0000002A   E080               LDI     R24, 0
-    610                rprintfFloat(4, i );   rprintfStr(" > ");
+    612                rprintfFloat(4, i );   rprintfStr(" > ");
    \                     ??diag_4:
    \   0000002C   ....               RCALL   ?Subroutine21
    \                     ??CrossCallReturnLabel_417:
@@ -4297,9 +4303,9 @@ F:\Dulov\RemoteAMP\main.cpp
    \   00000032   ....               LDI     R16, LOW(`?<Constant " > ">`)
    \   00000034   ....               LDI     R17, (`?<Constant " > ">`) >> 8
    \   00000036   ....               RCALL   ??rprintfStr
-    611                 rprintfFloat(9, k[i] ); ent;
+    613                 rprintfFloat(9, k[i] ); ent;
    \   00000038   ....               RCALL   ?Subroutine46
-    612                                                }
+    614                                                }
    \                     ??CrossCallReturnLabel_73:
    \   0000003A   ....               LDI     R20, LOW(k)
    \   0000003C   ....               LDI     R21, (k) >> 8
@@ -4312,29 +4318,29 @@ F:\Dulov\RemoteAMP\main.cpp
    \   00000048   3787               CPI     R24, 119
    \   0000004A   F418               BRCC    ??diag_2
    \   0000004C   CFEF               RJMP    ??diag_4
-    613                          }
-    614            
-    615            if (sym) {             //если что-то приняли, то 
+    615                          }
+    616            
+    617            if (sym) {             //если что-то приняли, то 
    \                     ??diag_3:
    \   0000004E   2300               TST     R16
    \   00000050   F0A9               BREQ    ??CrossCallReturnLabel_27
-    616                rprintfStr(" get: ");
+    618                rprintfStr(" get: ");
    \                     ??diag_2:
    \   00000052   ....               LDI     R16, LOW(`?<Constant " get: ">`)
    \   00000054   ....               LDI     R17, (`?<Constant " get: ">`) >> 8
    \   00000056   ....               RCALL   ??rprintfStr
-    617                USART_SendChar(sym); 
+    619                USART_SendChar(sym); 
    \   00000058   2F09               MOV     R16, R25
    \   0000005A   ....               RCALL   ??USART_SendChar
-    618          
-    619                if (mode==1) rprintfStr("  regim  no source5 >");  
+    620          
+    621                if (mode==1) rprintfStr("  regim  no source5 >");  
    \   0000005C   ....               RCALL   ?Subroutine75
    \                     ??CrossCallReturnLabel_323:
    \   0000005E   F419               BRNE    ??diag_5
    \   00000060   ....               LDI     R16, LOW(`?<Constant "  regim  no source5 >">`)
    \   00000062   ....               LDI     R17, (`?<Constant "  regim  no source5 >">`) >> 8
    \   00000064   ....               RCALL   ??rprintfStr
-    620          if (write==1) rprintfStr("  regim  PROGRAMMING !!  READY >");  
+    622          if (write==1) rprintfStr("  regim  PROGRAMMING !!  READY >");  
    \                     ??diag_5:
    \   00000066   9100....           LDS     R16, `write`
    \   0000006A   3001               CPI     R16, 1
@@ -4342,25 +4348,25 @@ F:\Dulov\RemoteAMP\main.cpp
    \   0000006E   ....               LDI     R16, LOW(`?<Constant "  regim  PROGRAMMING ...">`)
    \   00000070   ....               LDI     R17, (`?<Constant "  regim  PROGRAMMING ...">`) >> 8
    \   00000072   C002               RJMP    ??diag_7
-    621          else rprintfStr("  regim  normal  READY >");  
+    623          else rprintfStr("  regim  normal  READY >");  
    \                     ??diag_6:
    \   00000074   ....               LDI     R16, LOW(`?<Constant "  regim  normal  READY >">`)
    \   00000076   ....               LDI     R17, (`?<Constant "  regim  normal  READY >">`) >> 8
    \                     ??diag_7:
    \   00000078   ....               RCALL   ??rprintfStr
-    622          
-    623          
-    624             
+    624          
     625          
-    626                 ent;
+    626             
+    627          
+    628                 ent;
    \   0000007A   ....               RCALL   ??Subroutine17_2
-    627               
-    628             
-    629                     }
-    630          }
+    629               
+    630             
+    631                     }
+    632          }
    \                     ??CrossCallReturnLabel_27:
    \   0000007C   ....               RJMP    ?Subroutine137
-    631          
+    633          
 F:\Dulov\RemoteAMP\usart.c
       1          #include "main.h"
       2          
@@ -5065,7 +5071,7 @@ F:\Dulov\RemoteAMP\usart.c
         1      2   -> iniPORTS()
         1      2   -> led_all(bool)
         1      2   -> normal(unsigned char)
-        1      2   -> programming()
+        1      2   -> programming(bool)
         1      2   -> resOUT()
         1      2   -> rprintfFloat(char, double)
         1      2   -> rprintfStr(char *)
@@ -5088,7 +5094,7 @@ F:\Dulov\RemoteAMP\usart.c
         0      2   -> select()
         0      2   -> tilf()
         0      2   -> volume()
-      1      2   programming()
+      1      2   programming(bool)
         1      2   -> getadr()
         1      2   -> led_all(bool)
         1      2   -> writeCOD()
@@ -5390,7 +5396,7 @@ F:\Dulov\RemoteAMP\usart.c
        1  lastsel
       30  led_all(bool)
      200  len
-     462  main()
+     464  main()
       58  migINI(unsigned char, unsigned char, bool)
       82  migWORK()
        2  minimallen
@@ -5404,7 +5410,7 @@ F:\Dulov\RemoteAMP\usart.c
        1  perepoln
        1  port
        1  pr
-      74  programming()
+      80  programming(bool)
       14  pult()
        1  pultadr
        1  raz
@@ -5438,7 +5444,7 @@ F:\Dulov\RemoteAMP\usart.c
 
  
     28 bytes in segment ABSOLUTE
- 4 626 bytes in segment CODE
+ 4 634 bytes in segment CODE
    242 bytes in segment EEPROM_N
     12 bytes in segment INITTAB
      6 bytes in segment INTVEC
@@ -5446,7 +5452,7 @@ F:\Dulov\RemoteAMP\usart.c
    377 bytes in segment NEAR_ID
    482 bytes in segment NEAR_Z
  
- 5 003 bytes of CODE  memory (+ 18 bytes shared)
+ 5 011 bytes of CODE  memory (+ 18 bytes shared)
    859 bytes of DATA  memory (+ 28 bytes shared)
    242 bytes of XDATA memory
 

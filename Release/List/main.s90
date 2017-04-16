@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR C/C++ Compiler V6.40.1.741 for Atmel AVR           16/Apr/2017  08:31:50
+// IAR C/C++ Compiler V6.40.1.741 for Atmel AVR           16/Apr/2017  08:35:21
 // Copyright 1996-2014 IAR Systems AB.
 //
 //    Source file  =  F:\Dulov\RemoteAMP\main.cpp
@@ -5840,7 +5840,7 @@ Calibr:
 //   47 void normal(uchar rez);
 //   48 void writeCOD(void);
 //   49 uchar analizCOD(void);
-//   50 void programming();
+//   50 void programming(bool rez);
 //   51 uchar getadr(void);
 //   52 #define acon 20000;//время включения АС при подаче питания
 
@@ -6329,10 +6329,11 @@ main:
 //  166                   }//------------------------------------- 
 //  167    else 
 //  168    {
-//  169     if (rez) programming();
+//  169     if (rez) programming(rez);
 ??main_16:
         TST     R24
         BREQ    ??main_17
+        MOV     R16, R24
         RCALL   ??programming
 //  170    }
 //  171    if (u) diag();  
@@ -11032,7 +11033,7 @@ main:
 //  427 
 
         RSEG CODE:CODE:NOROOT(1)
-//  428 void programming ()
+//  428 void programming (bool rez)
 ??programming:
           CFI Block cfiBlock610 Using cfiCommon0
           CFI Function ??programming
@@ -11080,6 +11081,7 @@ main:
         ST      -Y, R24
           CFI R24 Frame(CFA_Y, -1)
           CFI CFA_Y Y+1
+        MOV     R24, R16
 //  430    static bool get=0;
 //  431    if (tekfunc==255) return;
         RCALL   ?Subroutine120
@@ -11094,68 +11096,72 @@ main:
         LDI     R16, 1
         STS     ??get, R16
 //  433   
-//  434  
-//  435      writeCOD();
+//  434    if (rez)
 ??programming_1:
+        TST     R24
+        BREQ    ??CrossCallReturnLabel_400
+//  435    {
+//  436      writeCOD();
         RCALL   ??writeCOD
-//  436      tekfunc++;  get=0;
+//  437      tekfunc++;  get=0;
         RCALL   ?Subroutine11
-//  437     if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
+//  438    
+//  439      if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
 ??CrossCallReturnLabel_8:
         BRNE    ??programming_2
         LDI     R24, 10
-//  438                            {led_all(1); p4; led_all(0);p4; }
+//  440                            {led_all(1); p4; led_all(0);p4; }
 ??programming_3:
         RCALL   ?Subroutine0
 ??CrossCallReturnLabel_0:
         BRNE    ??programming_3
-//  439                       }
-//  440      if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
+//  441                       }
+//  442      if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
 ??programming_2:
         RCALL   ?Subroutine120
 ??CrossCallReturnLabel_261:
         CPI     R16, 24
         BRCS    ??CrossCallReturnLabel_400
         RCALL   ?Subroutine6
-//  441 
-//  442   
-//  443    
-//  444    
-//  445    if (keyONsm) { 
+//  443 
+//  444    }
+//  445    
+//  446    
+//  447    if (keyONsm) { 
 ??CrossCallReturnLabel_400:
         SBIC    0x10, 0x05
         RJMP    ??CrossCallReturnLabel_399
-//  446                 led_all(1); delay_s(1); 
+//  448                 led_all(1); delay_s(1); 
         RCALL   ??Subroutine144_0
 ??CrossCallReturnLabel_396:
         RCALL   ?Subroutine78
-//  447                 led_all(0); 
+//  449                 led_all(0); 
 ??CrossCallReturnLabel_129:
         RCALL   ?Subroutine16
-//  448                 tekfunc++;  get=0;
+//  450                 tekfunc++;  get=0;
 ??CrossCallReturnLabel_17:
         RCALL   ?Subroutine11
-//  449                    if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
+//  451                    if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
 ??CrossCallReturnLabel_9:
         BRNE    ??programming_4
         LDI     R24, 10
-//  450                            {led_all(1); p4; led_all(0);p4; }
+//  452                            {led_all(1); p4; led_all(0);p4; }
 ??programming_5:
         RCALL   ?Subroutine0
 ??CrossCallReturnLabel_1:
         BRNE    ??programming_5
-//  451                       }
-//  452                 if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
+//  453                       }
+//  454                 if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
 ??programming_4:
         RCALL   ?Subroutine120
 ??CrossCallReturnLabel_262:
         CPI     R16, 24
         BRCS    ??CrossCallReturnLabel_399
         RCALL   ?Subroutine6
-//  453                
-//  454                  }
-//  455      
-//  456 }
+//  455                
+//  456                  }
+//  457      
+//  458 }
 ??CrossCallReturnLabel_399:
         RJMP    ?Subroutine130
           CFI EndBlock cfiBlock610
@@ -11453,15 +11459,15 @@ main:
         REQUIRE `?<Segment init: NEAR_Z>`
 ??get:
         DS8 1
-//  457 //--------------------------------------------------------------------
-//  458 
+//  459 //--------------------------------------------------------------------
+//  460 
 
         RSEG CODE:CODE:NOROOT(1)
-//  459 void writeCOD()
+//  461 void writeCOD()
 ??writeCOD:
           CFI Block cfiBlock645 Using cfiCommon0
           CFI Function ??writeCOD
-//  460 {
+//  462 {
         FUNCALL ??writeCOD, ??rprintfStr
         LOCFRAME CSTACK, 1, STACK
         LOCFRAME RSTACK, 2, STACK
@@ -11489,11 +11495,11 @@ main:
         ST      -Y, R24
           CFI R24 Frame(CFA_Y, -1)
           CFI CFA_Y Y+1
-//  461   rprintfStr("write ..");
+//  463   rprintfStr("write ..");
         LDI     R16, LOW(`?<Constant "write ..">`)
         LDI     R17, (`?<Constant "write ..">`) >> 8
         RCALL   ??rprintfStr
-//  462   led_all(1);delay_s(3);
+//  464   led_all(1);delay_s(3);
         RCALL   ??Subroutine144_0
 ??CrossCallReturnLabel_395:
         LDI     R16, 255
@@ -11505,14 +11511,14 @@ main:
         BRNE    $-6
         RJMP    $+2
         NOP
-//  463   uchar adr=getadr();
+//  465   uchar adr=getadr();
         RCALL   ??getadr
         MOV     R24, R16
-//  464   led_all(0);
+//  466   led_all(0);
         RCALL   ?Subroutine16
-//  465   
-//  466        
-//  467        k[adr]=cod1; delay_ms(30);
+//  467   
+//  468        
+//  469        k[adr]=cod1; delay_ms(30);
 ??CrossCallReturnLabel_16:
         RCALL   ?Subroutine46
 ??CrossCallReturnLabel_72:
@@ -11525,7 +11531,7 @@ main:
         RCALL   ?Subroutine122
 ??CrossCallReturnLabel_329:
         RCALL   ?Subroutine90
-//  468        k[adr+1]=cod2; delay_ms(30);
+//  470        k[adr+1]=cod2; delay_ms(30);
 ??CrossCallReturnLabel_401:
         RCALL   ??Subroutine146_0
 ??CrossCallReturnLabel_409:
@@ -11535,22 +11541,22 @@ main:
         SUBI    R20, 254
         SBCI    R21, 255
         RCALL   ??Subroutine145_0
-//  469        k[adr+2]=cod3; delay_ms(30);
+//  471        k[adr+2]=cod3; delay_ms(30);
 ??CrossCallReturnLabel_403:
         RCALL   ?Subroutine35
 ??CrossCallReturnLabel_335:
         SUBI    R18, 252
         SBCI    R19, 255
         RCALL   ?Subroutine90
-//  470        
-//  471        rprintfStr("OK !   "); ent;
+//  472        
+//  473        rprintfStr("OK !   "); ent;
 ??CrossCallReturnLabel_402:
         LDI     R16, LOW(`?<Constant "OK !   ">`)
         LDI     R17, (`?<Constant "OK !   ">`) >> 8
         RCALL   ??rprintfStr
         RCALL   ??Subroutine17_2
-//  472    
-//  473 }
+//  474    
+//  475 }
 ??CrossCallReturnLabel_24:
         RJMP    ?Subroutine130
           CFI EndBlock cfiBlock645
@@ -12125,28 +12131,28 @@ main:
           CFI EndBlock cfiCond680
           CFI EndBlock cfiCond681
           CFI EndBlock cfiPicker682
-//  474 
-//  475 
 //  476 
-//  477  
+//  477 
+//  478 
+//  479  
 
         RSEG CODE:CODE:NOROOT(1)
-//  478 uchar analizCOD ()
+//  480 uchar analizCOD ()
 ??analizCOD:
           CFI Block cfiBlock683 Using cfiCommon0
           CFI Function ??analizCOD
-//  479 {
+//  481 {
         RCALL   ?PROLOGUE2_L09
           CFI R25 Frame(CFA_Y, -1)
           CFI R24 Frame(CFA_Y, -2)
           CFI CFA_Y Y+2
-//  480  uint i;
-//  481   for (i=0; i<MAXEEP-4; i++) 
+//  482  uint i;
+//  483   for (i=0; i<MAXEEP-4; i++) 
         LDI     R24, 0
         LDI     R25, 0
-//  482   {
-//  483    // if ((kbuf[i])==cod1)  if ((kbuf[i+1])==cod2) if ((kbuf[i+2])==cod3) return(i);
-//  484     if ((k[i])==cod1)  if ((k[i+1])==cod2) if ((k[i+2])==cod3) return(i);   
+//  484   {
+//  485    // if ((kbuf[i])==cod1)  if ((kbuf[i+1])==cod2) if ((kbuf[i+2])==cod3) return(i);
+//  486     if ((k[i])==cod1)  if ((k[i+1])==cod2) if ((k[i+2])==cod3) return(i);   
 ??analizCOD_1:
         MOVW    R17:R16, R25:R24
         LSL     R16
@@ -12182,7 +12188,7 @@ main:
         BRNE    ??analizCOD_2
         MOV     R16, R24
         RJMP    ??analizCOD_3
-//  485   }
+//  487   }
 ??analizCOD_2:
         ADIW    R25:R24, 1
         CPI     R24, 116
@@ -12190,12 +12196,12 @@ main:
         CPC     R25, R16
         BRCS    ??analizCOD_1
           CFI EndBlock cfiBlock683
-//  486 
-//  487 return(0);
+//  488 
+//  489 return(0);
 ??analizCOD_3:
         REQUIRE ?Subroutine137
         ;               // Fall through to label ?Subroutine137
-//  488 }
+//  490 }
 
         RSEG CODE:CODE:NOROOT(1)
 ?Subroutine137:
@@ -12297,24 +12303,24 @@ main:
           CFI EndBlock cfiCond689
           CFI EndBlock cfiCond690
           CFI EndBlock cfiPicker691
-//  489 
-//  490 
 //  491 
+//  492 
+//  493 
 
         RSEG CODE:CODE:NOROOT(1)
-//  492 void resled(void)
+//  494 void resled(void)
 ??resled:
           CFI Block cfiBlock692 Using cfiCommon0
           CFI Function ??resled
-//  493 {
-//  494   RES(PORTB,0);RES(PORTB,1);RES(PORTB,2);RES(PORTB,3); if (mode==0)RES(PORTB,4);
+//  495 {
+//  496   RES(PORTB,0);RES(PORTB,1);RES(PORTB,2);RES(PORTB,3); if (mode==0)RES(PORTB,4);
         RCALL   ?Subroutine91
 ??CrossCallReturnLabel_172:
         RCALL   ?Subroutine74
 ??CrossCallReturnLabel_302:
         BRNE    ??resled_1
         CBI     0x18, 0x04
-//  495 }
+//  497 }
 ??resled_1:
         RET
           CFI EndBlock cfiBlock692
@@ -12590,16 +12596,16 @@ main:
           CFI EndBlock cfiCond725
           CFI EndBlock cfiCond726
           CFI EndBlock cfiPicker727
-//  496 
-//  497 
+//  498 
+//  499 
 
         RSEG CODE:CODE:NOROOT(1)
-//  498 void resOUT(void)
+//  500 void resOUT(void)
 ??resOUT:
           CFI Block cfiBlock728 Using cfiCommon0
           CFI Function ??resOUT
-//  499 {
-//  500   RES(PORTC,1);RES(PORTC,2);RES(PORTC,3);RES(PORTC,4); if (mode==0)RES(PORTC,5);
+//  501 {
+//  502   RES(PORTC,1);RES(PORTC,2);RES(PORTC,3);RES(PORTC,4); if (mode==0)RES(PORTC,5);
         CBI     0x15, 0x01
         CBI     0x15, 0x02
         CBI     0x15, 0x03
@@ -12608,49 +12614,49 @@ main:
 ??CrossCallReturnLabel_303:
         BRNE    ??resOUT_1
         CBI     0x15, 0x05
-//  501   p2;//что бы не было перекрытия источников
+//  503   p2;//что бы не было перекрытия источников
 ??resOUT_1:
         RJMP    ?Subroutine83
           CFI EndBlock cfiBlock728
         REQUIRE _A_PORTC
-//  502 }
-//  503 
-//  504 
-//  505  
+//  504 }
+//  505 
+//  506 
+//  507  
 
         RSEG CODE:CODE:NOROOT(1)
-//  506 void led_all(bool a)
+//  508 void led_all(bool a)
 ??led_all:
           CFI Block cfiBlock729 Using cfiCommon0
           CFI Function ??led_all
-//  507 {
-//  508  if (a)
+//  509 {
+//  510  if (a)
         TST     R16
         BREQ    ??led_all_1
-//  509  {
-//  510    SET(PORTB,0);SET(PORTB,1);SET(PORTB,2);SET(PORTB,3);SET(PORTB,4);SET(PORTB,5);
+//  511  {
+//  512    SET(PORTB,0);SET(PORTB,1);SET(PORTB,2);SET(PORTB,3);SET(PORTB,4);SET(PORTB,5);
         SBI     0x18, 0x00
         SBI     0x18, 0x01
         SBI     0x18, 0x02
         SBI     0x18, 0x03
         SBI     0x18, 0x04
         SBI     0x18, 0x05
-//  511    /*AC_ON; */SET(PORTD,7);
+//  513    /*AC_ON; */SET(PORTD,7);
         RJMP    ?Subroutine132
-//  512  }
-//  513  else
-//  514   {
-//  515    RES(PORTB,0);RES(PORTB,1);RES(PORTB,2);RES(PORTB,3);RES(PORTB,4);RES(PORTB,5);
+//  514  }
+//  515  else
+//  516   {
+//  517    RES(PORTB,0);RES(PORTB,1);RES(PORTB,2);RES(PORTB,3);RES(PORTB,4);RES(PORTB,5);
 ??led_all_1:
         RCALL   ?Subroutine91
 ??CrossCallReturnLabel_173:
         CBI     0x18, 0x04
         CBI     0x18, 0x05
-//  516    AC_OFF; RES(PORTD,7);
+//  518    AC_OFF; RES(PORTD,7);
         CBI     0x12, 0x06
         CBI     0x12, 0x07
-//  517  } 
-//  518 }
+//  519  } 
+//  520 }
         RET
           CFI EndBlock cfiBlock729
         REQUIRE _A_PORTB
@@ -12677,28 +12683,28 @@ main:
           CFI EndBlock cfiCond730
           CFI EndBlock cfiCond731
           CFI EndBlock cfiPicker732
-//  519 
-//  520 
+//  521 
+//  522 
 
         RSEG CODE:CODE:NOROOT(1)
-//  521 void gro(uchar a)
+//  523 void gro(uchar a)
 ??gro:
           CFI Block cfiBlock733 Using cfiCommon0
           CFI Function ??gro
-//  522 {
+//  524 {
         MOV     R17, R16
-//  523   if (modegro!=1) {
+//  525   if (modegro!=1) {
         RCALL   ?Subroutine68
 ??CrossCallReturnLabel_319:
         BREQ    ??gro_1
-//  524   if (a==1) {SET(PORTC,0); delay_us(100);RES(PORTC,0);}
+//  526   if (a==1) {SET(PORTC,0); delay_us(100);RES(PORTC,0);}
         CPI     R17, 1
         BRNE    ??gro_2
         SBI     0x15, 0x00
         RCALL   ?Subroutine92
 ??CrossCallReturnLabel_174:
         RJMP    ??gro_3
-//  525   if (a==2) {SET(PORTD,3); delay_us(100);RES(PORTD,3);}  
+//  527   if (a==2) {SET(PORTD,3); delay_us(100);RES(PORTD,3);}  
 ??gro_2:
         CPI     R17, 2
         BRNE    ??gro_4
@@ -12706,9 +12712,9 @@ main:
         RCALL   ?Subroutine92
 ??CrossCallReturnLabel_175:
         RJMP    ??gro_5
-//  526                   }
-//  527   else  { 
-//  528     if (a==1) { if (gro1)  { gro1=0; RES(PORTC,0);  } else { gro1=1; SET(PORTC,0);  } }
+//  528                   }
+//  529   else  { 
+//  530     if (a==1) { if (gro1)  { gro1=0; RES(PORTC,0);  } else { gro1=1; SET(PORTC,0);  } }
 ??gro_1:
         CPI     R17, 1
         BRNE    ??gro_6
@@ -12725,7 +12731,7 @@ main:
         STS     ??gro1, R16
         SBI     0x15, 0x00
         RET
-//  529     if (a==2) { if (gro2)  { gro2=0; RES(PORTD,3);  } else { gro2=1; SET(PORTD,3);  } }
+//  531     if (a==2) { if (gro2)  { gro2=0; RES(PORTD,3);  } else { gro2=1; SET(PORTD,3);  } }
 ??gro_6:
         CPI     R17, 2
         BRNE    ??gro_4
@@ -12741,8 +12747,8 @@ main:
         LDI     R16, 1
         STS     ??gro2, R16
         SBI     0x12, 0x03
-//  530         }
-//  531 }
+//  532         }
+//  533 }
 ??gro_4:
         RET
           CFI EndBlock cfiBlock733
@@ -12863,122 +12869,122 @@ main:
           CFI EndBlock cfiCond747
           CFI EndBlock cfiCond748
           CFI EndBlock cfiPicker749
-//  532 
-//  533 
 //  534 
 //  535 
 //  536 
 //  537 
-//  538 //инициализация портов
+//  538 
+//  539 
+//  540 //инициализация портов
 
         RSEG CODE:CODE:NOROOT(1)
-//  539 void iniPORTS()
+//  541 void iniPORTS()
 ??iniPORTS:
           CFI Block cfiBlock750 Using cfiCommon0
           CFI Function ??iniPORTS
-//  540 {
-//  541   
-//  542  
-//  543   //DDRx=0 - ВХОДЫ   PORTx = 0xFF; //подключаем нагрузочные резисторы
-//  544  //---------------------------------------------------------------
-//  545  //DDRx=0xFF - ВЫХОДЫ    PORTx = 0; //устанавливаем 0 на выходе
-//  546  
-//  547   
-//  548  DDRD = b(11011000);// 0xD8;  //PD3 4 6 7 ВЫХОДЫ  b11011000
+//  542 {
+//  543   
+//  544  
+//  545   //DDRx=0 - ВХОДЫ   PORTx = 0xFF; //подключаем нагрузочные резисторы
+//  546  //---------------------------------------------------------------
+//  547  //DDRx=0xFF - ВЫХОДЫ    PORTx = 0; //устанавливаем 0 на выходе
+//  548  
+//  549   
+//  550  DDRD = b(11011000);// 0xD8;  //PD3 4 6 7 ВЫХОДЫ  b11011000
         LDI     R16, 216
         OUT     0x11, R16
-//  549  PORTD = (uchar)~(b(11011000)); 
+//  551  PORTD = (uchar)~(b(11011000)); 
         LDI     R16, 39
         OUT     0x12, R16
-//  550 
-//  551  
-//  552  DDRB = 0x3F; //порт B - выход    6,7-кварц
+//  552 
+//  553  
+//  554  DDRB = 0x3F; //порт B - выход    6,7-кварц
         LDI     R16, 63
         OUT     0x17, R16
-//  553  PORTB = 0x00; 
+//  555  PORTB = 0x00; 
         LDI     R16, 0
         OUT     0x18, R16
-//  554   
-//  555   
-//  556   DDRC =0xFF; 
+//  556   
+//  557   
+//  558   DDRC =0xFF; 
         LDI     R16, 255
         OUT     0x14, R16
-//  557   PORTC = 0x00; //устанавливаем 0 на выходе
+//  559   PORTC = 0x00; //устанавливаем 0 на выходе
         LDI     R16, 0
         OUT     0x15, R16
-//  558   
-//  559  
-//  560 // Timer(s)/Counter(s) Interrupt(s) initialization
-//  561 TIMSK=0x00;  
+//  560   
+//  561  
+//  562 // Timer(s)/Counter(s) Interrupt(s) initialization
+//  563 TIMSK=0x00;  
         OUT     0x39, R16
-//  562 TCNT0=0x00;
+//  564 TCNT0=0x00;
         OUT     0x32, R16
-//  563 OCR1A=0x00;
+//  565 OCR1A=0x00;
         LDI     R17, 0
         OUT     0x2B, R16
         OUT     0x2A, R16
-//  564 OCR1B=0x00;
+//  566 OCR1B=0x00;
         OUT     0x29, R16
         OUT     0x28, R16
-//  565 TCCR1A=0x00;
+//  567 TCCR1A=0x00;
         OUT     0x2F, R16
-//  566   SET(TIMSK,TOIE1);//разреш прерывание при переполнении
+//  568   SET(TIMSK,TOIE1);//разреш прерывание при переполнении
         IN      R16, 0x39
         ORI     R16, 0x04
         OUT     0x39, R16
-//  567    TCCR1B=0; TIFR = 0xFF;  
+//  569    TCCR1B=0; TIFR = 0xFF;  
         OUT     0x2E, R17
         LDI     R16, 255
         OUT     0x38, R16
-//  568 TCNT1H=0x00;
+//  570 TCNT1H=0x00;
         OUT     0x2D, R17
-//  569 TCNT1L=0x00;
+//  571 TCNT1L=0x00;
         OUT     0x2C, R17
-//  570 ICR1H=0x00;
+//  572 ICR1H=0x00;
         OUT     0x27, R17
-//  571 ICR1L=0x00;
+//  573 ICR1L=0x00;
         OUT     0x26, R17
-//  572 OCR1AH=0;
+//  574 OCR1AH=0;
         OUT     0x2B, R17
-//  573 OCR1AL=0x00;
+//  575 OCR1AL=0x00;
         OUT     0x2A, R17
-//  574 OCR1BH=0x00;
+//  576 OCR1BH=0x00;
         OUT     0x29, R17
-//  575 OCR1BL=0x00;
+//  577 OCR1BL=0x00;
         OUT     0x28, R17
-//  576 
-//  577 
-//  578 // External Interrupt(s) initialization
-//  579 // INT0: Off
-//  580 // INT1: Off
-//  581 // Interrupt on any change on pins PCINT0-7: Off
-//  582 //GIMSK=0x00;
-//  583 //MCUCR=0x00;
-//  584 
-//  585 SET(MCUCR,0); RES(MCUCR,1);//ПРЕРЫВАНИЕ ПО ИЗМЕНЕНИЮ УРОВНЯ INT0
+//  578 
+//  579 
+//  580 // External Interrupt(s) initialization
+//  581 // INT0: Off
+//  582 // INT1: Off
+//  583 // Interrupt on any change on pins PCINT0-7: Off
+//  584 //GIMSK=0x00;
+//  585 //MCUCR=0x00;
+//  586 
+//  587 SET(MCUCR,0); RES(MCUCR,1);//ПРЕРЫВАНИЕ ПО ИЗМЕНЕНИЮ УРОВНЯ INT0
         IN      R16, 0x35
         ORI     R16, 0x01
         OUT     0x35, R16
         IN      R16, 0x35
         ANDI    R16, 0xFD
         OUT     0x35, R16
-//  586 SET(GICR,6);//РАЗРЕШАЕМ ПРЕРЫВАНИЕ INT0
+//  588 SET(GICR,6);//РАЗРЕШАЕМ ПРЕРЫВАНИЕ INT0
         IN      R16, 0x3B
         ORI     R16, 0x40
         OUT     0x3B, R16
-//  587 
-//  588 
 //  589 
 //  590 
-//  591 // Analog Comparator initialization
-//  592 // Analog Comparator: Off
-//  593 // Analog Comparator Input Capture by Timer/Counter 1: Off
-//  594 ACSR=0x80;
+//  591 
+//  592 
+//  593 // Analog Comparator initialization
+//  594 // Analog Comparator: Off
+//  595 // Analog Comparator Input Capture by Timer/Counter 1: Off
+//  596 ACSR=0x80;
         LDI     R16, 128
         OUT     0x08, R16
-//  595 //DIDR=0x00;
-//  596 
-//  597 } 
+//  597 //DIDR=0x00;
+//  598 
+//  599 } 
         RET
           CFI EndBlock cfiBlock750
         REQUIRE _A_DDRD
@@ -12999,16 +13005,16 @@ main:
         REQUIRE _A_MCUCR
         REQUIRE _A_GICR
         REQUIRE _A_ACSR
-//  598 //************************************************************************
-//  599  
-//  600 
+//  600 //************************************************************************
+//  601  
+//  602 
 
         RSEG CODE:CODE:NOROOT(1)
-//  601 void diag()
+//  603 void diag()
 ??diag:
           CFI Block cfiBlock751 Using cfiCommon0
           CFI Function ??diag
-//  602 {
+//  604 {
         FUNCALL ??diag, ??USART_GetChar
         LOCFRAME CSTACK, 2, STACK
         LOCFRAME RSTACK, 2, STACK
@@ -13077,11 +13083,11 @@ main:
           CFI R25 Frame(CFA_Y, -1)
           CFI R24 Frame(CFA_Y, -2)
           CFI CFA_Y Y+2
-//  603  
-//  604   uchar sym = USART_GetChar(); //читаем буфер
+//  605  
+//  606   uchar sym = USART_GetChar(); //читаем буфер
         RCALL   ??USART_GetChar
         MOV     R25, R16
-//  605   if (sym=='0') { pr=1;  rprintfStr("-------------- vkluchen kratkiy viviod -------------");  ent;   }
+//  607   if (sym=='0') { pr=1;  rprintfStr("-------------- vkluchen kratkiy viviod -------------");  ent;   }
         CPI     R16, 48
         BRNE    ??diag_1
         LDI     R16, 1
@@ -13094,22 +13100,22 @@ main:
         RCALL   ?Subroutine109
 ??CrossCallReturnLabel_231:
         RJMP    ??diag_2
-//  606 
-//  607   if (sym=='e') {
+//  608 
+//  609   if (sym=='e') {
 ??diag_1:
         CPI     R16, 101
         BRNE    ??diag_3
-//  608     ent;rprintfStr(" ==  EEPROM read == ");ent;
+//  610     ent;rprintfStr(" ==  EEPROM read == ");ent;
         RCALL   ??Subroutine17_2
 ??CrossCallReturnLabel_25:
         LDI     R16, LOW(`?<Constant " ==  EEPROM read == ">`)
         LDI     R17, (`?<Constant " ==  EEPROM read == ">`) >> 8
         RCALL   ??rprintfStr
         RCALL   ??Subroutine17_2
-//  609     for (uchar i=0; i<MAXEEP-1; i++) { 
+//  611     for (uchar i=0; i<MAXEEP-1; i++) { 
 ??CrossCallReturnLabel_26:
         LDI     R24, 0
-//  610       rprintfFloat(4, i );   rprintfStr(" > ");
+//  612       rprintfFloat(4, i );   rprintfStr(" > ");
 ??diag_4:
         RCALL   ?Subroutine21
 ??CrossCallReturnLabel_417:
@@ -13118,9 +13124,9 @@ main:
         LDI     R16, LOW(`?<Constant " > ">`)
         LDI     R17, (`?<Constant " > ">`) >> 8
         RCALL   ??rprintfStr
-//  611        rprintfFloat(9, k[i] ); ent;
+//  613        rprintfFloat(9, k[i] ); ent;
         RCALL   ?Subroutine46
-//  612                                       }
+//  614                                       }
 ??CrossCallReturnLabel_73:
         LDI     R20, LOW(k)
         LDI     R21, (k) >> 8
@@ -13133,29 +13139,29 @@ main:
         CPI     R24, 119
         BRCC    ??diag_2
         RJMP    ??diag_4
-//  613                 }
-//  614   
-//  615   if (sym) {             //если что-то приняли, то 
+//  615                 }
+//  616   
+//  617   if (sym) {             //если что-то приняли, то 
 ??diag_3:
         TST     R16
         BREQ    ??CrossCallReturnLabel_27
-//  616       rprintfStr(" get: ");
+//  618       rprintfStr(" get: ");
 ??diag_2:
         LDI     R16, LOW(`?<Constant " get: ">`)
         LDI     R17, (`?<Constant " get: ">`) >> 8
         RCALL   ??rprintfStr
-//  617       USART_SendChar(sym); 
+//  619       USART_SendChar(sym); 
         MOV     R16, R25
         RCALL   ??USART_SendChar
-//  618 
-//  619       if (mode==1) rprintfStr("  regim  no source5 >");  
+//  620 
+//  621       if (mode==1) rprintfStr("  regim  no source5 >");  
         RCALL   ?Subroutine75
 ??CrossCallReturnLabel_323:
         BRNE    ??diag_5
         LDI     R16, LOW(`?<Constant "  regim  no source5 >">`)
         LDI     R17, (`?<Constant "  regim  no source5 >">`) >> 8
         RCALL   ??rprintfStr
-//  620 if (write==1) rprintfStr("  regim  PROGRAMMING !!  READY >");  
+//  622 if (write==1) rprintfStr("  regim  PROGRAMMING !!  READY >");  
 ??diag_5:
         LDS     R16, `write`
         CPI     R16, 1
@@ -13163,22 +13169,22 @@ main:
         LDI     R16, LOW(`?<Constant "  regim  PROGRAMMING ...">`)
         LDI     R17, (`?<Constant "  regim  PROGRAMMING ...">`) >> 8
         RJMP    ??diag_7
-//  621 else rprintfStr("  regim  normal  READY >");  
+//  623 else rprintfStr("  regim  normal  READY >");  
 ??diag_6:
         LDI     R16, LOW(`?<Constant "  regim  normal  READY >">`)
         LDI     R17, (`?<Constant "  regim  normal  READY >">`) >> 8
 ??diag_7:
         RCALL   ??rprintfStr
-//  622 
-//  623 
-//  624    
+//  624 
 //  625 
-//  626        ent;
+//  626    
+//  627 
+//  628        ent;
         RCALL   ??Subroutine17_2
-//  627      
-//  628    
-//  629            }
-//  630 }
+//  629      
+//  630    
+//  631            }
+//  632 }
 ??CrossCallReturnLabel_27:
         RJMP    ?Subroutine137
           CFI EndBlock cfiBlock751
@@ -13904,7 +13910,7 @@ main:
           CFI EndBlock cfiCond795
           CFI EndBlock cfiCond796
           CFI EndBlock cfiPicker797
-//  631 
+//  633 
 // F:\Dulov\RemoteAMP\usart.c
 //    1 #include "main.h"
 //    2 
@@ -15264,7 +15270,7 @@ __?EEARH:
         END
 // 
 //    28 bytes in segment ABSOLUTE
-// 4 626 bytes in segment CODE
+// 4 634 bytes in segment CODE
 //   242 bytes in segment EEPROM_N
 //    12 bytes in segment INITTAB
 //     6 bytes in segment INTVEC
@@ -15272,7 +15278,7 @@ __?EEARH:
 //   377 bytes in segment NEAR_ID
 //   482 bytes in segment NEAR_Z
 // 
-// 5 003 bytes of CODE  memory (+ 18 bytes shared)
+// 5 011 bytes of CODE  memory (+ 18 bytes shared)
 //   859 bytes of DATA  memory (+ 28 bytes shared)
 //   242 bytes of XDATA memory
 //
