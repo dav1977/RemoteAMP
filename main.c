@@ -51,7 +51,7 @@ void programming(bool rez);
 uchar getadr(void);
 #define acon 20000;//время включения АС при подаче питания
 uint tON=acon; 
-#define MAXFUNC 23  //последний(включительно)действующий tekfunc(кол-во фукций)
+#define MAXFUNC 23  //последний(включительно)действующий indexFUNC(кол-во фукций)
 //uint kbuf[MAXEEP];
 uchar write;
 uchar pr;
@@ -60,7 +60,7 @@ bool on,mute;
 bool zader,aoff;
 uint timerzad; 
 uchar pultadr;
-extern  uchar mode=0,tekfunc=0; 
+extern  uchar mode=0,indexFUNC=0; 
 static uchar lastsel=1,sel=1,gro1=0,gro2=0,regaoff=0;
 bool u=false,til=false;
 
@@ -110,8 +110,8 @@ int main( void )
    if (keySELsm==1 && keyAOFFsm==1)//очистка
       {
         write=1; cod1=0;cod2=0;cod3=0;
-        for (uchar i=0; i<=MAXFUNC; i++) {writeCOD();tekfunc++;}
-        tekfunc=0;
+        for (uchar i=0; i<=MAXFUNC; i++) {writeCOD();indexFUNC++;}
+        indexFUNC=0;
         led_all(1); while(1) {} //зависаем
       }
     
@@ -126,7 +126,7 @@ int main( void )
   
    if (write==1) //мигание первого программируемого
    {
-     for (uchar i=0; i<3; i++) {getadr(); p3;led_all(0); p3;}
+     for (uchar i=0; i<3; i++) {getadr(); p2;led_all(0); p2;}
     
      getadr();
    }
@@ -187,32 +187,32 @@ int main( void )
 uchar getadr()//адреса  команд
 {
   uchar adr=0;
-  if (tekfunc==0) {adr=1; SET(PORTB,0);}//s1
-  if (tekfunc==1) {adr=5; SET(PORTB,1);}
-  if (tekfunc==2) {adr=10;SET(PORTB,2);}
-  if (tekfunc==3) {adr=15;SET(PORTB,3);}
-  if (tekfunc==4) {adr=20;SET(PORTB,4);}//s5 или ONтыл
-  if (tekfunc==5) {adr=55;SET(PORTB,0);SET(PORTB,2);SET(PORTB,4);}//command return
-  if (tekfunc==6) {adr=25;SET(PORTD,7);}//on standby
-  if (tekfunc==7) {adr=30;SET(PORTB,5);}//aoff
-  if (tekfunc==8) {adr=35;AC_ON;}//mute
-  if (tekfunc==9) {adr=40; }//select
-  if (tekfunc==10) {adr=45; }//громкость увеличить
-  if (tekfunc==11) {adr=50; }//громкость уменьшить
+  if (indexFUNC==0) {adr=1; SET(PORTB,0);}//s1
+  if (indexFUNC==1) {adr=5; SET(PORTB,1);}
+  if (indexFUNC==2) {adr=10;SET(PORTB,2);}
+  if (indexFUNC==3) {adr=15;SET(PORTB,3);}
+  if (indexFUNC==4) {adr=20;SET(PORTB,4);}//s5 или ONтыл
+  if (indexFUNC==5) {adr=55;SET(PORTB,0);SET(PORTB,2);SET(PORTB,4);}//command return
+  if (indexFUNC==6) {adr=25;SET(PORTD,7);}//on standby
+  if (indexFUNC==7) {adr=30;SET(PORTB,5);}//aoff
+  if (indexFUNC==8) {adr=35;AC_ON;}//mute
+  if (indexFUNC==9) {adr=40; }//select
+  if (indexFUNC==10) {adr=45; }//громкость увеличить
+  if (indexFUNC==11) {adr=50; }//громкость уменьшить
   
   //дублирование команд
-   if (tekfunc==12) {adr=60; SET(PORTB,0);}//s1
-  if (tekfunc==13) {adr=65; SET(PORTB,1);}
-  if (tekfunc==14) {adr=70;SET(PORTB,2);}
-  if (tekfunc==15) {adr=75;SET(PORTB,3);}
-  if (tekfunc==16) {adr=80;SET(PORTB,4);}//s5 или ONтыл
-  if (tekfunc==17) {adr=85;SET(PORTB,0);SET(PORTB,2);SET(PORTB,4);}//command return
-  if (tekfunc==18) {adr=90;SET(PORTD,7);}//on standby
-  if (tekfunc==19) {adr=95;SET(PORTB,5);}//aoff
-  if (tekfunc==20) {adr=100;AC_ON;}//mute
-  if (tekfunc==21) {adr=105; }//select
-  if (tekfunc==22) {adr=110; }//громкость увеличить
-  if (tekfunc==23) {adr=115; }//громкость уменьшить
+   if (indexFUNC==12) {adr=60; SET(PORTB,0);}//s1
+  if (indexFUNC==13) {adr=65; SET(PORTB,1);}
+  if (indexFUNC==14) {adr=70;SET(PORTB,2);}
+  if (indexFUNC==15) {adr=75;SET(PORTB,3);}
+  if (indexFUNC==16) {adr=80;SET(PORTB,4);}//s5 или ONтыл
+  if (indexFUNC==17) {adr=85;SET(PORTB,0);SET(PORTB,2);SET(PORTB,4);}//command return
+  if (indexFUNC==18) {adr=90;SET(PORTD,7);}//on standby
+  if (indexFUNC==19) {adr=95;SET(PORTB,5);}//aoff
+  if (indexFUNC==20) {adr=100;AC_ON;}//mute
+  if (indexFUNC==21) {adr=105; }//select
+  if (indexFUNC==22) {adr=110; }//громкость увеличить
+  if (indexFUNC==23) {adr=115; }//громкость уменьшить
   return(adr);
 }
 
@@ -485,18 +485,18 @@ void source()
 void programming (bool rez)
 {  
    static bool get=0;
-   if (tekfunc==255) return;
+   if (indexFUNC==255) return;
    if (!get)  { getadr(); get=1; }//получаем адрес и зажигаем программируемую функцию
   
    if (rez)
    {
      writeCOD();
-     tekfunc++;  get=0;
+     indexFUNC++;  get=0;
    
-     if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
+     if (indexFUNC==12) {  for (uchar i=0; i<10;i++) 
                            {led_all(1); p4; led_all(0);p4; }
                       }
-     if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
+     if (indexFUNC>MAXFUNC) {indexFUNC=255;led_all(1);}
 
    }
    
@@ -504,11 +504,11 @@ void programming (bool rez)
    if (keyONsm) { 
                 led_all(1); delay_s(1); 
                 led_all(0); 
-                tekfunc++;  get=0;
-                   if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
+                indexFUNC++;  get=0;
+                   if (indexFUNC==12) {  for (uchar i=0; i<10;i++) 
                            {led_all(1); p4; led_all(0);p4; }
                       }
-                if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
+                if (indexFUNC>MAXFUNC) {indexFUNC=255;led_all(1);}
                
                  }
      

@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR C/C++ Compiler V6.40.1.741 for Atmel AVR            16/Apr/2017  08:57:11
+# IAR C/C++ Compiler V6.40.1.741 for Atmel AVR            16/Apr/2017  09:05:41
 # Copyright 1996-2014 IAR Systems AB.
 #
 #    Source file  =  F:\Dulov\RemoteAMP\main.c
@@ -333,12 +333,12 @@ F:\Dulov\RemoteAMP\main.c
    \   00000026   E010               LDI     R17, 0
    \   00000028   ....               RCALL   ?Subroutine22
    \                     ??CrossCallReturnLabel_31:
-   \   0000002A   ....               RCALL   ??Subroutine136_0
+   \   0000002A   ....               RCALL   ??Subroutine135_0
    \                     ??CrossCallReturnLabel_326:
    \   0000002C   9100....           LDS     R16, t2
    \   00000030   ....               RCALL   ?Subroutine23
    \                     ??CrossCallReturnLabel_34:
-   \   00000032   ....               RCALL   ??Subroutine136_0
+   \   00000032   ....               RCALL   ??Subroutine135_0
    \                     ??CrossCallReturnLabel_327:
    \   00000034   ....               LDI     R30, LOW(ct)
    \   00000036   ....               LDI     R31, (ct) >> 8
@@ -367,9 +367,9 @@ F:\Dulov\RemoteAMP\main.c
    \   00000060   ....               RCALL   ?Subroutine24
    \                     ??CrossCallReturnLabel_37:
    \   00000062   EF0F               LDI     R16, 255
-   \   00000064   ....               RCALL   ?Subroutine93
+   \   00000064   ....               RCALL   ?Subroutine92
    \                     ??CrossCallReturnLabel_171:
-   \   00000066   ....               RCALL   ?Subroutine92
+   \   00000066   ....               RCALL   ?Subroutine91
    \                     ??CrossCallReturnLabel_162:
    \   00000068   ....               RCALL   ?Subroutine19
    \                     ??CrossCallReturnLabel_26:
@@ -402,11 +402,11 @@ F:\Dulov\RemoteAMP\main.c
    \                     ??CrossCallReturnLabel_58:
    \   00000096   ....               RCALL   ?Subroutine22
    \                     ??CrossCallReturnLabel_32:
-   \   00000098   ....               RCALL   ?Subroutine102
+   \   00000098   ....               RCALL   ?Subroutine101
    \                     ??CrossCallReturnLabel_198:
    \   0000009A   ....               RCALL   ?Subroutine23
    \                     ??CrossCallReturnLabel_35:
-   \   0000009C   ....               RCALL   ?Subroutine95
+   \   0000009C   ....               RCALL   ?Subroutine94
    \                     ??CrossCallReturnLabel_306:
    \   0000009E   ....               RCALL   ?Subroutine46
    \                     ??CrossCallReturnLabel_69:
@@ -431,9 +431,9 @@ F:\Dulov\RemoteAMP\main.c
    \   000000C2   ....               RCALL   ?F_CMP_LT_L04
    \   000000C4   F418               BRCC    ??CrossCallReturnLabel_328
    \   000000C6   ....               RCALL   ?F2SL_L04
-   \   000000C8   ....               RCALL   ?Subroutine93
+   \   000000C8   ....               RCALL   ?Subroutine92
    \                     ??CrossCallReturnLabel_172:
-   \   000000CA   ....               RCALL   ??Subroutine136_0
+   \   000000CA   ....               RCALL   ??Subroutine135_0
    \                     ??CrossCallReturnLabel_328:
    \   000000CC   9583               INC     R24
    \                     ??du_main_7:
@@ -475,7 +475,7 @@ F:\Dulov\RemoteAMP\main.c
    \   00000106   01F5               MOVW    R31:R30, R11:R10
    \   00000108   ....               RCALL   ?Subroutine28
    \                     ??CrossCallReturnLabel_307:
-   \   0000010A   ....               RCALL   ??Subroutine143_0
+   \   0000010A   ....               RCALL   ??Subroutine142_0
    \                     ??CrossCallReturnLabel_376:
    \   0000010C   E009               LDI     R16, 9
    \   0000010E   ....               RCALL   ??rprintfFloat
@@ -498,21 +498,21 @@ F:\Dulov\RemoteAMP\main.c
    \   0000012C   ....               LDI     R17, (`?<Constant " / cod2= ">`) >> 8
    \   0000012E   ....               RCALL   ?Subroutine37
    \                     ??CrossCallReturnLabel_369:
-   \   00000130   ....               RCALL   ??Subroutine133_0
+   \   00000130   ....               RCALL   ??Subroutine132_0
    \                     ??CrossCallReturnLabel_316:
    \   00000132   ....               LDI     R16, LOW(`?<Constant " / cod3= ">`)
    \   00000134   ....               LDI     R17, (`?<Constant " / cod3= ">`) >> 8
    \   00000136   ....               RCALL   ??rprintfStr
-   \   00000138   ....               RCALL   ?Subroutine96
+   \   00000138   ....               RCALL   ?Subroutine95
    \                     ??CrossCallReturnLabel_175:
-   \   0000013A   ....               RCALL   ??Subroutine133_0
+   \   0000013A   ....               RCALL   ??Subroutine132_0
    \                     ??CrossCallReturnLabel_315:
    \   0000013C   ....               LDI     R16, LOW(`?<Constant "/ minlen=">`)
    \   0000013E   ....               LDI     R17, (`?<Constant "/ minlen=">`) >> 8
    \   00000140   ....               RCALL   ??rprintfStr
-   \   00000142   ....               RCALL   ?Subroutine93
+   \   00000142   ....               RCALL   ?Subroutine92
    \                     ??CrossCallReturnLabel_173:
-   \   00000144   ....               RCALL   ?Subroutine102
+   \   00000144   ....               RCALL   ?Subroutine101
    \                     ??CrossCallReturnLabel_199:
    \   00000146   ....               RCALL   ??Subroutine17_0
    \                     ??CrossCallReturnLabel_18:
@@ -559,7 +559,7 @@ F:\Dulov\RemoteAMP\main.c
    \   0000018C   2E94               MOV     R9, R20
    \   0000018E   2DE8               MOV     R30, R8
    \   00000190   2FF4               MOV     R31, R20
-   \   00000192   ....               RCALL   ??Subroutine136_0
+   \   00000192   ....               RCALL   ??Subroutine135_0
    \                     ??CrossCallReturnLabel_329:
    \   00000194   8322               STD     Z+2, R18
    \   00000196   8333               STD     Z+3, R19
@@ -597,7 +597,7 @@ F:\Dulov\RemoteAMP\main.c
    \   000001C2   ....               RCALL   ?Subroutine52
    \                     ??CrossCallReturnLabel_83:
    \   000001C4   F480               BRCC    ??du_main_19
-   \   000001C6   ....               RCALL   ?Subroutine96
+   \   000001C6   ....               RCALL   ?Subroutine95
    \                     ??CrossCallReturnLabel_176:
    \   000001C8   ....               RCALL   ?Subroutine21
    \                     ??CrossCallReturnLabel_339:
@@ -615,11 +615,11 @@ F:\Dulov\RemoteAMP\main.c
    \   000001D8   ....               RCALL   ?Subroutine58
    \                     ??CrossCallReturnLabel_94:
    \   000001DA   F768               BRCC    ??CrossCallReturnLabel_248
-   \   000001DC   ....               RCALL   ?Subroutine96
+   \   000001DC   ....               RCALL   ?Subroutine95
    \                     ??CrossCallReturnLabel_177:
-   \   000001DE   ....               RCALL   ?Subroutine101
+   \   000001DE   ....               RCALL   ?Subroutine100
    \                     ??CrossCallReturnLabel_194:
-   \   000001E0   ....               RCALL   ??Subroutine136_0
+   \   000001E0   ....               RCALL   ??Subroutine135_0
    \                     ??CrossCallReturnLabel_330:
    \   000001E2   5F9E               SUBI    R25, 254
    \   000001E4   C008               RJMP    ??du_main_20
@@ -640,17 +640,17 @@ F:\Dulov\RemoteAMP\main.c
    \   000001FA   CF7A               RJMP    ??du_main_12
    \   000001FC   24EE               CLR     R14
    \   000001FE   94E3               INC     R14
-   \   00000200   ....               RCALL   ?Subroutine100
+   \   00000200   ....               RCALL   ?Subroutine99
    \                     ??CrossCallReturnLabel_186:
    \   00000202   ....               RCALL   ?Subroutine30
    \                     ??CrossCallReturnLabel_39:
-   \   00000204   ....               RCALL   ??Subroutine136_0
+   \   00000204   ....               RCALL   ??Subroutine135_0
    \                     ??CrossCallReturnLabel_331:
-   \   00000206   ....               RCALL   ??Subroutine142_0
+   \   00000206   ....               RCALL   ??Subroutine141_0
    \                     ??CrossCallReturnLabel_371:
    \   00000208   ....               RCALL   ?Subroutine30
    \                     ??CrossCallReturnLabel_40:
-   \   0000020A   ....               RCALL   ??Subroutine136_0
+   \   0000020A   ....               RCALL   ??Subroutine135_0
    \                     ??CrossCallReturnLabel_332:
    \   0000020C   E0B0               LDI     R27, 0
    \   0000020E   E0A0               LDI     R26, 0
@@ -681,7 +681,7 @@ F:\Dulov\RemoteAMP\main.c
    \   00000230   ....               RCALL   ?Subroutine52
    \                     ??CrossCallReturnLabel_84:
    \   00000232   F490               BRCC    ??du_main_26
-   \   00000234   ....               RCALL   ??Subroutine142_0
+   \   00000234   ....               RCALL   ??Subroutine141_0
    \                     ??CrossCallReturnLabel_372:
    \   00000236   ....               RCALL   ?Subroutine21
    \                     ??CrossCallReturnLabel_340:
@@ -700,11 +700,11 @@ F:\Dulov\RemoteAMP\main.c
    \   00000248   ....               RCALL   ?Subroutine58
    \                     ??CrossCallReturnLabel_95:
    \   0000024A   F760               BRCC    ??CrossCallReturnLabel_249
-   \   0000024C   ....               RCALL   ??Subroutine142_0
+   \   0000024C   ....               RCALL   ??Subroutine141_0
    \                     ??CrossCallReturnLabel_373:
-   \   0000024E   ....               RCALL   ?Subroutine101
+   \   0000024E   ....               RCALL   ?Subroutine100
    \                     ??CrossCallReturnLabel_195:
-   \   00000250   ....               RCALL   ??Subroutine136_0
+   \   00000250   ....               RCALL   ??Subroutine135_0
    \                     ??CrossCallReturnLabel_333:
    \   00000252   5FAE               SUBI    R26, 254
    \   00000254   ....               RCALL   ?Subroutine60
@@ -734,9 +734,9 @@ F:\Dulov\RemoteAMP\main.c
    \   00000278   CF3B               RJMP    ??du_main_12
    \                     ??du_main_21:
    \   0000027A   2F4B               MOV     R20, R27
-   \   0000027C   ....               RCALL   ?Subroutine115
+   \   0000027C   ....               RCALL   ?Subroutine114
    \                     ??CrossCallReturnLabel_242:
-   \   0000027E   ....               RCALL   ?Subroutine97
+   \   0000027E   ....               RCALL   ?Subroutine96
    \                     ??CrossCallReturnLabel_181:
    \   00000280   ....               RCALL   ?Subroutine47
    \                     ??CrossCallReturnLabel_73:
@@ -760,7 +760,7 @@ F:\Dulov\RemoteAMP\main.c
    \                     ??CrossCallReturnLabel_85:
    \   00000298   F008               BRCS    $+2+2
    \   0000029A   CF1E               RJMP    ??du_main_10
-   \   0000029C   ....               RCALL   ?Subroutine100
+   \   0000029C   ....               RCALL   ?Subroutine99
    \                     ??CrossCallReturnLabel_187:
    \   0000029E   ....               RCALL   ?Subroutine21
    \                     ??CrossCallReturnLabel_341:
@@ -780,11 +780,11 @@ F:\Dulov\RemoteAMP\main.c
    \   000002B2   ....               RCALL   ?Subroutine58
    \                     ??CrossCallReturnLabel_96:
    \   000002B4   F748               BRCC    ??CrossCallReturnLabel_250
-   \   000002B6   ....               RCALL   ?Subroutine100
+   \   000002B6   ....               RCALL   ?Subroutine99
    \                     ??CrossCallReturnLabel_188:
-   \   000002B8   ....               RCALL   ?Subroutine101
+   \   000002B8   ....               RCALL   ?Subroutine100
    \                     ??CrossCallReturnLabel_196:
-   \   000002BA   ....               RCALL   ??Subroutine136_0
+   \   000002BA   ....               RCALL   ??Subroutine135_0
    \                     ??CrossCallReturnLabel_334:
    \   000002BC   5FBE               SUBI    R27, 254
    \   000002BE   ....               RCALL   ?Subroutine60
@@ -799,11 +799,11 @@ F:\Dulov\RemoteAMP\main.c
    \   000002C8   E000               LDI     R16, 0
    \   000002CA   ....               RCALL   ?Subroutine22
    \                     ??CrossCallReturnLabel_33:
-   \   000002CC   ....               RCALL   ?Subroutine92
+   \   000002CC   ....               RCALL   ?Subroutine91
    \                     ??CrossCallReturnLabel_163:
    \   000002CE   ....               RCALL   ?Subroutine23
    \                     ??CrossCallReturnLabel_36:
-   \   000002D0   ....               RCALL   ?Subroutine92
+   \   000002D0   ....               RCALL   ?Subroutine91
    \                     ??CrossCallReturnLabel_164:
    \   000002D2   9F84               MUL     R24, R20
    \   000002D4   01F0               MOVW    R31:R30, R1:R0
@@ -833,16 +833,16 @@ F:\Dulov\RemoteAMP\main.c
    \   0000030C   ....               LDI     R17, (`?<Constant "/   cod2= ">`) >> 8
    \   0000030E   ....               RCALL   ?Subroutine37
    \                     ??CrossCallReturnLabel_370:
-   \   00000310   ....               RCALL   ??Subroutine133_0
+   \   00000310   ....               RCALL   ??Subroutine132_0
    \                     ??CrossCallReturnLabel_314:
    \   00000312   ....               LDI     R16, LOW(`?<Constant "/   cod3= ">`)
    \   00000314   ....               LDI     R17, (`?<Constant "/   cod3= ">`) >> 8
    \   00000316   ....               RCALL   ??rprintfStr
    \   00000318   ....               RCALL   ?Subroutine33
    \                     ??CrossCallReturnLabel_206:
-   \   0000031A   ....               RCALL   ?Subroutine117
+   \   0000031A   ....               RCALL   ?Subroutine116
    \                     ??CrossCallReturnLabel_309:
-   \   0000031C   ....               RCALL   ??Subroutine143_0
+   \   0000031C   ....               RCALL   ??Subroutine142_0
    \                     ??CrossCallReturnLabel_377:
    \   0000031E   E006               LDI     R16, 6
    \   00000320   ....               RCALL   ??Subroutine17_1
@@ -864,17 +864,17 @@ F:\Dulov\RemoteAMP\main.c
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine60:
    \   00000000   0198               MOVW    R19:R18, R17:R16
-   \   00000002   ....               RJMP    ?Subroutine98
+   \   00000002   ....               RJMP    ?Subroutine97
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine59:
    \   00000000   0F28               ADD     R18, R24
    \   00000002   1F34               ADC     R19, R20
-   \   00000004                      REQUIRE ?Subroutine118
-   \   00000004                      ;               // Fall through to label ?Subroutine118
+   \   00000004                      REQUIRE ?Subroutine117
+   \   00000004                      ;               // Fall through to label ?Subroutine117
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine118:
+   \                     ?Subroutine117:
    \   00000000   8320               ST      Z, R18
    \   00000002   8331               STD     Z+1, R19
    \   00000004   9508               RET
@@ -913,24 +913,24 @@ F:\Dulov\RemoteAMP\main.c
    \                     ?Subroutine36:
    \   00000000   ....               LDI     R30, LOW(cod2)
    \   00000002   ....               LDI     R31, (cod2) >> 8
-   \   00000004   ....               RJMP    ?Subroutine99
+   \   00000004   ....               RJMP    ?Subroutine98
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine34:
-   \   00000000   ....               RCALL   ?Subroutine100
+   \   00000000   ....               RCALL   ?Subroutine99
    \                     ??CrossCallReturnLabel_193:
-   \   00000002                      REQUIRE ?Subroutine99
-   \   00000002                      ;               // Fall through to label ?Subroutine99
+   \   00000002                      REQUIRE ?Subroutine98
+   \   00000002                      ;               // Fall through to label ?Subroutine98
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine99:
+   \                     ?Subroutine98:
    \   00000000   8120               LD      R18, Z
    \   00000002   8131               LDD     R19, Z+1
    \   00000004   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine30:
-   \   00000000   ....               RCALL   ?Subroutine102
+   \   00000000   ....               RCALL   ?Subroutine101
    \                     ??CrossCallReturnLabel_204:
    \   00000002   0F00               LSL     R16
    \   00000004   1F11               ROL     R17
@@ -939,7 +939,7 @@ F:\Dulov\RemoteAMP\main.c
    \   0000000A   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine101:
+   \                     ?Subroutine100:
    \   00000000   8100               LD      R16, Z
    \   00000002   8111               LDD     R17, Z+1
    \   00000004   2902               OR      R16, R2
@@ -948,48 +948,48 @@ F:\Dulov\RemoteAMP\main.c
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine28:
-   \   00000000   ....               RCALL   ?Subroutine102
+   \   00000000   ....               RCALL   ?Subroutine101
    \                     ??CrossCallReturnLabel_203:
    \   00000002   01F6               MOVW    R31:R30, R13:R12
-   \   00000004                      REQUIRE ?Subroutine95
-   \   00000004                      ;               // Fall through to label ?Subroutine95
+   \   00000004                      REQUIRE ?Subroutine94
+   \   00000004                      ;               // Fall through to label ?Subroutine94
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine95:
+   \                     ?Subroutine94:
    \   00000000   8130               LD      R19, Z
    \   00000002   E020               LDI     R18, 0
    \   00000004   0F13               ADD     R17, R19
-   \   00000006                      REQUIRE ?Subroutine130
-   \   00000006                      ;               // Fall through to label ?Subroutine130
+   \   00000006                      REQUIRE ?Subroutine129
+   \   00000006                      ;               // Fall through to label ?Subroutine129
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine130:
+   \                     ?Subroutine129:
    \   00000000   E030               LDI     R19, 0
    \   00000002   ....               RJMP    ?UL2F_L04
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine27:
-   \   00000000   ....               RCALL   ?Subroutine93
+   \   00000000   ....               RCALL   ?Subroutine92
    \                     ??CrossCallReturnLabel_174:
-   \   00000002   ....               RCALL   ?Subroutine94
+   \   00000002   ....               RCALL   ?Subroutine93
    \                     ??CrossCallReturnLabel_304:
-   \   00000004                      REQUIRE ?Subroutine104
-   \   00000004                      ;               // Fall through to label ?Subroutine104
+   \   00000004                      REQUIRE ?Subroutine103
+   \   00000004                      ;               // Fall through to label ?Subroutine103
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine104:
+   \                     ?Subroutine103:
    \   00000000   0182               MOVW    R17:R16, R5:R4
    \   00000002   0193               MOVW    R19:R18, R7:R6
    \   00000004   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine94:
+   \                     ?Subroutine93:
    \   00000000   8100               LD      R16, Z
    \   00000002   8111               LDD     R17, Z+1
-   \   00000004   ....               RJMP    ?Subroutine116
+   \   00000004   ....               RJMP    ?Subroutine115
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine93:
+   \                     ?Subroutine92:
    \   00000000   ....               LDI     R30, LOW(minimallen)
    \   00000002   ....               LDI     R31, (minimallen) >> 8
    \   00000004   9508               RET
@@ -997,27 +997,27 @@ F:\Dulov\RemoteAMP\main.c
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine26:
    \   00000000   ....               RCALL   ??rprintfStr
-   \   00000002   ....               RCALL   ?Subroutine100
+   \   00000002   ....               RCALL   ?Subroutine99
    \                     ??CrossCallReturnLabel_192:
-   \   00000004                      REQUIRE ?Subroutine131
-   \   00000004                      REQUIRE ??Subroutine133_0
-   \   00000004                      ;               // Fall through to label ??Subroutine133_0
+   \   00000004                      REQUIRE ?Subroutine130
+   \   00000004                      REQUIRE ??Subroutine132_0
+   \   00000004                      ;               // Fall through to label ??Subroutine132_0
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ??Subroutine133_0:
-   \   00000000   ....               RCALL   ?Subroutine94
+   \                     ??Subroutine132_0:
+   \   00000000   ....               RCALL   ?Subroutine93
    \                     ??CrossCallReturnLabel_305:
-   \   00000002                      REQUIRE ?Subroutine131
-   \   00000002                      ;               // Fall through to label ?Subroutine131
+   \   00000002                      REQUIRE ?Subroutine130
+   \   00000002                      ;               // Fall through to label ?Subroutine130
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine131:
+   \                     ?Subroutine130:
    \   00000000   E006               LDI     R16, 6
    \   00000002   ....               RJMP    ??rprintfFloat
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine24:
-   \   00000000   ....               RCALL   ?Subroutine92
+   \   00000000   ....               RCALL   ?Subroutine91
    \                     ??CrossCallReturnLabel_170:
    \   00000002   8302               STD     Z+2, R16
    \   00000004   8303               STD     Z+3, R16
@@ -1048,30 +1048,30 @@ F:\Dulov\RemoteAMP\main.c
    \   00000002   9100....           LDS     R16, pultadr
    \   00000006   E010               LDI     R17, 0
    \                     ??Subroutine17_0:
-   \   00000008   ....               RCALL   ?Subroutine116
+   \   00000008   ....               RCALL   ?Subroutine115
    \                     ??CrossCallReturnLabel_379:
    \   0000000A   E009               LDI     R16, 9
    \                     ??Subroutine17_1:
    \   0000000C   ....               RCALL   ??rprintfFloat
    \                     ??Subroutine17_2:
-   \   0000000E   ....               RCALL   ?Subroutine103
+   \   0000000E   ....               RCALL   ?Subroutine102
    \                     ??CrossCallReturnLabel_289:
    \   00000010   F009               BREQ    ??CrossCallReturnLabel_215
-   \   00000012   ....               RCALL   ?Subroutine105
+   \   00000012   ....               RCALL   ?Subroutine104
    \                     ??CrossCallReturnLabel_215:
    \   00000014   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine2:
-   \   00000000   ....               RCALL   ?Subroutine115
+   \   00000000   ....               RCALL   ?Subroutine114
    \                     ??CrossCallReturnLabel_245:
-   \   00000002   ....               RCALL   ?Subroutine97
+   \   00000002   ....               RCALL   ?Subroutine96
    \                     ??CrossCallReturnLabel_182:
    \   00000004   0182               MOVW    R17:R16, R5:R4
    \   00000006   ....               RJMP    ?F_CMP_LT_L04
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine97:
+   \                     ?Subroutine96:
    \   00000000   0118               MOVW    R3:R2, R17:R16
    \   00000002   E040               LDI     R20, 0
    \   00000004   EC60               LDI     R22, 192
@@ -1080,21 +1080,21 @@ F:\Dulov\RemoteAMP\main.c
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine1:
-   \   00000000   ....               RCALL   ?Subroutine115
+   \   00000000   ....               RCALL   ?Subroutine114
    \                     ??CrossCallReturnLabel_244:
    \   00000002   2B20               OR      R18, R16
    \   00000004   2B31               OR      R19, R17
-   \   00000006                      REQUIRE ?Subroutine98
-   \   00000006                      ;               // Fall through to label ?Subroutine98
+   \   00000006                      REQUIRE ?Subroutine97
+   \   00000006                      ;               // Fall through to label ?Subroutine97
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine98:
+   \                     ?Subroutine97:
    \   00000000   0F28               ADD     R18, R24
    \   00000002   1F35               ADC     R19, R21
-   \   00000004   ....               RJMP    ?Subroutine118
+   \   00000004   ....               RJMP    ?Subroutine117
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine119:
+   \                     ?Subroutine118:
    \   00000000   E060               LDI     R22, 0
    \   00000002   E070               LDI     R23, 0
    \   00000004   9508               RET
@@ -1109,68 +1109,68 @@ F:\Dulov\RemoteAMP\main.c
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine11:
    \   00000000   E000               LDI     R16, 0
-   \   00000002   ....               RCALL   ?Subroutine100
+   \   00000002   ....               RCALL   ?Subroutine99
    \                     ??CrossCallReturnLabel_191:
-   \   00000004   ....               RCALL   ?Subroutine92
+   \   00000004   ....               RCALL   ?Subroutine91
    \                     ??CrossCallReturnLabel_168:
    \   00000006   ....               LDI     R30, LOW(cod2)
    \   00000008   ....               LDI     R31, (cod2) >> 8
-   \   0000000A   ....               RCALL   ?Subroutine92
+   \   0000000A   ....               RCALL   ?Subroutine91
    \                     ??CrossCallReturnLabel_169:
-   \   0000000C   ....               RCALL   ?Subroutine96
+   \   0000000C   ....               RCALL   ?Subroutine95
    \                     ??CrossCallReturnLabel_178:
-   \   0000000E   ....               RJMP    ?Subroutine92
+   \   0000000E   ....               RJMP    ?Subroutine91
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine21:
-   \   00000000   ....               RCALL   ?Subroutine101
+   \   00000000   ....               RCALL   ?Subroutine100
    \                     ??CrossCallReturnLabel_197:
    \   00000002   0D00               ADD     R16, R0
    \   00000004   1D11               ADC     R17, R1
-   \   00000006                      REQUIRE ??Subroutine136_0
-   \   00000006                      ;               // Fall through to label ??Subroutine136_0
+   \   00000006                      REQUIRE ??Subroutine135_0
+   \   00000006                      ;               // Fall through to label ??Subroutine135_0
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ??Subroutine136_0:
+   \                     ??Subroutine135_0:
    \   00000000   8300               ST      Z, R16
    \   00000002   8311               STD     Z+1, R17
    \   00000004   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine33:
-   \   00000000   ....               RCALL   ?Subroutine96
+   \   00000000   ....               RCALL   ?Subroutine95
    \                     ??CrossCallReturnLabel_179:
-   \   00000002                      REQUIRE ?Subroutine102
-   \   00000002                      ;               // Fall through to label ?Subroutine102
+   \   00000002                      REQUIRE ?Subroutine101
+   \   00000002                      ;               // Fall through to label ?Subroutine101
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine102:
+   \                     ?Subroutine101:
    \   00000000   8100               LD      R16, Z
    \   00000002   8111               LDD     R17, Z+1
    \   00000004   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine96:
+   \                     ?Subroutine95:
    \   00000000   ....               LDI     R30, LOW(cod3)
    \   00000002   ....               LDI     R31, (cod3) >> 8
    \   00000004   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine92:
+   \                     ?Subroutine91:
    \   00000000   8300               ST      Z, R16
    \   00000002   8301               STD     Z+1, R16
    \   00000004   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine105:
+   \                     ?Subroutine104:
    \   00000000   E00D               LDI     R16, 13
    \   00000002   ....               RJMP    ??USART_SendChar
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine18:
-   \   00000000   ....               RCALL   ?Subroutine91
+   \   00000000   ....               RCALL   ?Subroutine90
    \                     ??CrossCallReturnLabel_380:
-   \   00000002   ....               RJMP    ?Subroutine131
+   \   00000002   ....               RJMP    ?Subroutine130
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine42:
@@ -1181,53 +1181,53 @@ F:\Dulov\RemoteAMP\main.c
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine37:
    \   00000000   ....               RCALL   ??rprintfStr
-   \   00000002                      REQUIRE ??Subroutine142_0
-   \   00000002                      ;               // Fall through to label ??Subroutine142_0
+   \   00000002                      REQUIRE ??Subroutine141_0
+   \   00000002                      ;               // Fall through to label ??Subroutine141_0
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ??Subroutine142_0:
+   \                     ??Subroutine141_0:
    \   00000000   ....               LDI     R30, LOW(cod2)
    \   00000002   ....               LDI     R31, (cod2) >> 8
    \   00000004   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine100:
+   \                     ?Subroutine99:
    \   00000000   ....               LDI     R30, LOW(cod1)
    \   00000002   ....               LDI     R31, (cod1) >> 8
    \   00000004   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine38:
-   \   00000000   ....               RCALL   ?Subroutine96
+   \   00000000   ....               RCALL   ?Subroutine95
    \                     ??CrossCallReturnLabel_180:
-   \   00000002   ....               RJMP    ?Subroutine99
+   \   00000002   ....               RJMP    ?Subroutine98
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine122:
+   \                     ?Subroutine121:
    \   00000000   2300               TST     R16
    \   00000002   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine20:
    \   00000000   2F08               MOV     R16, R24
-   \   00000002                      REQUIRE ?Subroutine91
-   \   00000002                      ;               // Fall through to label ?Subroutine91
+   \   00000002                      REQUIRE ?Subroutine90
+   \   00000002                      ;               // Fall through to label ?Subroutine90
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine91:
+   \                     ?Subroutine90:
    \   00000000   E010               LDI     R17, 0
-   \   00000002                      REQUIRE ?Subroutine116
-   \   00000002                      ;               // Fall through to label ?Subroutine116
+   \   00000002                      REQUIRE ?Subroutine115
+   \   00000002                      ;               // Fall through to label ?Subroutine115
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine116:
-   \   00000000   ....               RCALL   ?Subroutine117
+   \                     ?Subroutine115:
+   \   00000000   ....               RCALL   ?Subroutine116
    \                     ??CrossCallReturnLabel_311:
-   \   00000002                      REQUIRE ??Subroutine143_0
-   \   00000002                      ;               // Fall through to label ??Subroutine143_0
+   \   00000002                      REQUIRE ??Subroutine142_0
+   \   00000002                      ;               // Fall through to label ??Subroutine142_0
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ??Subroutine143_0:
+   \                     ??Subroutine142_0:
    \   00000000   01A8               MOVW    R21:R20, R17:R16
    \   00000002   01B9               MOVW    R23:R22, R19:R18
    \   00000004   9508               RET
@@ -1243,28 +1243,28 @@ F:\Dulov\RemoteAMP\main.c
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine43:
    \   00000000   E040               LDI     R20, 0
-   \   00000002                      REQUIRE ??Subroutine144_0
-   \   00000002                      ;               // Fall through to label ??Subroutine144_0
+   \   00000002                      REQUIRE ??Subroutine143_0
+   \   00000002                      ;               // Fall through to label ??Subroutine143_0
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ??Subroutine144_0:
+   \                     ??Subroutine143_0:
    \   00000000   E050               LDI     R21, 0
-   \   00000002   ....               RJMP    ?Subroutine119
+   \   00000002   ....               RJMP    ?Subroutine118
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine115:
+   \                     ?Subroutine114:
    \   00000000   E001               LDI     R16, 1
    \   00000002   E010               LDI     R17, 0
    \   00000004   ....               RJMP    ?S_SHL_L02
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine103:
+   \                     ?Subroutine102:
    \   00000000   9100....           LDS     R16, u
-   \   00000004   ....               RJMP    ?Subroutine122
+   \   00000004   ....               RJMP    ?Subroutine121
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine47:
-   \   00000000   ....               RCALL   ?Subroutine104
+   \   00000000   ....               RCALL   ?Subroutine103
    \                     ??CrossCallReturnLabel_211:
    \   00000002   ....               RJMP    ?F_CMP_LT_L04
 
@@ -1275,9 +1275,9 @@ F:\Dulov\RemoteAMP\main.c
    \   00000004   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine117:
+   \                     ?Subroutine116:
    \   00000000   E020               LDI     R18, 0
-   \   00000002   ....               RJMP    ?Subroutine130
+   \   00000002   ....               RJMP    ?Subroutine129
 
    \                                 In  segment CODE, align 2, keep-with-next
    \   __version_3 __interrupt void funTIMER1_OVF_vect()
@@ -1285,11 +1285,11 @@ F:\Dulov\RemoteAMP\main.c
    \   00000000   930A               ST      -Y, R16
    \   00000002   E001               LDI     R16, 1
    \   00000004   9300....           STS     perepoln, R16
-   \   00000008                      REQUIRE ?Subroutine129
-   \   00000008                      ;               // Fall through to label ?Subroutine129
+   \   00000008                      REQUIRE ?Subroutine128
+   \   00000008                      ;               // Fall through to label ?Subroutine128
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine129:
+   \                     ?Subroutine128:
    \   00000000   9109               LD      R16, Y+
    \   00000002   9518               RETI
      32          #include "SoftTimers.h" 
@@ -1320,7 +1320,7 @@ F:\Dulov\RemoteAMP\main.c
    \                     tON:
    \   00000000                      DS8 2
    \   00000002                      REQUIRE `?<Initializer for tON>`
-     54          #define MAXFUNC 23  //последний(включительно)действующий tekfunc(кол-во фукций)
+     54          #define MAXFUNC 23  //последний(включительно)действующий indexFUNC(кол-во фукций)
      55          //uint kbuf[MAXEEP];
 
    \                                 In  segment NEAR_Z, align 1, keep-with-next
@@ -1377,13 +1377,13 @@ F:\Dulov\RemoteAMP\main.c
 
    \                                 In  segment NEAR_Z, align 1, keep-with-next
    \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
-     63          extern  uchar mode=0,tekfunc=0; 
+     63          extern  uchar mode=0,indexFUNC=0; 
    \                     mode:
    \   00000000                      DS8 1
 
    \                                 In  segment NEAR_Z, align 1, keep-with-next
    \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
-   \                     tekfunc:
+   \                     indexFUNC:
    \   00000000                      DS8 1
 
    \                                 In  segment NEAR_I, align 1, keep-with-next
@@ -1480,7 +1480,7 @@ Warning[Pe550]: variable "gro1" was set but never used
      76            
      77              TimerSet(&tm3,100);
    \   00000002   E644               LDI     R20, 100
-   \   00000004   ....               RCALL   ??Subroutine144_0
+   \   00000004   ....               RCALL   ??Subroutine143_0
    \                     ??CrossCallReturnLabel_385:
    \   00000006   ....               LDI     R16, LOW(tm3)
    \   00000008   ....               LDI     R17, (tm3) >> 8
@@ -1504,7 +1504,7 @@ Warning[Pe550]: variable "gro1" was set but never used
      83              
      84              TimerSet(&tm6,100);//мигание питания
    \   00000022   E644               LDI     R20, 100
-   \   00000024   ....               RCALL   ??Subroutine144_0
+   \   00000024   ....               RCALL   ??Subroutine143_0
    \                     ??CrossCallReturnLabel_386:
    \   00000026   ....               LDI     R16, LOW(tm6)
    \   00000028   ....               LDI     R17, (tm6) >> 8
@@ -1512,11 +1512,11 @@ Warning[Pe550]: variable "gro1" was set but never used
      85            
      86            
      87             aoff=0; onok=0; pr=0; on=0; mute=0; zader=0;  til=0;
-   \   0000002C   ....               RCALL   ?Subroutine106
+   \   0000002C   ....               RCALL   ?Subroutine105
    \                     ??CrossCallReturnLabel_358:
    \   0000002E   9300....           STS     onok, R16
    \   00000032   9300....           STS     pr, R16
-   \   00000036   ....               RCALL   ??Subroutine134_0
+   \   00000036   ....               RCALL   ??Subroutine133_0
    \                     ??CrossCallReturnLabel_319:
    \   00000038   9300....           STS     mute, R16
    \   0000003C   9300....           STS     zader, R16
@@ -1534,7 +1534,7 @@ Warning[Pe550]: variable "gro1" was set but never used
      91           // u=1; 
      92            if (u) USART_Init();
    \                     ??main_0:
-   \   00000050   ....               RCALL   ?Subroutine103
+   \   00000050   ....               RCALL   ?Subroutine102
    \                     ??CrossCallReturnLabel_282:
    \   00000052   F009               BREQ    ??main_2
    \                     ??main_1:
@@ -1582,9 +1582,9 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??CrossCallReturnLabel_269:
    \   0000008C   F499               BRNE    ??main_6
    \   0000008E   E001               LDI     R16, 1
-   \   00000090   ....               RCALL   ?Subroutine107
+   \   00000090   ....               RCALL   ?Subroutine106
    \                     ??CrossCallReturnLabel_216:
-   \   00000092   ....               RCALL   ?Subroutine108
+   \   00000092   ....               RCALL   ?Subroutine107
    \                     ??CrossCallReturnLabel_219:
    \   00000094   9AC4               SBI     0x18, 0x04
    \                     ??main_7:
@@ -1597,7 +1597,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??CrossCallReturnLabel_270:
    \   0000009E   F429               BRNE    ??main_8
    \   000000A0   E001               LDI     R16, 1
-   \   000000A2   ....               RCALL   ?Subroutine109
+   \   000000A2   ....               RCALL   ?Subroutine108
    \                     ??CrossCallReturnLabel_226:
    \   000000A4   ....               RCALL   ?Subroutine67
    \                     ??CrossCallReturnLabel_297:
@@ -1621,9 +1621,9 @@ Warning[Pe550]: variable "gro1" was set but never used
     102            if (mode==0 && modegro==1)   {  modegro=0; p5;  led_all(1);    while(1) {}   }
    \   000000B8   ....               RCALL   ?Subroutine14
    \                     ??CrossCallReturnLabel_228:
-   \   000000BA   ....               RCALL   ?Subroutine108
+   \   000000BA   ....               RCALL   ?Subroutine107
    \                     ??CrossCallReturnLabel_220:
-   \   000000BC   ....               RCALL   ??Subroutine140_0
+   \   000000BC   ....               RCALL   ??Subroutine139_0
    \                     ??CrossCallReturnLabel_363:
    \   000000BE   CFFF               RJMP    ??CrossCallReturnLabel_363
     103            
@@ -1649,20 +1649,20 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   000000D2   E001               LDI     R16, 1
    \   000000D4   9300....           STS     `write`, R16
    \   000000D8   ....               RCALL   ?Subroutine11
-    113                  for (uchar i=0; i<=MAXFUNC; i++) {writeCOD();tekfunc++;}
+    113                  for (uchar i=0; i<=MAXFUNC; i++) {writeCOD();indexFUNC++;}
    \                     ??CrossCallReturnLabel_9:
    \   000000DA   E188               LDI     R24, 24
    \                     ??main_12:
    \   000000DC   ....               RCALL   ??writeCOD
-   \   000000DE   ....               LDI     R30, LOW(tekfunc)
-   \   000000E0   ....               LDI     R31, (tekfunc) >> 8
+   \   000000DE   ....               LDI     R30, LOW(indexFUNC)
+   \   000000E0   ....               LDI     R31, (indexFUNC) >> 8
    \   000000E2   ....               RCALL   ?Subroutine31
    \                     ??CrossCallReturnLabel_42:
    \   000000E4   958A               DEC     R24
    \   000000E6   F7D1               BRNE    ??main_12
-    114                  tekfunc=0;
+    114                  indexFUNC=0;
     115                  led_all(1); while(1) {} //зависаем
-   \   000000E8   ....               RCALL   ??Subroutine140_0
+   \   000000E8   ....               RCALL   ??Subroutine139_0
    \                     ??CrossCallReturnLabel_362:
    \   000000EA   CFFF               RJMP    ??CrossCallReturnLabel_362
     116                }
@@ -1683,16 +1683,16 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   000000F2   3001               CPI     R16, 1
    \   000000F4   F479               BRNE    ??main_13
     128             {
-    129               for (uchar i=0; i<3; i++) {getadr(); p3;led_all(0); p3;}
+    129               for (uchar i=0; i<3; i++) {getadr(); p2;led_all(0); p2;}
    \   000000F6   E083               LDI     R24, 3
    \                     ??main_14:
    \   000000F8   ....               RCALL   ??getadr
-   \   000000FA   ....               RCALL   ?Subroutine74
-   \                     ??CrossCallReturnLabel_130:
+   \   000000FA   ....               RCALL   ?Subroutine73
+   \                     ??CrossCallReturnLabel_111:
    \   000000FC   ....               RCALL   ?Subroutine16
    \                     ??CrossCallReturnLabel_15:
-   \   000000FE   ....               RCALL   ?Subroutine74
-   \                     ??CrossCallReturnLabel_131:
+   \   000000FE   ....               RCALL   ?Subroutine73
+   \                     ??CrossCallReturnLabel_112:
    \   00000100   958A               DEC     R24
    \   00000102   F7D1               BRNE    ??main_14
     130              
@@ -1739,7 +1739,7 @@ Warning[Pe550]: variable "gro1" was set but never used
     165             }
     166             if (u) diag();  
    \                     ??main_16:
-   \   0000010E   ....               RCALL   ?Subroutine103
+   \   0000010E   ....               RCALL   ?Subroutine102
    \                     ??CrossCallReturnLabel_283:
    \   00000110   F009               BREQ    ??main_13
    \   00000112   ....               RCALL   ??diag
@@ -1761,7 +1761,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000132   2300               TST     R16
    \   00000134   F011               BREQ    ??CrossCallReturnLabel_344
    \   00000136   ....               RCALL   ??analizCOD
-   \   00000138   ....               RCALL   ?Subroutine121
+   \   00000138   ....               RCALL   ?Subroutine120
    \                     ??CrossCallReturnLabel_344:
    \   0000013A   9985               SBIC    0x10, 0x05
    \   0000013C   C004               RJMP    ??main_19
@@ -1770,8 +1770,8 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000142   9981               SBIC    0x10, 0x01
    \   00000144   C005               RJMP    ??main_20
    \                     ??main_19:
-   \   00000146   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_111:
+   \   00000146   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_116:
    \   00000148   3109               CPI     R16, 25
    \   0000014A   F011               BREQ    ??main_20
    \   0000014C   350A               CPI     R16, 90
@@ -1796,7 +1796,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??CrossCallReturnLabel_106:
    \   00000170   9300....           STS     ??gro1, R16
    \   00000174   9300....           STS     ??gro2, R16
-   \   00000178   ....               RCALL   ?Subroutine121
+   \   00000178   ....               RCALL   ?Subroutine120
    \                     ??CrossCallReturnLabel_345:
    \   0000017A   9985               SBIC    0x10, 0x05
    \   0000017C   C004               RJMP    ??main_21
@@ -1805,8 +1805,8 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000182   9981               SBIC    0x10, 0x01
    \   00000184   C005               RJMP    ??main_22
    \                     ??main_21:
-   \   00000186   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_112:
+   \   00000186   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_117:
    \   00000188   3109               CPI     R16, 25
    \   0000018A   F011               BREQ    ??main_22
    \   0000018C   350A               CPI     R16, 90
@@ -1821,16 +1821,16 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??CrossCallReturnLabel_17:
    \   0000019A   9A94               SBI     0x12, 0x04
    \   0000019C   9A97               SBI     0x12, 0x07
-   \   0000019E   ....               RCALL   ?Subroutine108
+   \   0000019E   ....               RCALL   ?Subroutine107
    \                     ??CrossCallReturnLabel_221:
    \   000001A0   E001               LDI     R16, 1
-   \   000001A2   ....               RCALL   ??Subroutine134_0
+   \   000001A2   ....               RCALL   ??Subroutine133_0
    \                     ??CrossCallReturnLabel_320:
    \   000001A4   E000               LDI     R16, 0
    \   000001A6   9300....           STS     mute, R16
    \   000001AA   ....               RCALL   ?Subroutine3
    \                     ??CrossCallReturnLabel_5:
-   \   000001AC   ....               RCALL   ??Subroutine137_0
+   \   000001AC   ....               RCALL   ??Subroutine136_0
    \                     ??CrossCallReturnLabel_348:
    \   000001AE   9100....           LDS     R16, on
    \   000001B2   9110....           LDS     R17, onok
@@ -1838,20 +1838,20 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   000001B8   F4B1               BRNE    ??main_23
    \   000001BA   ....               RCALL   ?Subroutine64
    \                     ??CrossCallReturnLabel_322:
-   \   000001BC   ....               RCALL   ??Subroutine139_0
+   \   000001BC   ....               RCALL   ??Subroutine138_0
    \                     ??CrossCallReturnLabel_357:
    \   000001BE   ....               RCALL   ?Subroutine15
    \                     ??CrossCallReturnLabel_324:
    \   000001C0   ....               RCALL   ?Subroutine77
-   \                     ??CrossCallReturnLabel_132:
+   \                     ??CrossCallReturnLabel_135:
    \   000001C2   9896               CBI     0x12, 0x06
-   \   000001C4   ....               RCALL   ?Subroutine82
+   \   000001C4   ....               RCALL   ?Subroutine81
    \                     ??CrossCallReturnLabel_151:
    \   000001C6   E200               LDI     R16, 32
    \   000001C8   E41E               LDI     R17, 78
    \   000001CA   ....               LDI     R30, LOW(tON)
    \   000001CC   ....               LDI     R31, (tON) >> 8
-   \   000001CE   ....               RCALL   ??Subroutine136_0
+   \   000001CE   ....               RCALL   ??Subroutine135_0
    \                     ??CrossCallReturnLabel_335:
    \   000001D0   E000               LDI     R16, 0
    \   000001D2   BB08               OUT     0x18, R16
@@ -1868,12 +1868,12 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??CrossCallReturnLabel_276:
    \   000001E8   F409               BRNE    $+2+2
    \   000001EA   CF91               RJMP    ??main_16
-   \   000001EC   ....               RCALL   ?Subroutine73
+   \   000001EC   ....               RCALL   ?Subroutine74
     167               
     168              
     169             
     170            }//-------------------------------------------бесконечный цикл
-   \                     ??CrossCallReturnLabel_113:
+   \                     ??CrossCallReturnLabel_118:
    \   000001EE   ....               RCALL   ??normal
    \   000001F0   CF8E               RJMP    ??main_16
    \   000001F2                      REQUIRE _A_PIND
@@ -1884,63 +1884,50 @@ Warning[Pe550]: variable "gro1" was set but never used
     172          }//main
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine74:
-   \   00000000   E70F               LDI     R16, 127
-   \   00000002   EA19               LDI     R17, 169
-   \   00000004   E023               LDI     R18, 3
-   \   00000006   5001               SUBI    R16, 1
-   \   00000008   4010               SBCI    R17, 0
-   \   0000000A   4020               SBCI    R18, 0
-   \   0000000C   F7E1               BRNE    $-6
-   \   0000000E   C000               RJMP    $+2
-   \   00000010   0000               NOP
-   \   00000012   9508               RET
-
-   \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine70:
-   \   00000000   ....               RCALL   ?Subroutine110
+   \   00000000   ....               RCALL   ?Subroutine109
    \                     ??CrossCallReturnLabel_230:
-   \   00000002   ....               RJMP    ?Subroutine122
+   \   00000002   ....               RJMP    ?Subroutine121
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine69:
-   \   00000000   ....               RCALL   ?Subroutine110
+   \   00000000   ....               RCALL   ?Subroutine109
    \                     ??CrossCallReturnLabel_229:
-   \   00000002                      REQUIRE ?Subroutine123
-   \   00000002                      ;               // Fall through to label ?Subroutine123
+   \   00000002                      REQUIRE ?Subroutine122
+   \   00000002                      ;               // Fall through to label ?Subroutine122
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine123:
+   \                     ?Subroutine122:
    \   00000000   3001               CPI     R16, 1
    \   00000002   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine110:
+   \                     ?Subroutine109:
    \   00000000   ....               LDI     R20, LOW(modegro)
    \   00000002   ....               LDI     R21, (modegro) >> 8
    \   00000004   ....               RJMP    __eeget8_16
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine67:
-   \   00000000   ....               RCALL   ?Subroutine108
+   \   00000000   ....               RCALL   ?Subroutine107
    \                     ??CrossCallReturnLabel_225:
    \   00000002   9AC2               SBI     0x18, 0x02
-   \   00000004                      REQUIRE ?Subroutine124
-   \   00000004                      ;               // Fall through to label ?Subroutine124
+   \   00000004                      REQUIRE ?Subroutine123
+   \   00000004                      ;               // Fall through to label ?Subroutine123
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine124:
+   \                     ?Subroutine123:
    \   00000000   9AC3               SBI     0x18, 0x03
    \   00000002   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine64:
    \   00000000   E000               LDI     R16, 0
-   \   00000002                      REQUIRE ??Subroutine134_0
-   \   00000002                      ;               // Fall through to label ??Subroutine134_0
+   \   00000002                      REQUIRE ??Subroutine133_0
+   \   00000002                      ;               // Fall through to label ??Subroutine133_0
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ??Subroutine134_0:
+   \                     ??Subroutine133_0:
    \   00000000   9300....           STS     on, R16
    \   00000004   9508               RET
 
@@ -1949,18 +1936,18 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000000   ....               RCALL   ??TimerSet
    \   00000002   EF44               LDI     R20, 244
    \   00000004   E051               LDI     R21, 1
-   \   00000006                      REQUIRE ?Subroutine119
-   \   00000006                      ;               // Fall through to label ?Subroutine119
+   \   00000006                      REQUIRE ?Subroutine118
+   \   00000006                      ;               // Fall through to label ?Subroutine118
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine15:
-   \   00000000   ....               RCALL   ?Subroutine108
+   \   00000000   ....               RCALL   ?Subroutine107
    \                     ??CrossCallReturnLabel_224:
-   \   00000002                      REQUIRE ??Subroutine135_0
-   \   00000002                      ;               // Fall through to label ??Subroutine135_0
+   \   00000002                      REQUIRE ??Subroutine134_0
+   \   00000002                      ;               // Fall through to label ??Subroutine134_0
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ??Subroutine135_0:
+   \                     ??Subroutine134_0:
    \   00000000   E000               LDI     R16, 0
    \   00000002   9300....           STS     zader, R16
    \   00000006   9508               RET
@@ -1968,11 +1955,11 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine14:
    \   00000000   E000               LDI     R16, 0
-   \   00000002                      REQUIRE ?Subroutine109
-   \   00000002                      ;               // Fall through to label ?Subroutine109
+   \   00000002                      REQUIRE ?Subroutine108
+   \   00000002                      ;               // Fall through to label ?Subroutine108
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine109:
+   \                     ?Subroutine108:
    \   00000000   ....               LDI     R20, LOW(modegro)
    \   00000002   ....               LDI     R21, (modegro) >> 8
    \   00000004   ....               RJMP    __eeput8_16
@@ -1980,11 +1967,11 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine13:
    \   00000000   E000               LDI     R16, 0
-   \   00000002                      REQUIRE ?Subroutine107
-   \   00000002                      ;               // Fall through to label ?Subroutine107
+   \   00000002                      REQUIRE ?Subroutine106
+   \   00000002                      ;               // Fall through to label ?Subroutine106
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine107:
+   \                     ?Subroutine106:
    \   00000000   ....               LDI     R20, LOW(fmode)
    \   00000002   ....               LDI     R21, (fmode) >> 8
    \   00000004   ....               RJMP    __eeput8_16
@@ -1996,7 +1983,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000006   E000               LDI     R16, 0
    \   00000008   ....               LDI     R30, LOW(timerzad)
    \   0000000A   ....               LDI     R31, (timerzad) >> 8
-   \   0000000C   ....               RCALL   ?Subroutine92
+   \   0000000C   ....               RCALL   ?Subroutine91
    \                     ??CrossCallReturnLabel_167:
    \   0000000E   ....               RJMP    ??source
 
@@ -2019,18 +2006,18 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000004   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine73:
+   \                     ?Subroutine74:
    \   00000000   9100....           LDS     R16, pultadr
    \   00000004   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ??Subroutine137_0:
+   \                     ??Subroutine136_0:
    \   00000000   E000               LDI     R16, 0
-   \   00000002                      REQUIRE ?Subroutine121
-   \   00000002                      ;               // Fall through to label ?Subroutine121
+   \   00000002                      REQUIRE ?Subroutine120
+   \   00000002                      ;               // Fall through to label ?Subroutine120
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine121:
+   \                     ?Subroutine120:
    \   00000000   9300....           STS     pultadr, R16
    \   00000004   9508               RET
 
@@ -2040,7 +2027,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000004   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine108:
+   \                     ?Subroutine107:
    \   00000000   E70F               LDI     R16, 127
    \   00000002   E11A               LDI     R17, 26
    \   00000004   E026               LDI     R18, 6
@@ -2053,18 +2040,31 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000012   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine106:
+   \                     ?Subroutine105:
    \   00000000   E000               LDI     R16, 0
-   \   00000002                      REQUIRE ??Subroutine139_0
-   \   00000002                      ;               // Fall through to label ??Subroutine139_0
+   \   00000002                      REQUIRE ??Subroutine138_0
+   \   00000002                      ;               // Fall through to label ??Subroutine138_0
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ??Subroutine139_0:
+   \                     ??Subroutine138_0:
    \   00000000   9300....           STS     aoff, R16
    \   00000004   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine82:
+   \                     ?Subroutine73:
+   \   00000000   EF0F               LDI     R16, 255
+   \   00000002   E710               LDI     R17, 112
+   \   00000004   E022               LDI     R18, 2
+   \   00000006   5001               SUBI    R16, 1
+   \   00000008   4010               SBCI    R17, 0
+   \   0000000A   4020               SBCI    R18, 0
+   \   0000000C   F7E1               BRNE    $-6
+   \   0000000E   C000               RJMP    $+2
+   \   00000010   0000               NOP
+   \   00000012   9508               RET
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine81:
    \   00000000   EF0F               LDI     R16, 255
    \   00000002   E314               LDI     R17, 52
    \   00000004   E02C               LDI     R18, 12
@@ -2082,20 +2082,20 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000002   ....               RJMP    ??led_all
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ??Subroutine140_0:
+   \                     ??Subroutine139_0:
    \   00000000   E001               LDI     R16, 1
    \   00000002   ....               RJMP    ??led_all
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine71:
    \   00000000   9100....           LDS     R16, mode
-   \   00000004                      REQUIRE ?Subroutine122
-   \   00000004                      ;               // Fall through to label ?Subroutine122
+   \   00000004                      REQUIRE ?Subroutine121
+   \   00000004                      ;               // Fall through to label ?Subroutine121
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine76:
    \   00000000   9100....           LDS     R16, on
-   \   00000004   ....               RJMP    ?Subroutine122
+   \   00000004   ....               RJMP    ?Subroutine121
     173          //***************************************************************************
     174          
     175          
@@ -2117,73 +2117,73 @@ Warning[Pe550]: variable "gro1" was set but never used
     188          {
     189            uchar adr=0;
    \   00000000   E000               LDI     R16, 0
-    190            if (tekfunc==0) {adr=1; SET(PORTB,0);}//s1
-   \   00000002   9110....           LDS     R17, tekfunc
+    190            if (indexFUNC==0) {adr=1; SET(PORTB,0);}//s1
+   \   00000002   9110....           LDS     R17, indexFUNC
    \   00000006   2311               TST     R17
    \   00000008   F411               BRNE    ??getadr_1
    \   0000000A   E001               LDI     R16, 1
    \   0000000C   C02F               RJMP    ??getadr_2
-    191            if (tekfunc==1) {adr=5; SET(PORTB,1);}
+    191            if (indexFUNC==1) {adr=5; SET(PORTB,1);}
    \                     ??getadr_1:
    \   0000000E   3011               CPI     R17, 1
    \   00000010   F411               BRNE    ??getadr_3
    \   00000012   E005               LDI     R16, 5
    \   00000014   C030               RJMP    ??getadr_4
-    192            if (tekfunc==2) {adr=10;SET(PORTB,2);}
+    192            if (indexFUNC==2) {adr=10;SET(PORTB,2);}
    \                     ??getadr_3:
    \   00000016   3012               CPI     R17, 2
    \   00000018   F411               BRNE    ??getadr_5
    \   0000001A   E00A               LDI     R16, 10
    \   0000001C   C031               RJMP    ??getadr_6
-    193            if (tekfunc==3) {adr=15;SET(PORTB,3);}
+    193            if (indexFUNC==3) {adr=15;SET(PORTB,3);}
    \                     ??getadr_5:
    \   0000001E   3013               CPI     R17, 3
    \   00000020   F411               BRNE    ??getadr_7
    \   00000022   E00F               LDI     R16, 15
    \   00000024   C032               RJMP    ??getadr_8
-    194            if (tekfunc==4) {adr=20;SET(PORTB,4);}//s5 или ONтыл
+    194            if (indexFUNC==4) {adr=20;SET(PORTB,4);}//s5 или ONтыл
    \                     ??getadr_7:
    \   00000026   3014               CPI     R17, 4
    \   00000028   F411               BRNE    ??getadr_9
    \   0000002A   E104               LDI     R16, 20
    \   0000002C   C038               RJMP    ??getadr_10
-    195            if (tekfunc==5) {adr=55;SET(PORTB,0);SET(PORTB,2);SET(PORTB,4);}//command return
+    195            if (indexFUNC==5) {adr=55;SET(PORTB,0);SET(PORTB,2);SET(PORTB,4);}//command return
    \                     ??getadr_9:
    \   0000002E   3015               CPI     R17, 5
    \   00000030   F411               BRNE    ??getadr_11
    \   00000032   E307               LDI     R16, 55
    \   00000034   C032               RJMP    ??getadr_12
-    196            if (tekfunc==6) {adr=25;SET(PORTD,7);}//on standby
+    196            if (indexFUNC==6) {adr=25;SET(PORTD,7);}//on standby
    \                     ??getadr_11:
    \   00000036   3016               CPI     R17, 6
    \   00000038   F411               BRNE    ??getadr_13
    \   0000003A   E109               LDI     R16, 25
    \   0000003C   C035               RJMP    ??getadr_14
-    197            if (tekfunc==7) {adr=30;SET(PORTB,5);}//aoff
+    197            if (indexFUNC==7) {adr=30;SET(PORTB,5);}//aoff
    \                     ??getadr_13:
    \   0000003E   3017               CPI     R17, 7
    \   00000040   F411               BRNE    ??getadr_15
    \   00000042   E10E               LDI     R16, 30
    \   00000044   C035               RJMP    ??getadr_16
-    198            if (tekfunc==8) {adr=35;AC_ON;}//mute
+    198            if (indexFUNC==8) {adr=35;AC_ON;}//mute
    \                     ??getadr_15:
    \   00000046   3018               CPI     R17, 8
    \   00000048   F411               BRNE    ??getadr_17
    \   0000004A   E203               LDI     R16, 35
    \   0000004C   C035               RJMP    ??getadr_18
-    199            if (tekfunc==9) {adr=40; }//select
+    199            if (indexFUNC==9) {adr=40; }//select
    \                     ??getadr_17:
    \   0000004E   3019               CPI     R17, 9
    \   00000050   F411               BRNE    ??getadr_19
    \   00000052   E208               LDI     R16, 40
    \   00000054   9508               RET
-    200            if (tekfunc==10) {adr=45; }//громкость увеличить
+    200            if (indexFUNC==10) {adr=45; }//громкость увеличить
    \                     ??getadr_19:
    \   00000056   301A               CPI     R17, 10
    \   00000058   F411               BRNE    ??getadr_20
    \   0000005A   E20D               LDI     R16, 45
    \   0000005C   9508               RET
-    201            if (tekfunc==11) {adr=50; }//громкость уменьшить
+    201            if (indexFUNC==11) {adr=50; }//громкость уменьшить
    \                     ??getadr_20:
    \   0000005E   301B               CPI     R17, 11
    \   00000060   F411               BRNE    ??getadr_21
@@ -2191,7 +2191,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000064   9508               RET
     202            
     203            //дублирование команд
-    204             if (tekfunc==12) {adr=60; SET(PORTB,0);}//s1
+    204             if (indexFUNC==12) {adr=60; SET(PORTB,0);}//s1
    \                     ??getadr_21:
    \   00000066   301C               CPI     R17, 12
    \   00000068   F419               BRNE    ??getadr_22
@@ -2199,7 +2199,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??getadr_2:
    \   0000006C   9AC0               SBI     0x18, 0x00
    \   0000006E   9508               RET
-    205            if (tekfunc==13) {adr=65; SET(PORTB,1);}
+    205            if (indexFUNC==13) {adr=65; SET(PORTB,1);}
    \                     ??getadr_22:
    \   00000070   301D               CPI     R17, 13
    \   00000072   F419               BRNE    ??getadr_23
@@ -2207,7 +2207,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??getadr_4:
    \   00000076   9AC1               SBI     0x18, 0x01
    \   00000078   9508               RET
-    206            if (tekfunc==14) {adr=70;SET(PORTB,2);}
+    206            if (indexFUNC==14) {adr=70;SET(PORTB,2);}
    \                     ??getadr_23:
    \   0000007A   301E               CPI     R17, 14
    \   0000007C   F419               BRNE    ??getadr_24
@@ -2215,20 +2215,20 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??getadr_6:
    \   00000080   9AC2               SBI     0x18, 0x02
    \   00000082   9508               RET
-    207            if (tekfunc==15) {adr=75;SET(PORTB,3);}
+    207            if (indexFUNC==15) {adr=75;SET(PORTB,3);}
    \                     ??getadr_24:
    \   00000084   301F               CPI     R17, 15
    \   00000086   F411               BRNE    ??getadr_25
    \   00000088   E40B               LDI     R16, 75
    \                     ??getadr_8:
-   \   0000008A   ....               RJMP    ?Subroutine124
-    208            if (tekfunc==16) {adr=80;SET(PORTB,4);}//s5 или ONтыл
+   \   0000008A   ....               RJMP    ?Subroutine123
+    208            if (indexFUNC==16) {adr=80;SET(PORTB,4);}//s5 или ONтыл
    \                     ??getadr_25:
    \   0000008C   3110               CPI     R17, 16
    \   0000008E   F411               BRNE    ??getadr_26
    \   00000090   E500               LDI     R16, 80
    \   00000092   C005               RJMP    ??getadr_10
-    209            if (tekfunc==17) {adr=85;SET(PORTB,0);SET(PORTB,2);SET(PORTB,4);}//command return
+    209            if (indexFUNC==17) {adr=85;SET(PORTB,0);SET(PORTB,2);SET(PORTB,4);}//command return
    \                     ??getadr_26:
    \   00000094   3111               CPI     R17, 17
    \   00000096   F429               BRNE    ??getadr_27
@@ -2239,21 +2239,21 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??getadr_10:
    \   0000009E   9AC4               SBI     0x18, 0x04
    \   000000A0   9508               RET
-    210            if (tekfunc==18) {adr=90;SET(PORTD,7);}//on standby
+    210            if (indexFUNC==18) {adr=90;SET(PORTD,7);}//on standby
    \                     ??getadr_27:
    \   000000A2   3112               CPI     R17, 18
    \   000000A4   F411               BRNE    ??getadr_28
    \   000000A6   E50A               LDI     R16, 90
    \                     ??getadr_14:
-   \   000000A8   ....               RJMP    ?Subroutine126
-    211            if (tekfunc==19) {adr=95;SET(PORTB,5);}//aoff
+   \   000000A8   ....               RJMP    ?Subroutine125
+    211            if (indexFUNC==19) {adr=95;SET(PORTB,5);}//aoff
    \                     ??getadr_28:
    \   000000AA   3113               CPI     R17, 19
    \   000000AC   F411               BRNE    ??getadr_29
    \   000000AE   E50F               LDI     R16, 95
    \                     ??getadr_16:
-   \   000000B0   ....               RJMP    ?Subroutine125
-    212            if (tekfunc==20) {adr=100;AC_ON;}//mute
+   \   000000B0   ....               RJMP    ?Subroutine124
+    212            if (indexFUNC==20) {adr=100;AC_ON;}//mute
    \                     ??getadr_29:
    \   000000B2   3114               CPI     R17, 20
    \   000000B4   F419               BRNE    ??getadr_30
@@ -2261,19 +2261,19 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??getadr_18:
    \   000000B8   9A96               SBI     0x12, 0x06
    \   000000BA   9508               RET
-    213            if (tekfunc==21) {adr=105; }//select
+    213            if (indexFUNC==21) {adr=105; }//select
    \                     ??getadr_30:
    \   000000BC   3115               CPI     R17, 21
    \   000000BE   F411               BRNE    ??getadr_31
    \   000000C0   E609               LDI     R16, 105
    \   000000C2   9508               RET
-    214            if (tekfunc==22) {adr=110; }//громкость увеличить
+    214            if (indexFUNC==22) {adr=110; }//громкость увеличить
    \                     ??getadr_31:
    \   000000C4   3116               CPI     R17, 22
    \   000000C6   F411               BRNE    ??getadr_32
    \   000000C8   E60E               LDI     R16, 110
    \   000000CA   9508               RET
-    215            if (tekfunc==23) {adr=115; }//громкость уменьшить
+    215            if (indexFUNC==23) {adr=115; }//громкость уменьшить
    \                     ??getadr_32:
    \   000000CC   3117               CPI     R17, 23
    \   000000CE   F409               BRNE    ??getadr_33
@@ -2286,12 +2286,12 @@ Warning[Pe550]: variable "gro1" was set but never used
     217          }
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine126:
+   \                     ?Subroutine125:
    \   00000000   9A97               SBI     0x12, 0x07
    \   00000002   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine125:
+   \                     ?Subroutine124:
    \   00000000   9AC5               SBI     0x18, 0x05
    \   00000002   9508               RET
     218          
@@ -2305,25 +2305,12 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000002   E015               LDI     R17, 5
    \   00000004   ....               LDI     R30, LOW(tON)
    \   00000006   ....               LDI     R31, (tON) >> 8
-   \   00000008   ....               RCALL   ??Subroutine136_0
+   \   00000008   ....               RCALL   ??Subroutine135_0
    \                     ??CrossCallReturnLabel_336:
    \   0000000A   ....               RCALL   ?Subroutine3
    \                     ??CrossCallReturnLabel_4:
-   \   0000000C   ....               RJMP    ?Subroutine78
+   \   0000000C   ....               RJMP    ?Subroutine73
     222          }
-
-   \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine78:
-   \   00000000   EF0F               LDI     R16, 255
-   \   00000002   E710               LDI     R17, 112
-   \   00000004   E022               LDI     R18, 2
-   \   00000006   5001               SUBI    R16, 1
-   \   00000008   4010               SBCI    R17, 0
-   \   0000000A   4020               SBCI    R18, 0
-   \   0000000C   F7E1               BRNE    $-6
-   \   0000000E   C000               RJMP    $+2
-   \   00000010   0000               NOP
-   \   00000012   9508               RET
     223          
     224          
 
@@ -2334,21 +2321,21 @@ Warning[Pe550]: variable "gro1" was set but never used
     227          
     228                 
     229               if (pultadr==1 || pultadr==60) {if (sel!=1)  { AC_OFF; lastsel=sel; sel=1; pult(); } else   migINI(sel-1, 3 ,0); 
-   \   00000000   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_114:
+   \   00000000   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_119:
    \   00000002   3001               CPI     R16, 1
    \   00000004   F011               BREQ    ??tilf_1
    \   00000006   330C               CPI     R16, 60
    \   00000008   F451               BRNE    ??tilf_2
    \                     ??tilf_1:
-   \   0000000A   ....               RCALL   ?Subroutine120
+   \   0000000A   ....               RCALL   ?Subroutine119
    \                     ??CrossCallReturnLabel_256:
    \   0000000C   3001               CPI     R16, 1
    \   0000000E   F021               BREQ    ??tilf_3
-   \   00000010   ....               RCALL   ?Subroutine79
+   \   00000010   ....               RCALL   ?Subroutine78
    \                     ??CrossCallReturnLabel_140:
    \   00000012   E001               LDI     R16, 1
-   \   00000014   ....               RCALL   ?Subroutine81
+   \   00000014   ....               RCALL   ?Subroutine80
    \                     ??CrossCallReturnLabel_150:
    \   00000016   C003               RJMP    ??tilf_2
    \                     ??tilf_3:
@@ -2359,21 +2346,21 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   0000001C   ....               RCALL   ??migINI
     231               if (pultadr==5 || pultadr==65) {if (sel!=2)  {AC_OFF; lastsel=sel;sel=2; pult(); }  else  migINI(sel-1, 3 ,0); 
    \                     ??tilf_2:
-   \   0000001E   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_115:
+   \   0000001E   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_120:
    \   00000020   3005               CPI     R16, 5
    \   00000022   F011               BREQ    ??tilf_4
    \   00000024   3401               CPI     R16, 65
    \   00000026   F451               BRNE    ??tilf_5
    \                     ??tilf_4:
-   \   00000028   ....               RCALL   ?Subroutine120
+   \   00000028   ....               RCALL   ?Subroutine119
    \                     ??CrossCallReturnLabel_257:
    \   0000002A   3002               CPI     R16, 2
    \   0000002C   F021               BREQ    ??tilf_6
-   \   0000002E   ....               RCALL   ?Subroutine79
+   \   0000002E   ....               RCALL   ?Subroutine78
    \                     ??CrossCallReturnLabel_141:
    \   00000030   E002               LDI     R16, 2
-   \   00000032   ....               RCALL   ?Subroutine81
+   \   00000032   ....               RCALL   ?Subroutine80
    \                     ??CrossCallReturnLabel_149:
    \   00000034   C003               RJMP    ??tilf_5
    \                     ??tilf_6:
@@ -2384,21 +2371,21 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   0000003A   ....               RCALL   ??migINI
     233               if (pultadr==10 || pultadr==70) {if (sel!=3) {AC_OFF; lastsel=sel;sel=3; pult(); } else    migINI(sel-1, 3 ,0); 
    \                     ??tilf_5:
-   \   0000003C   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_116:
+   \   0000003C   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_121:
    \   0000003E   300A               CPI     R16, 10
    \   00000040   F011               BREQ    ??tilf_7
    \   00000042   3406               CPI     R16, 70
    \   00000044   F451               BRNE    ??tilf_8
    \                     ??tilf_7:
-   \   00000046   ....               RCALL   ?Subroutine120
+   \   00000046   ....               RCALL   ?Subroutine119
    \                     ??CrossCallReturnLabel_258:
    \   00000048   3003               CPI     R16, 3
    \   0000004A   F021               BREQ    ??tilf_9
-   \   0000004C   ....               RCALL   ?Subroutine79
+   \   0000004C   ....               RCALL   ?Subroutine78
    \                     ??CrossCallReturnLabel_142:
    \   0000004E   E003               LDI     R16, 3
-   \   00000050   ....               RCALL   ?Subroutine81
+   \   00000050   ....               RCALL   ?Subroutine80
    \                     ??CrossCallReturnLabel_148:
    \   00000052   C003               RJMP    ??tilf_8
    \                     ??tilf_9:
@@ -2409,21 +2396,21 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000058   ....               RCALL   ??migINI
     235               if (pultadr==15 || pultadr==75) {if (sel!=4) {AC_OFF; lastsel=sel;sel=4; pult(); } else   migINI(sel-1, 3 ,0); 
    \                     ??tilf_8:
-   \   0000005A   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_117:
+   \   0000005A   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_122:
    \   0000005C   300F               CPI     R16, 15
    \   0000005E   F011               BREQ    ??tilf_10
    \   00000060   340B               CPI     R16, 75
    \   00000062   F451               BRNE    ??tilf_11
    \                     ??tilf_10:
-   \   00000064   ....               RCALL   ?Subroutine120
+   \   00000064   ....               RCALL   ?Subroutine119
    \                     ??CrossCallReturnLabel_259:
    \   00000066   3004               CPI     R16, 4
    \   00000068   F021               BREQ    ??tilf_12
-   \   0000006A   ....               RCALL   ?Subroutine79
+   \   0000006A   ....               RCALL   ?Subroutine78
    \                     ??CrossCallReturnLabel_143:
    \   0000006C   E004               LDI     R16, 4
-   \   0000006E   ....               RCALL   ?Subroutine81
+   \   0000006E   ....               RCALL   ?Subroutine80
    \                     ??CrossCallReturnLabel_147:
    \   00000070   C003               RJMP    ??tilf_11
    \                     ??tilf_12:
@@ -2434,8 +2421,8 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000076   ....               RCALL   ??migINI
     237               if ((pultadr==20  || pultadr==80) && mode!=1) { if (sel!=5) {AC_OFF; lastsel=sel;sel=5; pult();}  else  migINI(sel-1, 3 ,0); 
    \                     ??tilf_11:
-   \   00000078   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_118:
+   \   00000078   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_123:
    \   0000007A   3104               CPI     R16, 20
    \   0000007C   F011               BREQ    ??tilf_13
    \   0000007E   3500               CPI     R16, 80
@@ -2444,14 +2431,14 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000082   ....               RCALL   ?Subroutine72
    \                     ??CrossCallReturnLabel_293:
    \   00000084   F051               BREQ    ??tilf_15
-   \   00000086   ....               RCALL   ?Subroutine120
+   \   00000086   ....               RCALL   ?Subroutine119
    \                     ??CrossCallReturnLabel_260:
    \   00000088   3005               CPI     R16, 5
    \   0000008A   F021               BREQ    ??tilf_16
-   \   0000008C   ....               RCALL   ?Subroutine79
+   \   0000008C   ....               RCALL   ?Subroutine78
    \                     ??CrossCallReturnLabel_144:
    \   0000008E   E005               LDI     R16, 5
-   \   00000090   ....               RCALL   ?Subroutine81
+   \   00000090   ....               RCALL   ?Subroutine80
    \                     ??CrossCallReturnLabel_146:
    \   00000092   C003               RJMP    ??tilf_15
    \                     ??tilf_16:
@@ -2465,13 +2452,13 @@ Warning[Pe550]: variable "gro1" was set but never used
     241               //тыловые  ------------------------------------------------------
     242               if ((  pultadr==20  || pultadr==80) && mode==1) {  
    \                     ??tilf_15:
-   \   0000009A   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_119:
+   \   0000009A   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_124:
    \   0000009C   3104               CPI     R16, 20
    \   0000009E   F019               BREQ    ??tilf_17
    \                     ??tilf_14:
-   \   000000A0   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_120:
+   \   000000A0   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_125:
    \   000000A2   3500               CPI     R16, 80
    \   000000A4   F4C1               BRNE    ??CrossCallReturnLabel_110
    \                     ??tilf_17:
@@ -2491,14 +2478,14 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   000000B8   E002               LDI     R16, 2
    \                     ??tilf_19:
    \   000000BA   9AC4               SBI     0x18, 0x04
-   \   000000BC   ....               RCALL   ?Subroutine112
+   \   000000BC   ....               RCALL   ?Subroutine111
    \                     ??CrossCallReturnLabel_233:
    \   000000BE   98C4               CBI     0x18, 0x04
-   \   000000C0   ....               RCALL   ?Subroutine84
+   \   000000C0   ....               RCALL   ?Subroutine83
    \                     ??CrossCallReturnLabel_158:
    \   000000C2   F7D9               BRNE    ??tilf_19
    \   000000C4   9AC4               SBI     0x18, 0x04
-   \   000000C6   ....               RCALL   ??Subroutine137_0
+   \   000000C6   ....               RCALL   ??Subroutine136_0
    \                     ??CrossCallReturnLabel_349:
    \   000000C8   ....               RJMP    ?Subroutine66
     246                 else 
@@ -2509,7 +2496,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   000000CE   E000               LDI     R16, 0
    \   000000D0   ....               RCALL   ?Subroutine65
    \                     ??CrossCallReturnLabel_108:
-   \   000000D2   ....               RCALL   ?Subroutine121
+   \   000000D2   ....               RCALL   ?Subroutine120
    \                     ??CrossCallReturnLabel_346:
    \   000000D4   ....               RCALL   ?Subroutine66
     248               
@@ -2523,7 +2510,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   000000D8                      REQUIRE _A_PORTB
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine79:
+   \                     ?Subroutine78:
    \   00000000   9896               CBI     0x12, 0x06
    \   00000002   9100....           LDS     R16, ??sel
    \   00000006   9300....           STS     ??lastsel, R16
@@ -2536,22 +2523,22 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000004   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine81:
+   \                     ?Subroutine80:
    \   00000000   9300....           STS     ??sel, R16
    \   00000004   ....               RJMP    ??pult
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine120:
+   \                     ?Subroutine119:
    \   00000000   9100....           LDS     R16, ??sel
    \   00000004   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine72:
    \   00000000   9100....           LDS     R16, mode
-   \   00000004   ....               RJMP    ?Subroutine123
+   \   00000004   ....               RJMP    ?Subroutine122
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine112:
+   \                     ?Subroutine111:
    \   00000000   EF4F               LDI     R20, 255
    \   00000002   E750               LDI     R21, 112
    \   00000004   E062               LDI     R22, 2
@@ -2564,8 +2551,8 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000012   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine84:
-   \   00000000   ....               RCALL   ?Subroutine112
+   \                     ?Subroutine83:
+   \   00000000   ....               RCALL   ?Subroutine111
    \                     ??CrossCallReturnLabel_235:
    \   00000002   950A               DEC     R16
    \   00000004   9508               RET
@@ -2583,7 +2570,7 @@ Warning[Pe550]: variable "gro1" was set but never used
     260          {
     261            //--------------- mute -------------------
     262            if (mute==1) AC_OFF; else { if (zader==0) AC_ON; }
-   \   00000000   ....               RCALL   ?Subroutine86
+   \   00000000   ....               RCALL   ?Subroutine85
    \                     ??CrossCallReturnLabel_278:
    \   00000002   F1A1               BREQ    ??mutef_1
    \   00000004   9896               CBI     0x12, 0x06
@@ -2596,24 +2583,24 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000010   ....               LDI     R31, (timerzad) >> 8
    \   00000012   ....               RCALL   ?Subroutine32
    \                     ??CrossCallReturnLabel_44:
-   \   00000014   ....               RCALL   ??Subroutine136_0
+   \   00000014   ....               RCALL   ??Subroutine135_0
    \                     ??CrossCallReturnLabel_337:
    \   00000016   ....               LDI     R30, LOW(tON)
    \   00000018   ....               LDI     R31, (tON) >> 8
-   \   0000001A   ....               RCALL   ?Subroutine102
+   \   0000001A   ....               RCALL   ?Subroutine101
    \                     ??CrossCallReturnLabel_200:
    \   0000001C   ....               LDI     R30, LOW(timerzad)
    \   0000001E   ....               LDI     R31, (timerzad) >> 8
-   \   00000020   ....               RCALL   ?Subroutine99
+   \   00000020   ....               RCALL   ?Subroutine98
    \                     ??CrossCallReturnLabel_183:
    \   00000022   1702               CP      R16, R18
    \   00000024   0713               CPC     R17, R19
    \   00000026   F428               BRCC    ??mutef_3
-   \   00000028   ....               RCALL   ??Subroutine135_0
+   \   00000028   ....               RCALL   ??Subroutine134_0
    \                     ??CrossCallReturnLabel_325:
-   \   0000002A   ....               RCALL   ?Subroutine92
+   \   0000002A   ....               RCALL   ?Subroutine91
    \                     ??CrossCallReturnLabel_165:
-   \   0000002C   ....               RCALL   ?Subroutine86
+   \   0000002C   ....               RCALL   ?Subroutine85
    \                     ??CrossCallReturnLabel_279:
    \   0000002E   F409               BRNE    ??mutef_3
    \                     ??mutef_4:
@@ -2626,14 +2613,14 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000036   9B85               SBIS    0x10, 0x05
    \   00000038   C005               RJMP    ??mutef_6
    \                     ??mutef_5:
-   \   0000003A   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_121:
+   \   0000003A   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_126:
    \   0000003C   3203               CPI     R16, 35
    \   0000003E   F011               BREQ    ??mutef_6
    \   00000040   3604               CPI     R16, 100
    \   00000042   F429               BRNE    ??CrossCallReturnLabel_342
    \                     ??mutef_6:
-   \   00000044   ....               RCALL   ?Subroutine86
+   \   00000044   ....               RCALL   ?Subroutine85
    \                     ??CrossCallReturnLabel_280:
    \   00000046   F419               BRNE    ??CrossCallReturnLabel_342
    \   00000048   9896               CBI     0x12, 0x06
@@ -2646,14 +2633,14 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000052   9B85               SBIS    0x10, 0x05
    \   00000054   C005               RJMP    ??mutef_8
    \                     ??mutef_7:
-   \   00000056   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_122:
+   \   00000056   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_127:
    \   00000058   3203               CPI     R16, 35
    \   0000005A   F011               BREQ    ??mutef_8
    \   0000005C   3604               CPI     R16, 100
    \   0000005E   F429               BRNE    ??CrossCallReturnLabel_343
    \                     ??mutef_8:
-   \   00000060   ....               RCALL   ?Subroutine86
+   \   00000060   ....               RCALL   ?Subroutine85
    \                     ??CrossCallReturnLabel_281:
    \   00000062   F019               BREQ    ??CrossCallReturnLabel_343
    \   00000064   9A96               SBI     0x12, 0x06
@@ -2673,22 +2660,22 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000076                      REQUIRE _A_PIND
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine86:
+   \                     ?Subroutine85:
    \   00000000   9100....           LDS     R16, mute
-   \   00000004   ....               RJMP    ?Subroutine122
+   \   00000004   ....               RJMP    ?Subroutine121
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine10:
    \   00000000   9300....           STS     mute, R16
-   \   00000004   ....               RCALL   ?Subroutine108
+   \   00000004   ....               RCALL   ?Subroutine107
    \                     ??CrossCallReturnLabel_223:
-   \   00000006                      REQUIRE ?Subroutine121
-   \   00000006                      REQUIRE ??Subroutine137_0
-   \   00000006                      ;               // Fall through to label ??Subroutine137_0
+   \   00000006                      REQUIRE ?Subroutine120
+   \   00000006                      REQUIRE ??Subroutine136_0
+   \   00000006                      ;               // Fall through to label ??Subroutine136_0
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine32:
-   \   00000000   ....               RCALL   ?Subroutine102
+   \   00000000   ....               RCALL   ?Subroutine101
    \                     ??CrossCallReturnLabel_205:
    \   00000002   5F0F               SUBI    R16, 255
    \   00000004   4F1F               SBCI    R17, 255
@@ -2706,7 +2693,7 @@ Warning[Pe550]: variable "gro1" was set but never used
     277          {
     278           //--------------- select -------------------
     279                          if ( !u ) {//что бы во время работы UART не срабатывал
-   \   00000000   ....               RCALL   ?Subroutine103
+   \   00000000   ....               RCALL   ?Subroutine102
    \                     ??CrossCallReturnLabel_284:
    \   00000002   F5C1               BRNE    ??select_1
     280             static uchar kol;  
@@ -2726,8 +2713,8 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000016   9985               SBIC    0x10, 0x05
    \   00000018   C005               RJMP    ??select_5
    \                     ??select_4:
-   \   0000001A   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_123:
+   \   0000001A   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_128:
    \   0000001C   3208               CPI     R16, 40
    \   0000001E   F011               BREQ    ??select_5
    \   00000020   3609               CPI     R16, 105
@@ -2741,8 +2728,8 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   0000002E   1701               CP      R16, R17
    \   00000030   9896               CBI     0x12, 0x06
    \   00000032   F030               BRCS    ??select_6
-   \   00000034   ....               RCALL   ?Subroutine78
-   \                     ??CrossCallReturnLabel_137:
+   \   00000034   ....               RCALL   ?Subroutine73
+   \                     ??CrossCallReturnLabel_113:
    \   00000036   ....               RCALL   ?Subroutine4
    \                     ??CrossCallReturnLabel_254:
    \   00000038   9300....           STS     ??lastsel, R16
@@ -2752,19 +2739,19 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??select_6:
    \   00000040   9140....           LDS     R20, ??sel
    \   00000044   954A               DEC     R20
-   \   00000046   ....               RCALL   ?Subroutine89
+   \   00000046   ....               RCALL   ?Subroutine88
    \                     ??CrossCallReturnLabel_301:
    \   00000048   E001               LDI     R16, 1
     286                        
     287                          }
    \                     ??select_7:
-   \   0000004A   ....               RCALL   ?Subroutine81
+   \   0000004A   ....               RCALL   ?Subroutine80
     288                                   
     289            //--------------- return sel -------------------  возврат в предыдущий source                 
     290             if ( pultadr==55 || pultadr==85) 
    \                     ??CrossCallReturnLabel_145:
-   \   0000004C   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_124:
+   \   0000004C   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_129:
    \   0000004E   3307               CPI     R16, 55
    \   00000050   F011               BREQ    ??select_8
    \   00000052   3505               CPI     R16, 85
@@ -2773,7 +2760,7 @@ Warning[Pe550]: variable "gro1" was set but never used
     292               
     293               if (sel!=lastsel) 
    \                     ??select_8:
-   \   00000056   ....               RCALL   ?Subroutine120
+   \   00000056   ....               RCALL   ?Subroutine119
    \                     ??CrossCallReturnLabel_261:
    \   00000058   9110....           LDS     R17, ??lastsel
    \   0000005C   1701               CP      R16, R17
@@ -2786,7 +2773,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000064   9110....           LDS     R17, ??lastsel
    \   00000068   9310....           STS     ??sel, R17
    \   0000006C   9300....           STS     ??lastsel, R16
-   \   00000070   ....               RCALL   ??Subroutine137_0
+   \   00000070   ....               RCALL   ??Subroutine136_0
    \                     ??CrossCallReturnLabel_350:
    \   00000072   ....               RCALL   ??pult
     296               }
@@ -2807,23 +2794,23 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ?Subroutine4:
    \   00000000   9140....           LDS     R20, ??sel
    \   00000004   954A               DEC     R20
-   \   00000006   ....               RCALL   ?Subroutine89
+   \   00000006   ....               RCALL   ?Subroutine88
    \                     ??CrossCallReturnLabel_303:
-   \   00000008   ....               RJMP    ?Subroutine120
+   \   00000008   ....               RJMP    ?Subroutine119
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine128:
+   \                     ?Subroutine127:
    \   00000000   BB18               OUT     0x18, R17
    \   00000002   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine89:
-   \   00000000   ....               RCALL   ?Subroutine115
+   \                     ?Subroutine88:
+   \   00000000   ....               RCALL   ?Subroutine114
    \                     ??CrossCallReturnLabel_247:
    \   00000002   9500               COM     R16
    \   00000004   B318               IN      R17, 0x18
    \   00000006   2310               AND     R17, R16
-   \   00000008   ....               RJMP    ?Subroutine128
+   \   00000008   ....               RJMP    ?Subroutine127
 
    \                                 In  segment NEAR_Z, align 1, keep-with-next
    \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
@@ -2870,8 +2857,8 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000004   9B85               SBIS    0x10, 0x05
    \   00000006   C005               RJMP    ??autoOFF_2
    \                     ??autoOFF_1:
-   \   00000008   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_125:
+   \   00000008   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_130:
    \   0000000A   310E               CPI     R16, 30
    \   0000000C   F011               BREQ    ??autoOFF_2
    \   0000000E   350F               CPI     R16, 95
@@ -2888,13 +2875,13 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   0000001E   3003               CPI     R16, 3
    \   00000020   F028               BRCS    ??autoOFF_4
    \   00000022   98C5               CBI     0x18, 0x05
-   \   00000024   ....               RCALL   ?Subroutine108
+   \   00000024   ....               RCALL   ?Subroutine107
    \                     ??CrossCallReturnLabel_222:
-   \   00000026   ....               RCALL   ?Subroutine106
+   \   00000026   ....               RCALL   ?Subroutine105
    \                     ??CrossCallReturnLabel_359:
    \   00000028   ....               RCALL   ?Subroutine77
-   \                     ??CrossCallReturnLabel_133:
-   \   0000002A   ....               RJMP    ?Subroutine121
+   \                     ??CrossCallReturnLabel_136:
+   \   0000002A   ....               RJMP    ?Subroutine120
     341            else
     342            if ( regaoff==0) 
    \                     ??autoOFF_4:
@@ -2907,14 +2894,14 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??CrossCallReturnLabel_6:
    \   00000036   ....               RCALL   ?Subroutine77
     345                TimerSet(&tm1, 120000)/*2 часа*/; 
-   \                     ??CrossCallReturnLabel_134:
+   \                     ??CrossCallReturnLabel_137:
    \   00000038   EC40               LDI     R20, 192
    \   0000003A   ED54               LDI     R21, 212
    \   0000003C   E061               LDI     R22, 1
-   \   0000003E   ....               RCALL   ??Subroutine138_0
+   \   0000003E   ....               RCALL   ??Subroutine137_0
     346                pultadr=0; 
    \                     ??CrossCallReturnLabel_354:
-   \   00000040   ....               RCALL   ??Subroutine137_0
+   \   00000040   ....               RCALL   ??Subroutine136_0
     347                for (uchar i=0; i<3; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  
    \                     ??CrossCallReturnLabel_351:
    \   00000042   E003               LDI     R16, 3
@@ -2933,26 +2920,26 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   0000004C   E002               LDI     R16, 2
    \   0000004E   ....               RCALL   ?Subroutine77
     354                TimerSet(&tm1, 60000)/*1 часа*/; 
-   \                     ??CrossCallReturnLabel_135:
+   \                     ??CrossCallReturnLabel_138:
    \   00000050   E640               LDI     R20, 96
    \   00000052   EE5A               LDI     R21, 234
    \   00000054   ....               RCALL   ?Subroutine56
     355                pultadr=0; 
    \                     ??CrossCallReturnLabel_356:
-   \   00000056   ....               RCALL   ??Subroutine137_0
+   \   00000056   ....               RCALL   ??Subroutine136_0
     356                for (uchar i=0; i<2; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  
    \                     ??CrossCallReturnLabel_352:
    \   00000058   E002               LDI     R16, 2
    \                     ??autoOFF_6:
    \   0000005A   9AC5               SBI     0x18, 0x05
-   \   0000005C   ....               RCALL   ?Subroutine112
+   \   0000005C   ....               RCALL   ?Subroutine111
    \                     ??CrossCallReturnLabel_234:
    \   0000005E   98C5               CBI     0x18, 0x05
-   \   00000060   ....               RCALL   ?Subroutine84
+   \   00000060   ....               RCALL   ?Subroutine83
    \                     ??CrossCallReturnLabel_159:
    \   00000062   F7D9               BRNE    ??autoOFF_6
     357                SET(PORTB,5); 
-   \   00000064   ....               RJMP    ?Subroutine125
+   \   00000064   ....               RJMP    ?Subroutine124
     358              }
     359            else
     360            if (regaoff==2) 
@@ -2966,21 +2953,21 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   0000006C   E003               LDI     R16, 3
    \   0000006E   ....               RCALL   ?Subroutine77
     363                TimerSet(&tm1, 30000)/*0.5 часа*/; 
-   \                     ??CrossCallReturnLabel_136:
+   \                     ??CrossCallReturnLabel_139:
    \   00000070   E340               LDI     R20, 48
    \   00000072   E755               LDI     R21, 117
    \   00000074   ....               RCALL   ?Subroutine56
     364                pultadr=0; for (uchar i=0; i<1; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  
    \                     ??CrossCallReturnLabel_355:
-   \   00000076   ....               RCALL   ??Subroutine137_0
+   \   00000076   ....               RCALL   ??Subroutine136_0
    \                     ??CrossCallReturnLabel_353:
    \   00000078   9AC5               SBI     0x18, 0x05
-   \   0000007A   ....               RCALL   ?Subroutine78
-   \                     ??CrossCallReturnLabel_138:
+   \   0000007A   ....               RCALL   ?Subroutine73
+   \                     ??CrossCallReturnLabel_114:
    \   0000007C   98C5               CBI     0x18, 0x05
-   \   0000007E   ....               RCALL   ?Subroutine78
+   \   0000007E   ....               RCALL   ?Subroutine73
     365                SET(PORTB,5); 
-   \                     ??CrossCallReturnLabel_139:
+   \                     ??CrossCallReturnLabel_115:
    \   00000080   9AC5               SBI     0x18, 0x05
     366              }
     367            
@@ -2994,11 +2981,11 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine56:
    \   00000000   E060               LDI     R22, 0
-   \   00000002                      REQUIRE ??Subroutine138_0
-   \   00000002                      ;               // Fall through to label ??Subroutine138_0
+   \   00000002                      REQUIRE ??Subroutine137_0
+   \   00000002                      ;               // Fall through to label ??Subroutine137_0
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ??Subroutine138_0:
+   \                     ??Subroutine137_0:
    \   00000000   E070               LDI     R23, 0
    \   00000002   ....               LDI     R16, LOW(tm1)
    \   00000004   ....               LDI     R17, (tm1) >> 8
@@ -3007,7 +2994,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine8:
    \   00000000   E001               LDI     R16, 1
-   \   00000002   ....               RJMP    ??Subroutine139_0
+   \   00000002   ....               RJMP    ??Subroutine138_0
     370          
     371          
     372          //*******************************************************************
@@ -3032,8 +3019,8 @@ Warning[Pe550]: variable "gro1" was set but never used
     378          {
     379                                 
     380                                 if (pultadr==45 || pultadr==110) {SET(PORTB,2); vol=true; ctvol=0;}
-   \   00000000   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_126:
+   \   00000000   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_131:
    \   00000002   320D               CPI     R16, 45
    \   00000004   F011               BREQ    ??volume_1
    \   00000006   360E               CPI     R16, 110
@@ -3057,15 +3044,15 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   0000001E   E000               LDI     R16, 0
    \   00000020   ....               LDI     R30, LOW(??ctvol)
    \   00000022   ....               LDI     R31, (??ctvol) >> 8
-   \   00000024   ....               RCALL   ?Subroutine92
+   \   00000024   ....               RCALL   ?Subroutine91
     384                               
     385                                  
     386                                 }
     387                                  p2; 
    \                     ??CrossCallReturnLabel_166:
-   \   00000026                      REQUIRE ?Subroutine78
+   \   00000026                      REQUIRE ?Subroutine73
    \   00000026                      REQUIRE _A_PORTB
-   \   00000026                      ;               // Fall through to label ?Subroutine78
+   \   00000026                      ;               // Fall through to label ?Subroutine73
     388          }
     389          
     390          
@@ -3086,7 +3073,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??normal:
     403          {   
     404             pultadr=adr;
-   \   00000000   ....               RCALL   ?Subroutine121
+   \   00000000   ....               RCALL   ?Subroutine120
     405            
     406             static bool inv;
     407             migWORK();
@@ -3096,8 +3083,8 @@ Warning[Pe550]: variable "gro1" was set but never used
     409           
     410               //
     411               if (pultadr==0)
-   \   00000004   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_127:
+   \   00000004   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_132:
    \   00000006   2300               TST     R16
    \   00000008   F429               BRNE    ??normal_1
     412               {  
@@ -3132,15 +3119,15 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   0000002C   ....               LDI     R17, (`?<Constant "normal>command find  ...">`) >> 8
    \   0000002E   ....               RCALL   ??rprintfStr
     422                rprintfFloat(6, pultadr ); ent;
-   \   00000030   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_128:
+   \   00000030   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_133:
    \   00000032   ....               RCALL   ?Subroutine18
    \                     ??CrossCallReturnLabel_312:
-   \   00000034   ....               RCALL   ?Subroutine103
+   \   00000034   ....               RCALL   ?Subroutine102
    \                     ??CrossCallReturnLabel_285:
    \   00000036   F009               BREQ    ??CrossCallReturnLabel_214
    \                     ??normal_2:
-   \   00000038   ....               RCALL   ?Subroutine105
+   \   00000038   ....               RCALL   ?Subroutine104
     423               }
     424               //
     425               
@@ -3156,8 +3143,8 @@ Warning[Pe550]: variable "gro1" was set but never used
     431             select();
    \   00000040   ....               RCALL   ??select
     432             if (pultadr!=0) volume(); 
-   \   00000042   ....               RCALL   ?Subroutine73
-   \                     ??CrossCallReturnLabel_129:
+   \   00000042   ....               RCALL   ?Subroutine74
+   \                     ??CrossCallReturnLabel_134:
    \   00000044   2300               TST     R16
    \   00000046   F009               BREQ    ??normal_5
    \   00000048   ....               RCALL   ??volume
@@ -3178,7 +3165,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000054   ....               LDI     R31, (??ctvol) >> 8
    \   00000056   ....               RCALL   ?Subroutine32
    \                     ??CrossCallReturnLabel_45:
-   \   00000058   ....               RCALL   ??Subroutine136_0
+   \   00000058   ....               RCALL   ??Subroutine135_0
     442                                    if (ctvol>10000){ vol=false; RES(PORTB,2); RES(PORTB,3); }
    \                     ??CrossCallReturnLabel_338:
    \   0000005A   3101               CPI     R16, 17
@@ -3202,7 +3189,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine39:
    \   00000000   ....               RCALL   ??rprintfStr
-   \   00000002   ....               RJMP    ?Subroutine103
+   \   00000002   ....               RJMP    ?Subroutine102
 
    \                                 In  segment NEAR_Z, align 1, keep-with-next
    \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
@@ -3218,50 +3205,50 @@ Warning[Pe550]: variable "gro1" was set but never used
     453            
     454             
     455            if (sel==1){ resOUT(); resled(); SET(PORTC,1);}
-   \   00000000   ....               RCALL   ?Subroutine120
+   \   00000000   ....               RCALL   ?Subroutine119
    \                     ??CrossCallReturnLabel_262:
    \   00000002   3001               CPI     R16, 1
    \   00000004   F411               BRNE    ??source_1
-   \   00000006   ....               RCALL   ?Subroutine83
+   \   00000006   ....               RCALL   ?Subroutine82
    \                     ??CrossCallReturnLabel_157:
    \   00000008   9AA9               SBI     0x15, 0x01
     456            if (sel==2){ resOUT(); resled(); SET(PORTC,2);}
    \                     ??source_1:
-   \   0000000A   ....               RCALL   ?Subroutine120
+   \   0000000A   ....               RCALL   ?Subroutine119
    \                     ??CrossCallReturnLabel_263:
    \   0000000C   3002               CPI     R16, 2
    \   0000000E   F411               BRNE    ??source_2
-   \   00000010   ....               RCALL   ?Subroutine83
+   \   00000010   ....               RCALL   ?Subroutine82
    \                     ??CrossCallReturnLabel_156:
    \   00000012   9AAA               SBI     0x15, 0x02
     457            if (sel==3){ resOUT(); resled(); SET(PORTC,3);}
    \                     ??source_2:
-   \   00000014   ....               RCALL   ?Subroutine120
+   \   00000014   ....               RCALL   ?Subroutine119
    \                     ??CrossCallReturnLabel_264:
    \   00000016   3003               CPI     R16, 3
    \   00000018   F411               BRNE    ??source_3
-   \   0000001A   ....               RCALL   ?Subroutine83
+   \   0000001A   ....               RCALL   ?Subroutine82
    \                     ??CrossCallReturnLabel_155:
    \   0000001C   9AAB               SBI     0x15, 0x03
     458            if (sel==4){ resOUT(); resled();SET(PORTC,4);}
    \                     ??source_3:
-   \   0000001E   ....               RCALL   ?Subroutine120
+   \   0000001E   ....               RCALL   ?Subroutine119
    \                     ??CrossCallReturnLabel_265:
    \   00000020   3004               CPI     R16, 4
    \   00000022   F411               BRNE    ??source_4
-   \   00000024   ....               RCALL   ?Subroutine83
+   \   00000024   ....               RCALL   ?Subroutine82
    \                     ??CrossCallReturnLabel_154:
    \   00000026   9AAC               SBI     0x15, 0x04
     459            if (sel==5 && mode==0 ){  resOUT(); resled();SET(PORTC,5);}
    \                     ??source_4:
-   \   00000028   ....               RCALL   ?Subroutine120
+   \   00000028   ....               RCALL   ?Subroutine119
    \                     ??CrossCallReturnLabel_266:
    \   0000002A   3005               CPI     R16, 5
    \   0000002C   F421               BRNE    ??source_5
    \   0000002E   ....               RCALL   ?Subroutine71
    \                     ??CrossCallReturnLabel_272:
    \   00000030   F411               BRNE    ??source_5
-   \   00000032   ....               RCALL   ?Subroutine83
+   \   00000032   ....               RCALL   ?Subroutine82
    \                     ??CrossCallReturnLabel_153:
    \   00000034   9AAD               SBI     0x15, 0x05
     460            
@@ -3277,7 +3264,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??source_6:
    \   00000044   E020               LDI     R18, 0
    \   00000046   E015               LDI     R17, 5
-   \   00000048   ....               RCALL   ?Subroutine120
+   \   00000048   ....               RCALL   ?Subroutine119
    \                     ??CrossCallReturnLabel_267:
    \   0000004A   950A               DEC     R16
    \   0000004C   ....               RJMP    ??migINI
@@ -3287,7 +3274,7 @@ Warning[Pe550]: variable "gro1" was set but never used
     465          }
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine83:
+   \                     ?Subroutine82:
    \   00000000   ....               RCALL   ??resOUT
    \   00000002   ....               RJMP    ??resled
     466          
@@ -3317,8 +3304,8 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000000   938A               ST      -Y, R24
    \   00000002   2F80               MOV     R24, R16
     487             static bool get=0;
-    488             if (tekfunc==255) return;
-   \   00000004   ....               RCALL   ?Subroutine113
+    488             if (indexFUNC==255) return;
+   \   00000004   ....               RCALL   ?Subroutine112
    \                     ??CrossCallReturnLabel_236:
    \   00000006   3F0F               CPI     R16, 255
    \   00000008   F111               BREQ    ??CrossCallReturnLabel_364
@@ -3337,10 +3324,10 @@ Warning[Pe550]: variable "gro1" was set but never used
     492             {
     493               writeCOD();
    \   0000001E   ....               RCALL   ??writeCOD
-    494               tekfunc++;  get=0;
+    494               indexFUNC++;  get=0;
    \   00000020   ....               RCALL   ?Subroutine12
     495             
-    496               if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
+    496               if (indexFUNC==12) {  for (uchar i=0; i<10;i++) 
    \                     ??CrossCallReturnLabel_11:
    \   00000022   F419               BRNE    ??programming_2
    \   00000024   E08A               LDI     R24, 10
@@ -3350,9 +3337,9 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??CrossCallReturnLabel_0:
    \   00000028   F7F1               BRNE    ??programming_3
     498                                }
-    499               if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
+    499               if (indexFUNC>MAXFUNC) {indexFUNC=255;led_all(1);}
    \                     ??programming_2:
-   \   0000002A   ....               RCALL   ?Subroutine113
+   \   0000002A   ....               RCALL   ?Subroutine112
    \                     ??CrossCallReturnLabel_237:
    \   0000002C   3108               CPI     R16, 24
    \   0000002E   F008               BRCS    ??CrossCallReturnLabel_365
@@ -3366,16 +3353,16 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000032   9985               SBIC    0x10, 0x05
    \   00000034   C00C               RJMP    ??CrossCallReturnLabel_364
     505                          led_all(1); delay_s(1); 
-   \   00000036   ....               RCALL   ??Subroutine140_0
+   \   00000036   ....               RCALL   ??Subroutine139_0
    \                     ??CrossCallReturnLabel_361:
-   \   00000038   ....               RCALL   ?Subroutine82
+   \   00000038   ....               RCALL   ?Subroutine81
     506                          led_all(0); 
    \                     ??CrossCallReturnLabel_152:
    \   0000003A   ....               RCALL   ?Subroutine16
-    507                          tekfunc++;  get=0;
+    507                          indexFUNC++;  get=0;
    \                     ??CrossCallReturnLabel_14:
    \   0000003C   ....               RCALL   ?Subroutine12
-    508                             if (tekfunc==12) {  for (uchar i=0; i<10;i++) 
+    508                             if (indexFUNC==12) {  for (uchar i=0; i<10;i++) 
    \                     ??CrossCallReturnLabel_12:
    \   0000003E   F419               BRNE    ??programming_4
    \   00000040   E08A               LDI     R24, 10
@@ -3385,9 +3372,9 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??CrossCallReturnLabel_1:
    \   00000044   F7F1               BRNE    ??programming_5
     510                                }
-    511                          if (tekfunc>MAXFUNC) {tekfunc=255;led_all(1);}
+    511                          if (indexFUNC>MAXFUNC) {indexFUNC=255;led_all(1);}
    \                     ??programming_4:
-   \   00000046   ....               RCALL   ?Subroutine113
+   \   00000046   ....               RCALL   ?Subroutine112
    \                     ??CrossCallReturnLabel_238:
    \   00000048   3108               CPI     R16, 24
    \   0000004A   F008               BRCS    ??CrossCallReturnLabel_364
@@ -3397,54 +3384,54 @@ Warning[Pe550]: variable "gro1" was set but never used
     514               
     515          }
    \                     ??CrossCallReturnLabel_364:
-   \   0000004E                      REQUIRE ?Subroutine127
+   \   0000004E                      REQUIRE ?Subroutine126
    \   0000004E                      REQUIRE _A_PIND
-   \   0000004E                      ;               // Fall through to label ?Subroutine127
+   \   0000004E                      ;               // Fall through to label ?Subroutine126
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine127:
+   \                     ?Subroutine126:
    \   00000000   9189               LD      R24, Y+
    \   00000002   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine12:
-   \   00000000   ....               LDI     R30, LOW(tekfunc)
-   \   00000002   ....               LDI     R31, (tekfunc) >> 8
+   \   00000000   ....               LDI     R30, LOW(indexFUNC)
+   \   00000002   ....               LDI     R31, (indexFUNC) >> 8
    \   00000004   8100               LD      R16, Z
    \   00000006   9503               INC     R16
    \   00000008   8300               ST      Z, R16
    \   0000000A   E000               LDI     R16, 0
    \   0000000C   9300....           STS     ??get, R16
-   \   00000010   ....               RCALL   ?Subroutine113
+   \   00000010   ....               RCALL   ?Subroutine112
    \                     ??CrossCallReturnLabel_239:
    \   00000012   300C               CPI     R16, 12
    \   00000014   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine113:
-   \   00000000   9100....           LDS     R16, tekfunc
+   \                     ?Subroutine112:
+   \   00000000   9100....           LDS     R16, indexFUNC
    \   00000004   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine6:
    \   00000000   EF0F               LDI     R16, 255
-   \   00000002   9300....           STS     tekfunc, R16
-   \   00000006                      REQUIRE ??Subroutine140_0
-   \   00000006                      ;               // Fall through to label ??Subroutine140_0
+   \   00000002   9300....           STS     indexFUNC, R16
+   \   00000006                      REQUIRE ??Subroutine139_0
+   \   00000006                      ;               // Fall through to label ??Subroutine139_0
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine0:
    \   00000000   E001               LDI     R16, 1
-   \   00000002   ....               RCALL   ?Subroutine111
+   \   00000002   ....               RCALL   ?Subroutine110
    \                     ??CrossCallReturnLabel_231:
    \   00000004   E000               LDI     R16, 0
-   \   00000006   ....               RCALL   ?Subroutine111
+   \   00000006   ....               RCALL   ?Subroutine110
    \                     ??CrossCallReturnLabel_232:
    \   00000008   958A               DEC     R24
    \   0000000A   9508               RET
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine111:
+   \                     ?Subroutine110:
    \   00000000   ....               RCALL   ??led_all
    \   00000002   EF0F               LDI     R16, 255
    \   00000004   EE11               LDI     R17, 225
@@ -3474,7 +3461,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000004   ....               LDI     R17, (`?<Constant "write ..">`) >> 8
    \   00000006   ....               RCALL   ??rprintfStr
     521            led_all(1);delay_s(3);
-   \   00000008   ....               RCALL   ??Subroutine140_0
+   \   00000008   ....               RCALL   ??Subroutine139_0
    \                     ??CrossCallReturnLabel_360:
    \   0000000A   EF0F               LDI     R16, 255
    \   0000000C   E91E               LDI     R17, 158
@@ -3500,28 +3487,28 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000026   ....               LDI     R19, (k) >> 8
    \   00000028   0D20               ADD     R18, R0
    \   0000002A   1D31               ADC     R19, R1
-   \   0000002C   ....               RCALL   ?Subroutine100
+   \   0000002C   ....               RCALL   ?Subroutine99
    \                     ??CrossCallReturnLabel_189:
-   \   0000002E   ....               RCALL   ?Subroutine102
+   \   0000002E   ....               RCALL   ?Subroutine101
    \                     ??CrossCallReturnLabel_201:
-   \   00000030   ....               RCALL   ?Subroutine87
+   \   00000030   ....               RCALL   ?Subroutine86
     527                 k[adr+1]=cod2; delay_ms(30);
    \                     ??CrossCallReturnLabel_366:
-   \   00000032   ....               RCALL   ??Subroutine142_0
+   \   00000032   ....               RCALL   ??Subroutine141_0
    \                     ??CrossCallReturnLabel_374:
-   \   00000034   ....               RCALL   ?Subroutine102
+   \   00000034   ....               RCALL   ?Subroutine101
    \                     ??CrossCallReturnLabel_202:
    \   00000036   01A9               MOVW    R21:R20, R19:R18
    \   00000038   5F4E               SUBI    R20, 254
    \   0000003A   4F5F               SBCI    R21, 255
-   \   0000003C   ....               RCALL   ??Subroutine141_0
+   \   0000003C   ....               RCALL   ??Subroutine140_0
     528                 k[adr+2]=cod3; delay_ms(30);
    \                     ??CrossCallReturnLabel_368:
    \   0000003E   ....               RCALL   ?Subroutine33
    \                     ??CrossCallReturnLabel_207:
    \   00000040   5F2C               SUBI    R18, 252
    \   00000042   4F3F               SBCI    R19, 255
-   \   00000044   ....               RCALL   ?Subroutine87
+   \   00000044   ....               RCALL   ?Subroutine86
     529                 
     530                 rprintfStr("OK !   "); ent;
    \                     ??CrossCallReturnLabel_367:
@@ -3532,16 +3519,16 @@ Warning[Pe550]: variable "gro1" was set but never used
     531             
     532          }
    \                     ??CrossCallReturnLabel_21:
-   \   0000004E   ....               RJMP    ?Subroutine127
+   \   0000004E   ....               RJMP    ?Subroutine126
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine87:
+   \                     ?Subroutine86:
    \   00000000   01A9               MOVW    R21:R20, R19:R18
-   \   00000002                      REQUIRE ??Subroutine141_0
-   \   00000002                      ;               // Fall through to label ??Subroutine141_0
+   \   00000002                      REQUIRE ??Subroutine140_0
+   \   00000002                      ;               // Fall through to label ??Subroutine140_0
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ??Subroutine141_0:
+   \                     ??Subroutine140_0:
    \   00000000   ....               RCALL   __eeput16_16
    \   00000002   E20F               LDI     R16, 47
    \   00000004   E715               LDI     R17, 117
@@ -3578,7 +3565,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000012   1F31               ADC     R19, R17
    \   00000014   01A9               MOVW    R21:R20, R19:R18
    \   00000016   ....               RCALL   __eeget16_16
-   \   00000018   ....               RCALL   ?Subroutine100
+   \   00000018   ....               RCALL   ?Subroutine99
    \                     ??CrossCallReturnLabel_190:
    \   0000001A   ....               RCALL   ?Subroutine55
    \                     ??CrossCallReturnLabel_90:
@@ -3587,7 +3574,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000020   5F4E               SUBI    R20, 254
    \   00000022   4F5F               SBCI    R21, 255
    \   00000024   ....               RCALL   __eeget16_16
-   \   00000026   ....               RCALL   ??Subroutine142_0
+   \   00000026   ....               RCALL   ??Subroutine141_0
    \                     ??CrossCallReturnLabel_375:
    \   00000028   ....               RCALL   ?Subroutine55
    \                     ??CrossCallReturnLabel_91:
@@ -3613,12 +3600,12 @@ Warning[Pe550]: variable "gro1" was set but never used
     545          
     546          return(0);
    \                     ??analizCOD_3:
-   \   0000004A                      REQUIRE ?Subroutine132
-   \   0000004A                      ;               // Fall through to label ?Subroutine132
+   \   0000004A                      REQUIRE ?Subroutine131
+   \   0000004A                      ;               // Fall through to label ?Subroutine131
     547          }
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine132:
+   \                     ?Subroutine131:
    \   00000000   E0E2               LDI     R30, 2
    \   00000002   ....               RJMP    ?EPILOGUE_B2_L09
 
@@ -3638,7 +3625,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \                     ??resled:
     552          {
     553            RES(PORTB,0);RES(PORTB,1);RES(PORTB,2);RES(PORTB,3); if (mode==0)RES(PORTB,4);
-   \   00000000   ....               RCALL   ?Subroutine88
+   \   00000000   ....               RCALL   ?Subroutine87
    \                     ??CrossCallReturnLabel_160:
    \   00000002   ....               RCALL   ?Subroutine71
    \                     ??CrossCallReturnLabel_273:
@@ -3650,7 +3637,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   0000000A                      REQUIRE _A_PORTB
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine88:
+   \                     ?Subroutine87:
    \   00000000   98C0               CBI     0x18, 0x00
    \   00000002   98C1               CBI     0x18, 0x01
    \   00000004   98C2               CBI     0x18, 0x02
@@ -3674,7 +3661,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   0000000C   98AD               CBI     0x15, 0x05
     560            p2;//что бы не было перекрытия источников
    \                     ??resOUT_1:
-   \   0000000E   ....               RJMP    ?Subroutine78
+   \   0000000E   ....               RJMP    ?Subroutine73
    \   00000010                      REQUIRE _A_PORTC
     561          }
     562          
@@ -3697,13 +3684,13 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   0000000C   9AC4               SBI     0x18, 0x04
    \   0000000E   9AC5               SBI     0x18, 0x05
     570             /*AC_ON; */SET(PORTD,7);
-   \   00000010   ....               RJMP    ?Subroutine126
+   \   00000010   ....               RJMP    ?Subroutine125
     571           }
     572           else
     573            {
     574             RES(PORTB,0);RES(PORTB,1);RES(PORTB,2);RES(PORTB,3);RES(PORTB,4);RES(PORTB,5);
    \                     ??led_all_1:
-   \   00000012   ....               RCALL   ?Subroutine88
+   \   00000012   ....               RCALL   ?Subroutine87
    \                     ??CrossCallReturnLabel_161:
    \   00000014   98C4               CBI     0x18, 0x04
    \   00000016   98C5               CBI     0x18, 0x05
@@ -3908,7 +3895,7 @@ Warning[Pe550]: variable "gro1" was set but never used
    \   00000014   ....               RCALL   ?Subroutine39
    \                     ??CrossCallReturnLabel_51:
    \   00000016   F0E9               BREQ    ??diag_2
-   \   00000018   ....               RCALL   ?Subroutine105
+   \   00000018   ....               RCALL   ?Subroutine104
    \                     ??CrossCallReturnLabel_213:
    \   0000001A   C01B               RJMP    ??diag_2
     674          
@@ -3997,7 +3984,7 @@ Warning[Pe550]: variable "gro1" was set but never used
     697                     }
     698          }
    \                     ??CrossCallReturnLabel_24:
-   \   0000007C   ....               RJMP    ?Subroutine132
+   \   0000007C   ....               RJMP    ?Subroutine131
     699          
 F:\Dulov\RemoteAMP\SoftTimers.c
       1          
@@ -4187,7 +4174,7 @@ F:\Dulov\RemoteAMP\SoftTimers.c
    \   00000006   E040               LDI     R20, 0
    \   00000008   8740               STD     Z+8, R20
      53            t->ct=0;
-   \   0000000A   ....               RCALL   ??Subroutine144_0
+   \   0000000A   ....               RCALL   ??Subroutine143_0
    \                     ??CrossCallReturnLabel_387:
    \   0000000C   8350               ST      Z, R21
    \   0000000E   8351               STD     Z+1, R21
@@ -4270,7 +4257,7 @@ F:\Dulov\RemoteAMP\SoftTimers.c
      77               
      78              if (prton)SET(PORTB,port); //фиксируем чтобы горел
    \   0000000E   9140....           LDS     R20, ??port
-   \   00000012   ....               RCALL   ?Subroutine115
+   \   00000012   ....               RCALL   ?Subroutine114
    \                     ??CrossCallReturnLabel_243:
    \   00000014   2322               TST     R18
    \   00000016   F019               BREQ    ??migINI_2
@@ -4297,9 +4284,9 @@ F:\Dulov\RemoteAMP\SoftTimers.c
      85            
      86            TimerSet(&tm2,5);
    \   00000034   E045               LDI     R20, 5
-   \   00000036   ....               RCALL   ??Subroutine144_0
+   \   00000036   ....               RCALL   ??Subroutine143_0
    \                     ??CrossCallReturnLabel_388:
-   \   00000038   ....               RCALL   ?Subroutine114
+   \   00000038   ....               RCALL   ?Subroutine113
      87            tm2.out=1;
    \                     ??CrossCallReturnLabel_241:
    \   0000003A   E001               LDI     R16, 1
@@ -4312,19 +4299,19 @@ F:\Dulov\RemoteAMP\SoftTimers.c
    \   00000042                      REQUIRE _A_PORTB
 
    \                                 In  segment CODE, align 2, keep-with-next
-   \                     ?Subroutine114:
+   \                     ?Subroutine113:
    \   00000000   ....               LDI     R16, LOW(tm2)
    \   00000002   ....               LDI     R17, (tm2) >> 8
    \   00000004   ....               RJMP    ??TimerSet
 
    \                                 In  segment CODE, align 2, keep-with-next
    \                     ?Subroutine7:
-   \   00000000   ....               RCALL   ?Subroutine115
+   \   00000000   ....               RCALL   ?Subroutine114
    \                     ??CrossCallReturnLabel_246:
    \   00000002   B318               IN      R17, 0x18
    \   00000004   2B10               OR      R17, R16
-   \   00000006                      REQUIRE ?Subroutine128
-   \   00000006                      ;               // Fall through to label ?Subroutine128
+   \   00000006                      REQUIRE ?Subroutine127
+   \   00000006                      ;               // Fall through to label ?Subroutine127
      92          
 
    \                                 In  segment CODE, align 2, keep-with-next
@@ -4360,7 +4347,7 @@ F:\Dulov\RemoteAMP\SoftTimers.c
    \   00000028   ....               RCALL   ?Subroutine57
     100                                        }
    \                     ??CrossCallReturnLabel_93:
-   \   0000002A   ....               RCALL   ?Subroutine89
+   \   0000002A   ....               RCALL   ?Subroutine88
     101            if (razct>=raz) {  tm2.out=1; port=255;}
    \                     ??CrossCallReturnLabel_302:
    \   0000002C   9100....           LDS     R16, ??razct
@@ -4383,7 +4370,7 @@ F:\Dulov\RemoteAMP\SoftTimers.c
    \   00000006   E051               LDI     R21, 1
    \   00000008   E060               LDI     R22, 0
    \   0000000A   E070               LDI     R23, 0
-   \   0000000C   ....               RCALL   ?Subroutine114
+   \   0000000C   ....               RCALL   ?Subroutine113
    \                     ??CrossCallReturnLabel_240:
    \   0000000E   9140....           LDS     R20, ??port
    \   00000012   9508               RET
@@ -4462,7 +4449,7 @@ F:\Dulov\RemoteAMP\usart.c
    \   00000000   B72F               IN      R18, 0x3F
    \   00000002   94F8               CLI
      27            if (!u) return 0;
-   \   00000004   ....               RCALL   ?Subroutine103
+   \   00000004   ....               RCALL   ?Subroutine102
    \                     ??CrossCallReturnLabel_286:
    \   00000006   F411               BRNE    ??USART_GetChar_1
    \   00000008   E000               LDI     R16, 0
@@ -4491,7 +4478,7 @@ F:\Dulov\RemoteAMP\usart.c
    \   00000002   B10C               IN      R16, 0x0C
    \   00000004   9300....           STS     usartRxBuf, R16
      38          } 
-   \   00000008   ....               RJMP    ?Subroutine129
+   \   00000008   ....               RJMP    ?Subroutine128
    \   0000000A                      REQUIRE _A_UDR
      39          
      40          // *** rprintfStr ***
@@ -4504,7 +4491,7 @@ F:\Dulov\RemoteAMP\usart.c
    \   00000000   ....               RCALL   ?PROLOGUE4_L09
    \   00000002   01D8               MOVW    R27:R26, R17:R16
      44              if (!u) return;
-   \   00000004   ....               RCALL   ?Subroutine103
+   \   00000004   ....               RCALL   ?Subroutine102
    \                     ??CrossCallReturnLabel_287:
    \   00000006   F041               BREQ    ??rprintfStr_1
      45          	// send a string stored in RAM
@@ -4549,7 +4536,7 @@ F:\Dulov\RemoteAMP\usart.c
    \   00000004   012A               MOVW    R5:R4, R21:R20
    \   00000006   013B               MOVW    R7:R6, R23:R22
      58              if (!u) return;
-   \   00000008   ....               RCALL   ?Subroutine103
+   \   00000008   ....               RCALL   ?Subroutine102
    \                     ??CrossCallReturnLabel_288:
    \   0000000A   F409               BRNE    $+2+2
    \   0000000C   C04D               RJMP    ??rprintfFloat_1
@@ -4653,14 +4640,14 @@ F:\Dulov\RemoteAMP\usart.c
    \                     ??rprintfFloat_11:
    \   00000060   2D08               MOV     R16, R8
    \   00000062   E010               LDI     R17, 0
-   \   00000064   ....               RCALL   ?Subroutine117
+   \   00000064   ....               RCALL   ?Subroutine116
    \                     ??CrossCallReturnLabel_310:
    \   00000066   01AC               MOVW    R21:R20, R25:R24
    \   00000068   01BD               MOVW    R23:R22, R27:R26
    \   0000006A   ....               RCALL   ?F_MUL_L04
-   \   0000006C   ....               RCALL   ??Subroutine143_0
+   \   0000006C   ....               RCALL   ??Subroutine142_0
    \                     ??CrossCallReturnLabel_378:
-   \   0000006E   ....               RCALL   ?Subroutine104
+   \   0000006E   ....               RCALL   ?Subroutine103
    \                     ??CrossCallReturnLabel_208:
    \   00000070   ....               RCALL   ?F_SUB_L04
    \   00000072   ....               RCALL   ?Subroutine46
@@ -4716,7 +4703,7 @@ F:\Dulov\RemoteAMP\usart.c
    \                     ?Subroutine48:
    \   00000000   01AC               MOVW    R21:R20, R25:R24
    \   00000002   01BD               MOVW    R23:R22, R27:R26
-   \   00000004   ....               RCALL   ?Subroutine104
+   \   00000004   ....               RCALL   ?Subroutine103
    \                     ??CrossCallReturnLabel_212:
    \   00000006   ....               RJMP    ?F_DIV_L04
 
@@ -5199,18 +5186,18 @@ F:\Dulov\RemoteAMP\usart.c
        1  ?<Initializer for lastsel>
        1  ?<Initializer for sel>
        2  ?<Initializer for tON>
-       2  ??Subroutine133_0
-       6  ??Subroutine134_0
-       8  ??Subroutine135_0
-       6  ??Subroutine136_0
-       2  ??Subroutine137_0
-       8  ??Subroutine138_0
-       6  ??Subroutine139_0
-       4  ??Subroutine140_0
-      18  ??Subroutine141_0
+       2  ??Subroutine132_0
+       6  ??Subroutine133_0
+       8  ??Subroutine134_0
+       6  ??Subroutine135_0
+       2  ??Subroutine136_0
+       8  ??Subroutine137_0
+       6  ??Subroutine138_0
+       4  ??Subroutine139_0
+      18  ??Subroutine140_0
+       6  ??Subroutine141_0
        6  ??Subroutine142_0
-       6  ??Subroutine143_0
-       4  ??Subroutine144_0
+       4  ??Subroutine143_0
        2  ??TIMER2ovf??INTVEC 8
        2  ??funINT0_vect??INTVEC 2
        2  ??funTIMER1_OVF_vect??INTVEC 16
@@ -5218,30 +5205,30 @@ F:\Dulov\RemoteAMP\usart.c
       12  ?Subroutine0
        6  ?Subroutine1
        6  ?Subroutine10
-       6  ?Subroutine100
-      10  ?Subroutine101
+      10  ?Subroutine100
+       6  ?Subroutine101
        6  ?Subroutine102
        6  ?Subroutine103
-       6  ?Subroutine104
-       4  ?Subroutine105
-       2  ?Subroutine106
-       6  ?Subroutine107
-      20  ?Subroutine108
+       4  ?Subroutine104
+       2  ?Subroutine105
+       6  ?Subroutine106
+      20  ?Subroutine107
+       6  ?Subroutine108
        6  ?Subroutine109
       16  ?Subroutine11
-       6  ?Subroutine110
-      22  ?Subroutine111
-      20  ?Subroutine112
+      22  ?Subroutine110
+      20  ?Subroutine111
+       6  ?Subroutine112
        6  ?Subroutine113
        6  ?Subroutine114
-       6  ?Subroutine115
-       2  ?Subroutine116
-       4  ?Subroutine117
+       2  ?Subroutine115
+       4  ?Subroutine116
+       6  ?Subroutine117
        6  ?Subroutine118
        6  ?Subroutine119
       22  ?Subroutine12
        6  ?Subroutine120
-       6  ?Subroutine121
+       4  ?Subroutine121
        4  ?Subroutine122
        4  ?Subroutine123
        4  ?Subroutine124
@@ -5253,7 +5240,6 @@ F:\Dulov\RemoteAMP\usart.c
        2  ?Subroutine13
        4  ?Subroutine130
        4  ?Subroutine131
-       4  ?Subroutine132
        2  ?Subroutine14
        2  ?Subroutine15
        4  ?Subroutine16
@@ -5312,28 +5298,28 @@ F:\Dulov\RemoteAMP\usart.c
        4  ?Subroutine70
        4  ?Subroutine71
        6  ?Subroutine72
-       6  ?Subroutine73
-      20  ?Subroutine74
+      20  ?Subroutine73
+       6  ?Subroutine74
        6  ?Subroutine76
        6  ?Subroutine77
-      20  ?Subroutine78
-      12  ?Subroutine79
+      12  ?Subroutine78
        4  ?Subroutine8
-       6  ?Subroutine81
-      20  ?Subroutine82
-       4  ?Subroutine83
-       6  ?Subroutine84
-       6  ?Subroutine86
-       2  ?Subroutine87
+       6  ?Subroutine80
+      20  ?Subroutine81
+       4  ?Subroutine82
+       6  ?Subroutine83
+       6  ?Subroutine85
+       2  ?Subroutine86
+      10  ?Subroutine87
       10  ?Subroutine88
-      10  ?Subroutine89
-       2  ?Subroutine91
+       2  ?Subroutine90
+       6  ?Subroutine91
        6  ?Subroutine92
        6  ?Subroutine93
        6  ?Subroutine94
        6  ?Subroutine95
-       6  ?Subroutine96
-      10  ?Subroutine97
+      10  ?Subroutine96
+       6  ?Subroutine97
        6  ?Subroutine98
        6  ?Subroutine99
      120  TIMER2ovf()
@@ -5392,6 +5378,7 @@ F:\Dulov\RemoteAMP\usart.c
      212  getadr()
        1  gro1
        1  gro2
+       1  indexFUNC
        1  ini
      118  iniPORTS()
        1  intok
@@ -5433,7 +5420,6 @@ F:\Dulov\RemoteAMP\usart.c
        1  t1
        1  t2
        2  tON
-       1  tekfunc
        1  til
      216  tilf()
        2  timerzad
@@ -5455,7 +5441,7 @@ F:\Dulov\RemoteAMP\usart.c
 
  
     30 bytes in segment ABSOLUTE
- 4 506 bytes in segment CODE
+ 4 486 bytes in segment CODE
    242 bytes in segment EEPROM_N
     12 bytes in segment INITTAB
      8 bytes in segment INTVEC
@@ -5463,7 +5449,7 @@ F:\Dulov\RemoteAMP\usart.c
    372 bytes in segment NEAR_ID
    504 bytes in segment NEAR_Z
  
- 4 878 bytes of CODE  memory (+ 20 bytes shared)
+ 4 858 bytes of CODE  memory (+ 20 bytes shared)
    876 bytes of DATA  memory (+ 30 bytes shared)
    242 bytes of XDATA memory
 

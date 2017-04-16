@@ -10,18 +10,18 @@
       <file>$PROJ_DIR$\init.h</file>
       <file>$PROJ_DIR$\eeprom.h</file>
       <file>$PROJ_DIR$\keys.h</file>
-      <file>$PROJ_DIR$\main.cpp</file>
       <file>$PROJ_DIR$\usart.c</file>
       <file>$PROJ_DIR$\usart.h</file>
+      <file>$PROJ_DIR$\main.cpp</file>
       <file>$TOOLKIT_DIR$\src\template\cfg1soim.xcl</file>
       <file>$PROJ_DIR$\Debug\Obj\du.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.r90</file>
-      <file>$TOOLKIT_DIR$\inc\iomacro.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\xtgmath.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\usart.r90</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
+      <file>$TOOLKIT_DIR$\inc\iomacro.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\usart.r90</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.r90</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\math.h</file>
       <file>$PROJ_DIR$\Debug\List\main.lst</file>
@@ -32,8 +32,8 @@
       <file>$PROJ_DIR$\Debug\Exe\myDU.d90</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\stdarg.h</file>
       <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-1s-ec_mul-n.r90</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\c\stdbool.h</file>
       <file>$PROJ_DIR$\Debug\List\usart.s90</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\stdbool.h</file>
       <file>$TOOLKIT_DIR$\src\template\cfgm8.xcl</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\ymath.h</file>
       <file>$TOOLKIT_DIR$\inc\bitdefinitions\iom8.inc</file>
@@ -50,29 +50,6 @@
       <file>$PROJ_DIR$\Debug\Exe\myDU.hex</file>
     </outputs>
     <file>
-      <name>$PROJ_DIR$\main.cpp</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 20</file>
-        </tool>
-        <tool>
-          <name>ICCAVR</name>
-          <file> 32 18 10</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 26 40 11 30 38 1 0 36 6 2 3 39 37 15 9 22 31 16 35 14 17 29 12 24</file>
-        </tool>
-        <tool>
-          <name>ICCAVR</name>
-          <file> 26 40 11 30 38 1 0 36 6 2 3 39 37 15 9 22 31 16 35 14 17 29 12 24</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
       <name>$PROJ_DIR$\usart.c</name>
       <outputs>
         <tool>
@@ -81,17 +58,40 @@
         </tool>
         <tool>
           <name>ICCAVR</name>
-          <file> 27 34 13</file>
+          <file> 26 34 13</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 6 40 11 30 17 37 29 15 9 22 31 16 35 12 38 1</file>
+          <file> 5 40 12 30 17 37 29 10 15 22 31 16 35 9 38 1</file>
         </tool>
         <tool>
           <name>ICCAVR</name>
-          <file> 6 40 11 30 17 37 29 15 9 22 31 16 35 12 38 1</file>
+          <file> 5 40 12 30 17 37 29 10 15 22 31 16 35 9 38 1</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.cpp</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 20</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 32 18 14</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 27 40 12 30 38 1 0 36 5 2 3 39 37 10 15 22 31 16 35 11 17 29 9 24</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 27 40 12 30 38 1 0 36 5 2 3 39 37 10 15 22 31 16 35 11 17 29 9 24</file>
         </tool>
       </inputs>
     </file>
@@ -124,7 +124,7 @@
       <inputs>
         <tool>
           <name>XLINK</name>
-          <file> 28 7 10 13 25</file>
+          <file> 28 7 14 13 25</file>
         </tool>
       </inputs>
     </file>
@@ -140,18 +140,19 @@
       <file>$PROJ_DIR$\init.h</file>
       <file>$PROJ_DIR$\eeprom.h</file>
       <file>$PROJ_DIR$\keys.h</file>
-      <file>$PROJ_DIR$\main.cpp</file>
+      <file>$PROJ_DIR$\main.c</file>
       <file>$PROJ_DIR$\main.h</file>
       <file>$PROJ_DIR$\SoftTimers.c</file>
       <file>$PROJ_DIR$\SoftTimers.h</file>
       <file>$PROJ_DIR$\usart.c</file>
       <file>$PROJ_DIR$\usart.h</file>
+      <file>$PROJ_DIR$\main.cpp</file>
       <file>$TOOLKIT_DIR$\src\template\cfg1soim.xcl</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
-      <file>$TOOLKIT_DIR$\inc\iomacro.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\xtgmath.h</file>
-      <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
+      <file>$TOOLKIT_DIR$\inc\iomacro.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\math.h</file>
       <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-1s-ec_mul-n.h</file>
@@ -163,14 +164,14 @@
       <file>$TOOLKIT_DIR$\inc\bitdefinitions\iom8.inc</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
-      <file>$PROJ_DIR$\Timers.c</file>
+      <file>$PROJ_DIR$\Release\Obj\main.pbi</file>
       <file>$TOOLKIT_DIR$\inc\inavr.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
       <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\stdlib.h</file>
       <file>$TOOLKIT_DIR$\inc\iom8.h</file>
+      <file>$PROJ_DIR$\Timers.c</file>
       <file>$PROJ_DIR$\Timers.h</file>
-      <file>$PROJ_DIR$\Release\Obj\main.pbi</file>
       <file>$PROJ_DIR$\Release\Exe\myDU.hex</file>
       <file>$PROJ_DIR$\Release\Obj\usart.r90</file>
       <file>$PROJ_DIR$\Release\Exe\myDU.eep</file>
@@ -187,28 +188,27 @@
       <file>$PROJ_DIR$\Release\List\main.s90</file>
       <file>$PROJ_DIR$\Release\Obj\SoftTimers.r90</file>
       <file>$PROJ_DIR$\Release\Obj\SoftTimers.pbi</file>
-      <file>$PROJ_DIR$\main.c</file>
     </outputs>
     <file>
-      <name>$PROJ_DIR$\main.cpp</name>
+      <name>$PROJ_DIR$\main.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 34</file>
+          <file> 28</file>
         </tool>
         <tool>
           <name>ICCAVR</name>
-          <file> 48 40 45 49 36</file>
+          <file> 49 41 46 50 37</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 21 32 12 24 30 1 0 5 28 9 2 7 3</file>
+          <file> 22 33 15 25 31 1 0 5 29 9 2 7 3</file>
         </tool>
         <tool>
           <name>ICCAVR</name>
-          <file> 21 32 12 24 30 1 0 5 28 9 2 7 3 6 8</file>
+          <file> 22 33 15 25 31 1 0 5 29 9 2 7 3 6 8</file>
         </tool>
       </inputs>
     </file>
@@ -217,50 +217,18 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 50</file>
-        </tool>
-        <tool>
-          <name>ICCAVR</name>
-          <file> 49</file>
+          <file> 51</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 21 32 12 24 28 30 1 7 5 9 2</file>
+          <file> 22 33 15 25 29 31 1 7 5 9 2</file>
         </tool>
       </inputs>
     </file>
     <file>
       <name>$PROJ_DIR$\usart.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 43</file>
-        </tool>
-        <tool>
-          <name>ICCAVR</name>
-          <file> 36</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 5 21 32 12 24 28 30 1 9 2</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>[ROOT_NODE]</name>
-      <outputs>
-        <tool>
-          <name>XLINK</name>
-          <file> 42 35 37</file>
-        </tool>
-      </outputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Timers.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
@@ -270,7 +238,54 @@
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 21 32 12 24 28 30 1 33 5 9 2</file>
+          <file> 5 22 33 15 25 29 31 1 9 2</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.cpp</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 28</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 49 41 46 50 37</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 22 33 15 25 31 1 0 5 29 9 2 7 3</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 22 33 15 25 31 1 0 5 29 9 2 7 3 6 8</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 43 36 38</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Timers.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 45</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 22 33 15 25 29 31 1 35 5 9 2</file>
         </tool>
       </inputs>
     </file>
@@ -279,21 +294,21 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 39</file>
+          <file> 40</file>
         </tool>
         <tool>
           <name>ICCAVR</name>
-          <file> 46</file>
+          <file> 47</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 21 32 12 24 17 29 23 15 11 18 25 16 26 13 30 1</file>
+          <file> 22 33 15 25 18 30 24 13 16 19 26 17 27 12 31 1</file>
         </tool>
         <tool>
           <name>ICCAVR</name>
-          <file> 21 32 12 24 17 29 23 15 11 18 25 16 26 13 30 1 4 47 0 28 9 2 3 31 14 19 8</file>
+          <file> 22 33 15 25 18 30 24 13 16 19 26 17 27 12 31 1 10 48 0 29 9 2 3 32 14 20 8</file>
         </tool>
       </inputs>
     </file>
@@ -302,36 +317,13 @@
       <outputs>
         <tool>
           <name>XLINK</name>
-          <file> 35 37</file>
+          <file> 36 38</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>XLINK</name>
-          <file> 22 10 45 49 36 20</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\main.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 34</file>
-        </tool>
-        <tool>
-          <name>ICCAVR</name>
-          <file> 48 40 45 49 36</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 21 32 12 24 30 1 0 5 28 9 2 7 3</file>
-        </tool>
-        <tool>
-          <name>ICCAVR</name>
-          <file> 21 32 12 24 30 1 0 5 28 9 2 7 3 6 8</file>
+          <file> 23 11 46 50 37 21</file>
         </tool>
       </inputs>
     </file>
