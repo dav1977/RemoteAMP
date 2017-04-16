@@ -74,6 +74,16 @@ uint cod1,cod2,cod3,cod4;
 int main( void )
 {//main
   
+    TimerSet(&tm3,100);
+   
+    TimerSet(&tm4,500);//громкость +
+    TimerSet(&tm5,500);//громкость -
+    tm4.out=1;
+    tm5.out=1;
+    
+    TimerSet(&tm6,100);//мигание питания
+  
+  
    aoff=0; onok=0; pr=0; on=0; mute=0; zader=0;  til=0;
   iniPORTS();    
  //----------------------------------
@@ -124,32 +134,17 @@ int main( void )
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   while(1){//-----------------------------------бесконечный цикл
 
      bool rez= du_main(pr);
      
-      pultadr=0;
-      if ( rez ) {  pultadr=analizCOD(); } ;//вызов обработчика пульта
-   
- 
    
    if (write==0)  {//------------------------------------- 
     
-     
+      pultadr=0;
+      if ( rez ) {  pultadr=analizCOD(); } ;
+      
+      
      if ((keyON||pultadr==25 || pultadr==90) && on==1 && zader!=1) { rprintfStr("OFF>adr="); rprintfFloat(9, pultadr ); ent;
                     on=0;onok=0; p5; zader=0;  til=0; gro1=0; gro2=0; pultadr=0;  }//OFF
      if ((keyON||pultadr==25 || pultadr==90) && on==0) {rprintfStr("ON>adr="); rprintfFloat(9, pultadr ); ent;
@@ -255,6 +250,12 @@ void tilf()
 
 }
 
+
+
+
+//*******************************************************************
+//                         MUTE
+//******************************************************************
 void mutef()
 {
   //--------------- mute -------------------
@@ -267,6 +268,11 @@ void mutef()
 
 }
 
+
+
+//*******************************************************************
+//                         SELECT
+//******************************************************************
 void select()
 {
  //--------------- select -------------------
@@ -297,16 +303,19 @@ void select()
 }
 
 
+//*******************************************************************
+//                         AUTO OFF
+//******************************************************************
 void autoOFF()
 {
   //--------------- aoff --------------------
  
    
-   if ((keyAOFF || pultadr==30 || pultadr==95) && aoff==1 && regaoff>=3)  {  RES(PORTB,5);  p5; aoff=0; regaoff=0; pultadr=0;}//отмена aoff 
+  // if ((keyAOFF || pultadr==30 || pultadr==95) && aoff==1 && regaoff>=3)  {  RES(PORTB,5);  p5; aoff=0; regaoff=0; pultadr=0;}//отмена aoff 
    
-  if ((keyAOFF || pultadr==30 || pultadr==95) && regaoff==0) { aoff=1; regaoff++; iniT1(60*60*2)/*2 часа*/; pultadr=0;  for (uchar i=0; i<3; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
-  if ((keyAOFF || pultadr==30 || pultadr==95) && regaoff==1) { aoff=1; regaoff++; iniT1(60*60*1)/*1 час*/; pultadr=0; for (uchar i=0; i<2; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
-  if ((keyAOFF || pultadr==30 || pultadr==95) && regaoff==2) { aoff=1; regaoff++; iniT1(60*60*0.5)/*0.5 часа*/; pultadr=0; for (uchar i=0; i<1; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
+ // if ((keyAOFF || pultadr==30 || pultadr==95) && regaoff==0) { aoff=1; regaoff++; iniT1(60*60*2)/*2 часа*/; pultadr=0;  for (uchar i=0; i<3; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
+ // if ((keyAOFF || pultadr==30 || pultadr==95) && regaoff==1) { aoff=1; regaoff++; iniT1(60*60*1)/*1 час*/; pultadr=0; for (uchar i=0; i<2; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
+  //if ((keyAOFF || pultadr==30 || pultadr==95) && regaoff==2) { aoff=1; regaoff++; iniT1(60*60*0.5)/*0.5 часа*/; pultadr=0; for (uchar i=0; i<1; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  SET(PORTB,5); }
   
    
  //  if ((keyAOFF || pultadr==30 || pultadr==95) && aoff==0) 
@@ -324,15 +333,49 @@ void autoOFF()
   //    
    //   }
                                                         
-   
+    if (keyAOFF || pultadr==30 || pultadr==95) 
+   {
+
+     
+  if ( aoff==1 && regaoff>=3)  {  RES(PORTB,5);  p5; aoff=0; regaoff=0; pultadr=0;   }//отмена aoff 
+  else
+  if ( regaoff==0) 
+    { 
+      aoff=1; regaoff++; 
+      TimerSet(&tm1, 120000)/*2 часа*/; 
+      pultadr=0; 
+      for (uchar i=0; i<3; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  
+      SET(PORTB,5);             
+    }
+  else
+  if (regaoff==1) 
+    { 
+      aoff=1; regaoff++; 
+      TimerSet(&tm1, 60000)/*1 часа*/; 
+      pultadr=0; 
+      for (uchar i=0; i<2; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  
+      SET(PORTB,5); 
+    }
+  else
+  if (regaoff==2) 
+    { 
+      aoff=1; regaoff++;
+      TimerSet(&tm1, 30000)/*0.5 часа*/; 
+      pultadr=0; for (uchar i=0; i<1; i++)  {SET(PORTB,5);p2;RES(PORTB,5);p2;}  
+      SET(PORTB,5); 
+    }
+  
+  }
 }
 
+
+//*******************************************************************
+//                         VOLUME
+//******************************************************************
 static bool vol;
 static uint ctvol=0;
 void volume()
 {
- //--------------- ГРОМКОСТЬ -------------------
-                       
                        
                        if (pultadr==45 || pultadr==110) {SET(PORTB,2); vol=true; ctvol=0;}
                        else // { gro(1); p5;  pultadr=0; }
@@ -345,6 +388,17 @@ void volume()
 }
 
 
+
+
+
+
+
+
+
+
+//*******************************************************************
+//                         main LOGIC
+//******************************************************************
 void normal(uchar adr)//-----------------------главная логика --------------------
 {   
    pultadr=adr;
@@ -379,13 +433,13 @@ void normal(uchar adr)//-----------------------главная логика ------------------
    
 
  //tasks
-  if (aoff==1)  {    WorkT1(); if (T1end) { on=0; onok=0;  aoff=0; p5; zader=0; regaoff=0;}
-                } 
+ // if (aoff==1)  {    WorkT1(); if (T1end) { on=0; onok=0;  aoff=0; p5; zader=0; regaoff=0;}
+ //               } 
                 
  if (vol)
                          {
                           ctvol++;
-                          if (ctvol>5000){ vol=false; RES(PORTB,2); RES(PORTB,3); }
+                          if (ctvol>10000){ vol=false; RES(PORTB,2); RES(PORTB,3); }
                          }
    
   
@@ -425,6 +479,9 @@ void source()
 
 
 
+//*******************************************************************
+//                         PROGRAMMING
+//******************************************************************
 void programming (bool rez)
 {  
    static bool get=0;
@@ -519,7 +576,7 @@ void led_all(bool a)
  } 
 }
 
-
+/*
 void gro(uchar a)
 {
   if (modegro!=1) {
@@ -531,7 +588,7 @@ void gro(uchar a)
     if (a==2) { if (gro2)  { gro2=0; RES(PORTD,3);  } else { gro2=1; SET(PORTD,3);  } }
         }
 }
-
+*/
 
 
 
@@ -577,6 +634,7 @@ OCR1BH=0x00;
 OCR1BL=0x00;
 
 
+
 // External Interrupt(s) initialization
 // INT0: Off
 // INT1: Off
@@ -588,8 +646,16 @@ SET(MCUCR,0); RES(MCUCR,1);//ПРЕРЫВАНИЕ ПО ИЗМЕНЕНИЮ УРОВНЯ INT0
 SET(GICR,6);//РАЗРЕШАЕМ ПРЕРЫВАНИЕ INT0
 
 
+//timer2
+SET(TCCR2, CS20 );
+RES(TCCR2, CS21 );
+RES(TCCR2, CS22 );//делитель 1/1
+// initialize counter
+    TCNT2 = 0;
+    // enable overflow interrupt
+    TIMSK |= (1 << TOIE2);
 
-
+    
 // Analog Comparator initialization
 // Analog Comparator: Off
 // Analog Comparator Input Capture by Timer/Counter 1: Off

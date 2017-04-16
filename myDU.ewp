@@ -2034,10 +2034,13 @@
     <name>$PROJ_DIR$\keys.h</name>
   </file>
   <file>
-    <name>$PROJ_DIR$\main.cpp</name>
+    <name>$PROJ_DIR$\main.c</name>
   </file>
   <file>
     <name>$PROJ_DIR$\main.h</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\SoftTimers.c</name>
   </file>
   <file>
     <name>$PROJ_DIR$\SoftTimers.h</name>

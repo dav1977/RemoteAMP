@@ -9,4 +9,4 @@
 #include "eeprom.h"
 
 extern uint cod1,cod2,cod3,cod4; 
-extern   bool u,til;
+extern   bool u,on,til;

@@ -4,9 +4,9 @@
 //***************************************************************************
 //#define CALIBR 5500//минимальный тик (около 1сек)
 
-static uchar raz;
-static uchar port;
-static uchar razct;
+ static uchar raz;
+ static uchar port=255;
+ static uchar razct;
 
  typedef struct 
    { 
