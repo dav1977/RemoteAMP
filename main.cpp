@@ -104,14 +104,7 @@ int main( void )
         tekfunc=0;
         led_all(1); while(1) {} //зависаем
       }
-
-   if (write==1) //мигание первого программируемого
-   {
-     for (uchar i=0; i<3; i++) {getadr(); p3;led_all(0); p3;}
     
-     getadr();
-   }
-           
    //---------------------------------------
  //   for (uchar i=0; i<MAXEEP-1; i++) kbuf[i]=k[i];//читаем ееprom
   //-----------------------------------------
@@ -121,7 +114,13 @@ int main( void )
   
   
   
-   
+   if (write==1) //мигание первого программируемого
+   {
+     for (uchar i=0; i<3; i++) {getadr(); p3;led_all(0); p3;}
+    
+     getadr();
+   }
+       
   
   
   
@@ -141,8 +140,10 @@ int main( void )
   
   while(1){//-----------------------------------бесконечный цикл
 
+     bool rez= du_main(pr);
+     
       pultadr=0;
-      if (du_main(pr)) {  pultadr=analizCOD(); } ;//вызов обработчика пульта
+      if ( rez ) {  pultadr=analizCOD(); } ;//вызов обработчика пульта
    
  
    
@@ -163,9 +164,11 @@ int main( void )
     if (on==1) normal( pultadr );
    
                   }//------------------------------------- 
-   else programming();
-   
-   diag();  
+   else 
+   {
+    if (rez) programming();
+   }
+   if (u) diag();  
      
     
    
@@ -424,9 +427,8 @@ void source()
 
 void programming ()
 {  
-  static bool get=0;
-  
-    if (pultadr==0 || tekfunc==255) return;
+   static bool get=0;
+   if (tekfunc==255) return;
    if (!get)  { getadr(); get=1; }//получаем адрес и зажигаем программируемую функцию
   
  
@@ -598,7 +600,7 @@ ACSR=0x80;
 
 void diag()
 {
-  if (!u) return;
+ 
   uchar sym = USART_GetChar(); //читаем буфер
   if (sym=='0') { pr=1;  rprintfStr("-------------- vkluchen kratkiy viviod -------------");  ent;   }
 
