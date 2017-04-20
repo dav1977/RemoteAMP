@@ -47,7 +47,7 @@ void gro(uchar a);
 void normal(uchar rez);
 void writeCOD(void);
 uchar analizCOD(void);
-void programming(bool rez);
+void programming();
 uchar getadr(void);
 #define acon 20000;//время включения АС при подаче питания
 uint tON=acon; 
@@ -56,12 +56,13 @@ uint tON=acon;
 uchar write;
 uchar pr;
 bool onok;  
+bool rez;
 bool on,mute;
 bool zader,aoff;
 uint timerzad; 
 uchar pultadr;
 extern  uchar mode=0,indexFUNC=0; 
-static uchar lastsel=1,sel=1,gro1=0,gro2=0,regaoff=0;
+static uchar lastsel=1,sel=1,regaoff=0;
 bool u=false,til=false;
 
 __no_init __eeprom uint k[MAXEEP];
@@ -74,21 +75,26 @@ uint cod1,cod2,cod3,cod4;
 int main( void )
 {//main
   
-    TimerSet(&tm3,100);
+    TimerSet(&tm3,50);
    
     TimerSet(&tm4,500);//громкость +
     TimerSet(&tm5,500);//громкость -
     tm4.out=1;
     tm5.out=1;
     
-    TimerSet(&tm6,100);//мигание питания
+    TimerSet(&tm6,50);//мигание питания
   
   
    aoff=0; onok=0; pr=0; on=0; mute=0; zader=0;  til=0;
   iniPORTS();    
  //----------------------------------
    if (keyONsm) u=true;//включаем UART
- // u=1; 
+   
+   
+  u=0; 
+  
+  
+  
   if (u) USART_Init();
 //----------------------------------
   mode=fmode; //смена режима работы
@@ -127,8 +133,7 @@ int main( void )
    if (write==1) //мигание первого программируемого
    {
      for (uchar i=0; i<3; i++) {getadr(); p2;led_all(0); p2;}
-    
-     getadr();
+    getadr(); 
    }
        
   
@@ -136,7 +141,7 @@ int main( void )
   
   while(1){//-----------------------------------бесконечный цикл
 
-     bool rez= du_main(pr);
+     rez= du_main(pr);
      
    
    if (write==0)  {//------------------------------------- 
@@ -146,7 +151,7 @@ int main( void )
       
       
      if ((keyON||pultadr==25 || pultadr==90) && on==1 && zader!=1) { rprintfStr("OFF>adr="); rprintfFloat(9, pultadr ); ent;
-                    on=0;onok=0; p5; zader=0;  til=0; gro1=0; gro2=0; pultadr=0;  }//OFF
+                    on=0;onok=0; p5; zader=0;  til=0;  pultadr=0;  }//OFF
      if ((keyON||pultadr==25 || pultadr==90) && on==0) {rprintfStr("ON>adr="); rprintfFloat(9, pultadr ); ent;
                     SET(PORTD,4); SET(PORTD,7);p5; on=1; mute=0; zader=1;timerzad=0;source();pultadr=0;  }//ON
      
@@ -161,7 +166,7 @@ int main( void )
                   }//------------------------------------- 
    else 
    {
-    if (rez) programming(rez);
+      programming();
    }
    if (u) diag();  
      
@@ -482,16 +487,16 @@ void source()
 //*******************************************************************
 //                         PROGRAMMING
 //******************************************************************
-void programming (bool rez)
+void programming ()
 {  
-   static bool get=0;
    if (indexFUNC==255) return;
-   if (!get)  { getadr(); get=1; }//получаем адрес и зажигаем программируемую функцию
   
-   if (rez)
+   if (rez==1)
    {
+     led_all(1); p4;led_all(0); p4;led_all(1); p4;led_all(0); 
+     getadr(); //получаем адрес и зажигаем программируемую функцию       
      writeCOD();
-     indexFUNC++;  get=0;
+     indexFUNC++;  
    
      if (indexFUNC==12) {  for (uchar i=0; i<10;i++) 
                            {led_all(1); p4; led_all(0);p4; }
@@ -501,10 +506,11 @@ void programming (bool rez)
    }
    
    
+   //пропуск
    if (keyONsm) { 
                 led_all(1); delay_s(1); 
                 led_all(0); 
-                indexFUNC++;  get=0;
+                indexFUNC++;  
                    if (indexFUNC==12) {  for (uchar i=0; i<10;i++) 
                            {led_all(1); p4; led_all(0);p4; }
                       }
